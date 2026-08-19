@@ -90,3 +90,101 @@ footer {
   color: var(--texte-doux);
   font-size: .875rem;
 }
+
+/* ---------------------------------------------------------------------------
+   Page d'accueil
+
+   Les pages légales sont un long texte dans une carte étroite ; l'accueil est
+   une vitrine. Il partage la palette et la typographie, mais retire le cadre
+   de `main` pour poser ses propres blocs.
+   --------------------------------------------------------------------------- */
+
+.accueil {
+  max-width: 54rem;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.hero {
+  text-align: center;
+  background: var(--carte);
+  border: 1px solid var(--trait);
+  border-radius: 18px;
+  padding: 3rem 2rem 2.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .hero { padding: 2.25rem 1.25rem 2rem; }
+}
+
+/* L'icône est un carré plein bord : sans arrondi elle jurerait avec le reste,
+   Android l'affichant elle-même rognée. */
+.marque {
+  width: 112px;
+  height: 112px;
+  border-radius: 26px;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  letter-spacing: -.5px;
+  margin: 0 0 .75rem;
+}
+
+.hero .chapeau {
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.action { margin: 2rem 0 .75rem; }
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: var(--texte);
+  color: var(--carte);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.bouton:hover { transform: translateY(-1px); opacity: .9; }
+.bouton:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.mention {
+  margin: 0;
+  font-size: .875rem;
+  color: var(--texte-doux);
+}
+
+/* `auto-fit` plutôt qu'un nombre de colonnes fixe : deux de front sur un
+   écran large, une seule sur un téléphone, sans requête de média. */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--trait);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.carte h3 { margin: 0 0 .5rem; color: var(--accent); }
+.carte p { margin: 0; }
+
+/* Hors de la carte de `main`, les titres et paragraphes de l'accueil n'ont plus
+   de fond : on leur rend la marge que le cadre donnait. */
+.accueil > h2 { margin: 2.5rem 0 1rem; }
+.accueil > p { margin: 0 0 1rem; }
+
+footer a { color: var(--texte-doux); }

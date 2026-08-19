@@ -3,23 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scrini — films et séries suivis</title>
+<title>Scrini — suivez vos films et vos séries</title>
+<meta name="description" content="Application Android pour suivre les films et les séries que vous regardez : progression épisode par épisode, agenda des sorties et alertes. Sans publicité ni revente de données.">
+<link rel="icon" href="scrini_icon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://scrini.fr/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://scrini.fr/">
+<meta property="og:title" content="Scrini — suivez vos films et vos séries">
+<meta property="og:description" content="Progression épisode par épisode, agenda des sorties, alertes. Sans publicité ni revente de données.">
+<meta property="og:locale" content="fr_FR">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-<header>
+
+<main class="accueil">
+
+<header class="hero">
+  <img src="scrini_icon.svg" alt="" width="112" height="112" class="marque">
   <h1>Scrini</h1>
-  <p class="chapeau">Une application Android pour suivre les films et les séries
-  que vous regardez, savoir où vous en êtes dans chaque saison, et être prévenu
-  des sorties à venir.</p>
+  <p class="chapeau">Suivez les films et les séries que vous regardez, sachez où
+  vous en êtes dans chaque saison, et soyez prévenu des sorties à venir.</p>
+
+  <!-- Le lien ne répondra qu'une fois l'application publiée. Retirer alors la
+       phrase « Bientôt disponible » juste en dessous. -->
+  <p class="action">
+    <a class="bouton" href="https://play.google.com/store/apps/details?id=com.scrini.app">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M3.6 1.9a1.5 1.5 0 0 0-.5 1.1v18a1.5 1.5 0 0 0 .5 1.1l.1.1L13.8 12v-.2L3.7 1.8l-.1.1Zm11.6 12.5-2.3-2.3v-.3l2.3-2.3.1.1 2.7 1.6c.8.4.8 1.2 0 1.6l-2.7 1.5-.1.1Zm-1.1 1.1L11.7 13l-8 8c.3.3.7.3 1.2 0l9.2-5.4Zm0-7.1L4.9 3c-.5-.3-.9-.2-1.2 0l8 8 2.4-2.5Z"/>
+      </svg>
+      Télécharger sur Google&nbsp;Play
+    </a>
+  </p>
+  <p class="mention">Bientôt disponible. Android&nbsp;8 et versions ultérieures.</p>
 </header>
 
-<h2>Informations légales</h2>
-<ul>
-  <li><a href="confidentialite.html">Politique de confidentialité</a></li>
-  <li><a href="suppression-compte.html">Supprimer son compte</a></li>
-</ul>
+<h2>Ce que fait l'application</h2>
+
+<div class="grille">
+  <section class="carte">
+    <h3>Épisode par épisode</h3>
+    <p>Cochez ce que vous avez vu. L'écran d'accueil rappelle l'épisode suivant
+    de chaque série en cours, et la progression ne compte que les épisodes
+    réellement sortis.</p>
+  </section>
+
+  <section class="carte">
+    <h3>L'agenda des sorties</h3>
+    <p>Toutes les diffusions à venir de vos séries, semaine par semaine, avec le
+    rythme de chacune — utile quand une saison passe de l'hebdomadaire à
+    l'intégrale d'un coup.</p>
+  </section>
+
+  <section class="carte">
+    <h3>Une alerte le jour venu</h3>
+    <p>Une notification le matin de la sortie, sur l'appareil, sans email à
+    trier. Elles se coupent toutes en une fois si elles vous encombrent.</p>
+  </section>
+
+  <section class="carte">
+    <h3>Où le regarder</h3>
+    <p>Les plateformes qui proposent chaque titre en France, la bande-annonce,
+    la distribution, et des suggestions autour de ce que vous venez de
+    terminer.</p>
+  </section>
+</div>
+
+<h2>Ce que l'application ne fait pas</h2>
+<p>Pas de publicité, pas de pistage, pas de revente de données. Scrini conserve
+ce qu'il lui faut pour fonctionner — votre adresse email et votre bibliothèque —
+et rien d'autre. Le détail figure dans la
+<a href="confidentialite.html">politique de confidentialité</a>, et un compte se
+supprime depuis l'application ou
+<a href="suppression-compte.html">depuis cette page</a>, avec toutes ses
+données.</p>
 
 <h2>Crédits</h2>
 <p>Les données de films et de séries proviennent de
@@ -29,6 +85,14 @@ l'API TMDB mais n'est ni approuvée ni certifiée par TMDB.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:contact@scrini.fr">contact@scrini.fr</a></p>
+
 </main>
+
+<footer>
+  <a href="confidentialite.html">Confidentialité</a> ·
+  <a href="suppression-compte.html">Supprimer son compte</a> ·
+  <a href="mailto:contact@scrini.fr">Contact</a>
+</footer>
+
 </body>
 </html>
