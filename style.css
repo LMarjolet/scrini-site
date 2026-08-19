@@ -141,22 +141,14 @@ footer {
 
 .action { margin: 2rem 0 .75rem; }
 
-.bouton {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  background: var(--texte);
-  color: var(--carte);
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: .85rem 1.6rem;
-  border-radius: 999px;
-  transition: transform .15s ease, opacity .15s ease;
+/* Badge Google Play, à hauteur libre mais jamais sous 40 px pour le badge
+   lui-même. La marge de respect étant incluse dans l'image, on affiche un peu
+   plus grand que ce minimum. `height: auto` conserve les proportions, que la
+   charte interdit de modifier. */
+.badge {
+  width: 200px;
+  height: auto;
 }
-
-.bouton:hover { transform: translateY(-1px); opacity: .9; }
-.bouton:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
 .mention {
   margin: 0;
@@ -188,3 +180,4 @@ footer {
 .accueil > p { margin: 0 0 1rem; }
 
 footer a { color: var(--texte-doux); }
+footer p { margin: .25rem 0; }
