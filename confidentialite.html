@@ -70,7 +70,11 @@ jeton ni identifiant ne soit transmis à un service de notification tiers.</p>
 <h2>Où vos données sont hébergées</h2>
 <p>La base de données et le service d'authentification sont hébergés par
 <strong>Supabase</strong>, dans la région <strong>eu-west-3 (Paris,
-France)</strong>. Vos données restent donc dans l'Union européenne.</p>
+France)</strong> : votre bibliothèque et votre compte sont stockés sur des
+serveurs situés en France. Supabase est une société américaine, dont
+l'infrastructure de données se trouve ici en Europe.</p>
+<p>Seul l'acheminement des e-mails de connexion fait exception et sort de
+l'Union européenne, comme expliqué plus bas.</p>
 <p>Chaque compte est cloisonné au niveau de la base elle-même : les règles de
 sécurité du serveur n'autorisent la lecture et l'écriture d'une ligne qu'au
 compte qui l'a créée.</p>
@@ -84,6 +88,12 @@ TMDB reçoit la recherche, jamais l'information de qui la formule. Les
 disponibilités en streaming proviennent de JustWatch, via TMDB.</p>
 <p>Cette application utilise l'API TMDB mais n'est ni approuvée ni certifiée par
 TMDB.</p>
+
+<h3>Resend (envoi des e-mails)</h3>
+<p>Les codes de connexion vous sont envoyés par <strong>Resend</strong>, société
+américaine, qui reçoit à cette occasion votre adresse e-mail et le code. Elle
+n'a accès ni à votre bibliothèque ni au reste de vos données. C'est le seul
+traitement pour lequel une donnée vous concernant quitte l'Union européenne.</p>
 
 <h3>Connexion Google ou Apple</h3>
 <p>Si vous choisissez de vous connecter avec un compte Google ou Apple, le
