@@ -1,25 +1,35 @@
-/* Pages publiques de Scrini (politique de confidentialité, suppression de
-   compte). Feuille unique, sans dépendance externe : ces pages doivent
-   s'afficher même si un réseau bloque les CDN, et Google doit pouvoir les
-   consulter sans exécuter de script. */
+/* Pages publiques de Scrini (accueil, politique de confidentialité,
+   suppression de compte). Feuille unique, sans dépendance externe : ces pages
+   doivent s'afficher même si un réseau bloque les CDN, et Google doit pouvoir
+   les consulter sans exécuter de script.
+
+   La palette est celle de l'application — rouge et bleu nuit tirés du logo —
+   et non plus le bleu-gris de l'identité précédente. Les valeurs viennent de
+   `lib/core/theme/app_theme.dart`, pour qu'un lien du site et un bouton de
+   l'application soient du même rouge.
+
+   L'accent est la seule teinte qui change d'un mode à l'autre : le rouge vif de
+   l'application (#f44144) ne donne que 3,7:1 sur blanc, sous le seuil AA pour
+   du texte. Le rouge sombre le remplace en clair (5,4:1), un rouge éclairci
+   prend le relais en sombre (5,5:1 sur la carte). */
 
 :root {
-  --fond: #f6f7fa;
+  --fond: #f1f5fa;
   --carte: #ffffff;
-  --texte: #16233f;
-  --texte-doux: #5c7093;
-  --trait: #dfe4ed;
-  --accent: #2a3e63;
+  --texte: #0d1b31;
+  --texte-doux: #5b6b85;
+  --trait: #dde5ef;
+  --accent: #cf1f2e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fond: #0b1424;
-    --carte: #16233f;
-    --texte: #e8eef8;
-    --texte-doux: #9fb0c8;
-    --trait: #24365a;
-    --accent: #c3d1e4;
+    --fond: #0b172f;
+    --carte: #1a2540;
+    --texte: #e6eef9;
+    --texte-doux: #9db0cc;
+    --trait: #2a3a57;
+    --accent: #ff6b6e;
   }
 }
 
