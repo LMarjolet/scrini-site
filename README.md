@@ -32,7 +32,7 @@ pas de JavaScript.
 
 ## Ce qui doit suivre l'application
 
-Quatre choses vivent ici en copie et se désynchronisent en silence :
+Cinq choses vivent ici en copie et se désynchronisent en silence :
 
 - **L'icône** — quand l'identité change, recopier `design/scrini_icon_512.png`
   depuis le dépôt de l'application, puis **régénérer les deux images dérivées**
@@ -44,6 +44,15 @@ Quatre choses vivent ici en copie et se désynchronisent en silence :
   Toute nouvelle donnée enregistrée côté serveur doit y figurer **avant** la
   publication de la version qui l'écrit — c'est un engagement, pas une
   documentation.
+- **L'appel à action**, aujourd'hui un encadré de recrutement de testeurs, sur
+  l'accueil et sur les trois pages d'usage. Le badge Play a été retiré parce que
+  la fiche renvoie un 404 tant que la production n'est pas ouverte, et que la
+  charte de Google interdit d'y renvoyer. **Le jour de la sortie publique, les
+  quatre encadrés repassent au badge**. `google-play-badge.png` et les règles
+  `.action` et `.badge` de la feuille de style sont conservés pour cela,
+  inutilisés en attendant ; la ligne `installUrl` du bloc JSON-LD, elle, a été
+  retirée et sera à remettre — une donnée structurée qui désigne un 404 vaut
+  moins que pas de donnée du tout.
 - **Les pages d'usage** (`suivre-ses-series`, `agenda-sorties`,
   `suivre-ses-animes`), qui décrivent des fonctions précises pour être trouvées
   par une recherche. Une fonction retirée ou modifiée doit y être corrigée : une

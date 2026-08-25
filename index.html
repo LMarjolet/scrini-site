@@ -25,7 +25,6 @@
   "applicationCategory": "EntertainmentApplication",
   "operatingSystem": "Android 7.0+",
   "url": "https://scrini.fr/",
-  "installUrl": "https://play.google.com/store/apps/details?id=com.scrini.app",
   "inLanguage": "fr-FR",
   "description": "Application Android pour suivre les films, les séries et les animés que vous regardez : progression épisode par épisode, agenda des sorties, alertes. Sans publicité ni revente de données.",
   "image": "https://scrini.fr/scrini_icon.png",
@@ -49,15 +48,23 @@
   regardez, sachez où vous en êtes dans chaque saison, et soyez prévenu des
   sorties à venir.</p>
 
-  <!-- Badge officiel, tel que fourni par Google : sa charte interdit de le
-       redessiner, de le recolorer ou de l'habiller. La marge blanche fait
-       partie de l'image — c'est la zone de respect exigée, ne pas la rogner. -->
-  <p class="action">
-    <a href="https://play.google.com/store/apps/details?id=com.scrini.app">
-      <img src="google-play-badge.png" alt="Disponible sur Google Play"
-           width="646" height="250" class="badge">
-    </a>
-  </p>
+  <!-- Le badge Play a laissé la place à cet encadré : tant que la production
+       n'est pas ouverte, la fiche renvoie un 404, et la charte de Google
+       interdit de faire pointer le badge vers une page indisponible.
+       `google-play-badge.png` reste dans le dépôt pour le jour de la sortie —
+       sa charte interdit alors de le redessiner, de le recolorer ou de le
+       rogner : la marge blanche fait partie de l'image. -->
+  <div class="beta">
+    <p class="beta-titre">Bêta fermée en cours</p>
+    <p>Scrini se teste avant sa sortie publique. Les places sont limitées, et
+    l'installation se fait par le Play Store comme pour n'importe quelle
+    application — il suffit de l'adresse de votre compte Google.</p>
+    <p>Une seule contrainte : rester inscrit jusqu'au bout du test. Une
+    désinscription en cours de route remet le compteur à zéro, pour vous comme
+    pour l'application.</p>
+    <p><a href="mailto:contact@scrini.fr?subject=Devenir%20testeur%20de%20Scrini">Demander
+    une place de testeur</a></p>
+  </div>
   <p class="mention">Gratuite, sans publicité. Android&nbsp;7 et versions
   ultérieures.</p>
 </header>

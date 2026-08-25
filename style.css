@@ -203,3 +203,26 @@ footer p { margin: .25rem 0; }
 .encadre > :first-child { margin-top: 0; }
 .encadre > :last-child { margin-bottom: 0; }
 .encadre .action { margin: 1rem 0 0; }
+
+/* Encadré de la bêta fermée, sur le bandeau d'accueil. Le texte y repasse à
+   gauche : trois lignes centrées se lisent mal, et le bandeau, lui, reste
+   centré autour. Il remplace le badge Play jusqu'à l'ouverture de la
+   production — voir le commentaire d'`index.html`. */
+.beta {
+  max-width: 34rem;
+  margin: 2rem auto .75rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--trait);
+  border-radius: 12px;
+  background: var(--fond);
+  text-align: left;
+}
+
+.beta > :first-child { margin-top: 0; }
+.beta > :last-child { margin-bottom: 0; }
+
+.beta-titre {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
