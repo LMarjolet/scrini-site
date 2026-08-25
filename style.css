@@ -191,3 +191,15 @@ footer {
 
 footer a { color: var(--texte-doux); }
 footer p { margin: .25rem 0; }
+
+/* ---------------------------------------------------------------------------
+   Pages d'usage
+
+   Elles reprennent la carte étroite des pages légales, mais se terminent par un
+   rappel du badge Play. Dans l'encadré, `.action` n'a plus besoin de la marge
+   qu'elle prend sur l'accueil : le cadre fait déjà la respiration.
+   --------------------------------------------------------------------------- */
+
+.encadre > :first-child { margin-top: 0; }
+.encadre > :last-child { margin-bottom: 0; }
+.encadre .action { margin: 1rem 0 0; }

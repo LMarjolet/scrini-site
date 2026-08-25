@@ -6,6 +6,21 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/suivre-ses-series.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scrini.fr/agenda-sorties.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scrini.fr/suivre-ses-animes.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/confidentialite.html</loc>
     <lastmod>2026-08-25</lastmod>
     <priority>0.3</priority>
