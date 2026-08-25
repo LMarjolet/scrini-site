@@ -17,6 +17,8 @@ disponible sur un dépôt privé.
 | `style.css` | Feuille unique, clair et sombre |
 | `scrini_icon.png` | Icône de l'application, copie de `design/scrini_icon_512.png` |
 | `google-play-badge.png` | Badge officiel Google, à ne pas redessiner ni recolorer |
+| `robots.txt` | Autorise l'indexation et déclare le plan du site |
+| `sitemap.xml` | Les trois pages, à tenir à jour si une quatrième s'ajoute |
 | `CNAME` | Le domaine, pour GitHub Pages |
 
 Aucun script, aucune dépendance externe : ces pages doivent rester consultables
