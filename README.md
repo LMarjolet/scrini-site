@@ -11,9 +11,10 @@ disponible sur un dépôt privé.
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Vitrine : ce que fait l'application, lien Play, crédits TMDB, contact |
+| `index.html` | Vitrine : ce que fait l'application, appel à action, crédits TMDB, contact |
 | `confidentialite.html` | Politique de confidentialité (RGPD) |
 | `suppression-compte.html` | Procédure de suppression de compte |
+| `questions-frequentes.html` | FAQ : réponses courtes, et balisage `FAQPage` |
 | `suivre-ses-series.html` | Page d'usage : cocher les épisodes, lire sa progression |
 | `agenda-sorties.html` | Page d'usage : l'agenda des diffusions et les alertes |
 | `suivre-ses-animes.html` | Page d'usage : le filtre animé et ses limites |
@@ -32,7 +33,7 @@ pas de JavaScript.
 
 ## Ce qui doit suivre l'application
 
-Cinq choses vivent ici en copie et se désynchronisent en silence :
+Six choses vivent ici en copie et se désynchronisent en silence :
 
 - **L'icône** — quand l'identité change, recopier `design/scrini_icon_512.png`
   depuis le dépôt de l'application, puis **régénérer les deux images dérivées**
@@ -53,6 +54,12 @@ Cinq choses vivent ici en copie et se désynchronisent en silence :
   inutilisés en attendant ; la ligne `installUrl` du bloc JSON-LD, elle, a été
   retirée et sera à remettre — une donnée structurée qui désigne un 404 vaut
   moins que pas de donnée du tout.
+- **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
+  la politique de confidentialité : données conservées, notifications locales,
+  export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc
+  `FAQPage` de la même page — donc **trois copies à corriger ensemble**. Une FAQ
+  qui contredit la politique est pire que pas de FAQ : c'est la politique qui
+  engage, et l'écart se retourne contre elle.
 - **Les pages d'usage** (`suivre-ses-series`, `agenda-sorties`,
   `suivre-ses-animes`), qui décrivent des fonctions précises pour être trouvées
   par une recherche. Une fonction retirée ou modifiée doit y être corrigée : une
