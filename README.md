@@ -22,6 +22,7 @@ disponible sur un dépôt privé.
 | `scrini_icon.png` | Icône 512 px, copie de `design/scrini_icon_512.png` : la source |
 | `scrini_icon_224.png` | La même en 224 px, sans alpha — c'est elle que les pages chargent |
 | `og-scrini.png` | Carte de partage 1200×630, pour les aperçus sur les réseaux |
+| `favicon.ico` | 16/32/48 px, pour les clients qui le demandent à la racine |
 | `google-play-badge.png` | Badge officiel Google, à ne pas redessiner ni recolorer |
 | `robots.txt` | Autorise l'indexation et déclare le plan du site |
 | `sitemap.xml` | Toutes les pages, à compléter dès qu'une s'ajoute |
@@ -36,10 +37,10 @@ pas de JavaScript.
 Six choses vivent ici en copie et se désynchronisent en silence :
 
 - **L'icône** — quand l'identité change, recopier `design/scrini_icon_512.png`
-  depuis le dépôt de l'application, puis **régénérer les deux images dérivées**
-  qui en descendent : `scrini_icon_224.png` et `og-scrini.png` (recette plus
-  bas). Les oublier laisse le site à l'ancienne identité alors que la source a
-  changé.
+  depuis le dépôt de l'application, puis **régénérer les trois images dérivées**
+  qui en descendent : `scrini_icon_224.png`, `favicon.ico` et `og-scrini.png`
+  (recette plus bas). Les oublier laisse le site à l'ancienne identité alors que
+  la source a changé.
 - **La palette** de `style.css`, reprise de `lib/core/theme/app_theme.dart`.
 - **Les données collectées**, décrites dans la politique de confidentialité.
   Toute nouvelle donnée enregistrée côté serveur doit y figurer **avant** la
@@ -82,6 +83,13 @@ n'importe quel éditeur, à partir de `scrini_icon.png`.
   entièrement opaque, son alpha ne transportait que du poids. C'est ce qui fait
   passer le fichier de 324 Ko à 74 Ko. Un encodeur PNG sérieux (`pngquant`,
   `oxipng`) descendrait encore vers 25 Ko si l'occasion se présente.
+- **`favicon.ico`** — trois images PNG (16, 32 et 48 px) empaquetées dans un
+  conteneur ICO. Google n'en a pas besoin, la balise `rel="icon"` lui suffit ;
+  c'est pour les clients qui demandent `/favicon.ico` à la racine sans lire le
+  HTML, et qui recevaient un 404. Note au passage qu'à 16 px l'icône est à la
+  limite du lisible : les rayures du clap et le fond de pellicule s'y réduisent
+  à du bruit. Une variante simplifiée pour les petites tailles serait un vrai
+  gain, et se fabriquerait dans le dépôt de l'application, pas ici.
 - **`og-scrini.png`** — 1200×630, le format qu'attendent les aperçus de lien.
   Fond `#0b172f`, icône à 260 px avec 60 px d'arrondi, marge de 96 px à gauche,
   texte à partir de 428 px : « Scrini » en 76 px gras `#e6eef9`, un filet accent
