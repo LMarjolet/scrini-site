@@ -74,11 +74,10 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   Toute nouvelle donnée enregistrée côté serveur doit y figurer **avant** la
   publication de la version qui l'écrit — c'est un engagement, pas une
   documentation.
-- **Les badges des magasins**. Le lien Google Play est en place ; **le lien
-  App Store est à renseigner** dans les quatre pages qui portent les badges
-  (accueil et trois pages d'usage) dès que la fiche existe — il pointe sur `#`
-  en attendant. La charte des deux magasins interdit de rediriger un badge vers
-  une fiche indisponible : ne pas déployer avant.
+- **Les badges des magasins**, présents sur quatre pages (accueil et trois
+  pages d'usage). Google Play : `com.scrini.app`. App Store : Apple ID
+  `6809466532`. La charte des deux magasins interdit de rediriger un badge vers
+  une fiche indisponible : ne pas déployer avant la publication sur les deux.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
   export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc
