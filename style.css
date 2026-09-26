@@ -212,16 +212,56 @@ section{padding:56px 0}
 .doc .suite a:hover{color:var(--primary)}
 .doc .suite span{color:var(--on-surface-variant)}
 
-@media (min-width:861px) and (max-width:1000px){.points{grid-template-columns:repeat(2,minmax(0,1fr))}.point:nth-child(3){border-left:0;padding-left:0}}
+/* Trois paliers, du plus large au plus étroit — l'ordre compte, les règles
+   ont la même spécificité et la dernière l'emporte.
+
+   Bureau serré (861–1000) : les quatre points passent à deux colonnes, le
+   reste tient.
+
+   Téléphone et tablette (≤ 860) : le héros s'empile. Les badges, la mention
+   « gratuit » et la capture se centrent — alignés à gauche sous un titre qui
+   occupe toute la largeur, ils flottaient dans le vide. Le titre et le chapeau
+   restent au fer à gauche : du texte courant se lit mal centré.
+
+   Tablette (601–860) : la largeur porte deux colonnes, pas trois. Les listes
+   se mettent côte à côte, et leurs puces repassent sur une colonne — deux
+   colonnes dans une demi-largeur hacheraient les libellés.
+
+   Téléphone (≤ 600) : une colonne partout. */
+
+@media (min-width:861px) and (max-width:1000px){
+  .points{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .point:nth-child(3){border-left:0;padding-left:0}
+  .point:nth-child(n+3){border-top:1px solid var(--outline-variant)}
+}
+
 @media (max-width:860px){
   .hero{padding:48px 0}
-  .hero .wrap{grid-template-columns:1fr;gap:36px;justify-items:start}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero .cta{justify-content:center}
+  .hero small{text-align:center}
+  .hero .phone{justify-self:center}
+  .tmdb{margin-left:0}
+}
+
+@media (min-width:601px) and (max-width:860px){
+  .points{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .point:nth-child(3){border-left:0;padding-left:0}
+  .point:nth-child(n+3){border-top:1px solid var(--outline-variant)}
+  .lists{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+  .cols{grid-template-columns:1fr}
+  .shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+  /* Trois captures sur deux colonnes : la dernière prend la ligne entière
+     pour rester au milieu plutôt que de pendre à gauche. */
+  .shot:nth-child(3){grid-column:1/-1}
+}
+
+@media (max-width:600px){
   .shots,.lists,.cols,.points,.doc .suite ul{grid-template-columns:1fr}
   .point{border-left:0;padding:24px 0;border-top:1px solid var(--outline-variant)}
   .point:first-child{border-top:0;padding-top:24px}
   .lists{gap:28px}
   .shots{gap:32px}
   .phone.sm{max-width:260px}
-  .tmdb{margin-left:0}
   .doc td:first-child{width:auto}
 }
