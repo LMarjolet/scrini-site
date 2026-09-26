@@ -134,6 +134,42 @@
 
 <script>
 (function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+
+/* Le carrousel des captures à la souris. Le doigt n'a besoin de rien : un
+   bloc `overflow-x` se fait glisser nativement. La souris, elle, n'a aucune
+   prise — la molette verticale fait défiler la page, pas la bande — d'où ce
+   clic-glissé. Il ne s'active que pour un pointeur de type souris, et que
+   si la bande déborde vraiment : aux largeurs où les trois captures tiennent
+   côte à côte, il ne se passe rien. L'accrochage est suspendu pendant le
+   geste, sinon `mandatory` ramènerait la bande à chaque pixel parcouru. */
+(function(){
+  var b=document.querySelector(".shots");
+  if(!b||!window.PointerEvent)return;
+  var on=false,x0=0,l0=0,moved=false;
+  b.addEventListener("pointerdown",function(e){
+    if(e.pointerType!=="mouse"||e.button!==0)return;
+    if(b.scrollWidth<=b.clientWidth)return;
+    on=true;moved=false;x0=e.clientX;l0=b.scrollLeft;
+    b.classList.add("drag");
+    try{b.setPointerCapture(e.pointerId)}catch(x){}
+  });
+  b.addEventListener("pointermove",function(e){
+    if(!on)return;
+    var d=e.clientX-x0;
+    if(Math.abs(d)>3)moved=true;
+    b.scrollLeft=l0-d;
+    e.preventDefault();
+  });
+  function end(e){
+    if(!on)return;
+    on=false;b.classList.remove("drag");
+    try{b.releasePointerCapture(e.pointerId)}catch(x){}
+  }
+  b.addEventListener("pointerup",end);
+  b.addEventListener("pointercancel",end);
+  /* Sans quoi le navigateur part en glisser-déposer d'image au premier geste. */
+  b.addEventListener("dragstart",function(e){e.preventDefault()});
+})();
 </script>
 </body>
 </html>

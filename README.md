@@ -35,14 +35,23 @@ disponible sur un dépôt privé.
 ## Ce qui tourne dans la page, et ce qui n'y tourne pas
 
 Ces pages doivent rester lisibles par un relecteur qui n'exécute pas de
-JavaScript, et consultables derrière un réseau qui bloque les CDN. Deux
-exceptions, mesurées :
+JavaScript, et consultables derrière un réseau qui bloque les CDN. Trois
+exceptions, mesurées — dans les trois cas, l'absence du script ou du fichier
+dégrade la page sans la casser :
 
-- **Un script de quelques lignes**, pour l'inverseur de thème de l'en-tête. Sans
-  lui, le bouton n'apparaît pas et la page suit simplement le réglage du
-  système (`prefers-color-scheme`). Avec lui, le choix est mémorisé en
-  `localStorage` sous `scrini-theme` et posé en `data-theme` sur `<html>` avant
-  le premier rendu, pour ne pas voir la page changer de couleur au chargement.
+- **L'inverseur de thème** de l'en-tête, quelques lignes dans `index.html` et
+  recopiées dans chaque page. Sans lui, le bouton n'apparaît pas et la page
+  suit simplement le réglage du système (`prefers-color-scheme`). Avec lui, le
+  choix est mémorisé en `localStorage` sous `scrini-theme` et posé en
+  `data-theme` sur `<html>` avant le premier rendu, pour ne pas voir la page
+  changer de couleur au chargement.
+- **Le clic-glissé du carrousel** de captures, sur l'accueil seulement. Le
+  carrousel lui-même est du CSS (`scroll-snap`) et se fait glisser au doigt
+  sans une ligne de script ; mais une bande qui ne défile qu'à l'horizontale
+  n'offre aucune prise à la souris — la molette verticale fait défiler la
+  page, pas la bande. Le script ne s'active que pour un pointeur de type
+  souris et que si la bande déborde ; sans lui, restent la molette horizontale
+  et `Maj`+molette.
 - **Roboto, depuis Google Fonts**, parce que c'est la police de l'application.
   Si elle ne vient pas, la pile de repli (Helvetica, Arial) prend le relais et
   rien ne casse. C'est pour cette raison que les icônes ne sont *pas* une
