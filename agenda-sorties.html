@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quand sort le prochain épisode — Scrini</title>
-<meta name="description" content="L'agenda des diffusions à venir de vos séries, semaine par semaine, avec le rythme de chacune, et une notification le matin de la sortie — sans email à trier.">
+<meta name="description" content="L'agenda des diffusions à venir de tes séries, semaine par semaine, avec le rythme de chacune, et une notification le matin de la sortie — sans email à trier.">
 <link rel="icon" href="scrini_icon_224.png" type="image/png">
 <link rel="canonical" href="https://scrini.fr/agenda-sorties.html">
 <meta property="og:type" content="article">
@@ -14,94 +14,83 @@
 <meta property="og:image" content="https://scrini.fr/og-scrini.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Scrini — suivez vos films, vos séries et vos animés">
+<meta property="og:image:alt" content="Scrini — films, séries, animés">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="fr_FR">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.className="js";try{var t=localStorage.getItem("scrini-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
-<main>
-<header>
-  <h1>Quand sort le prochain épisode</h1>
-  <p class="chapeau">Chercher une date de diffusion, c'est ouvrir un moteur de
-  recherche, tomber sur un article de l'an dernier, puis sur un forum qui parle
-  d'une autre saison. Scrini répond à la question pour les séries que vous
-  suivez déjà.</p>
+
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="./"><img src="scrini_icon_224.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">FILMS · SÉRIES · ANIMÉS</span></span></a>
+<div class="head-sp"></div>
+<button class="icon-btn" id="theme" type="button" aria-label="Changer de thème"><svg class="ico ico-light" aria-hidden="true"><use href="assets/icons.svg#i-light"/></svg><svg class="ico ico-dark" aria-hidden="true"><use href="assets/icons.svg#i-dark"/></svg></button>
+</div>
 </header>
 
+<main class="doc">
+<div class="wrap">
+<h1>Quand sort le prochain épisode</h1>
+<p class="chapeau">Chercher une date de diffusion, c'est ouvrir un moteur de recherche, tomber sur un article de l'an dernier, puis sur un forum qui parle d'une autre saison. Scrini répond à la question pour les séries que tu suis déjà.</p>
+
+<section>
 <h2>Un agenda, pas une recherche</h2>
-<p>L'application rassemble les diffusions à venir de vos séries et les présente
-semaine par semaine. Vous ne cherchez pas une date : vous regardez ce qui arrive
-et vous savez à quoi ressemble votre quinzaine.</p>
+<p>L'application rassemble les diffusions à venir de tes séries et les présente semaine par semaine. Tu ne cherches pas une date : tu regardes ce qui arrive et tu sais à quoi ressemble ta quinzaine.</p>
+<p>L'agenda indique aussi le rythme de chaque série. C'est ce qui manque le plus souvent ailleurs, et ce qui coûte le plus cher quand on l'ignore : une saison peut passer de l'hebdomadaire à l'intégrale d'un coup, ou s'arrêter deux mois au milieu. Voir le rythme, c'est comprendre pourquoi rien n'est sorti depuis trois semaines sans avoir à vérifier si tu as raté quelque chose.</p>
+</section>
 
-<p>L'agenda indique aussi le rythme de chaque série. C'est ce qui manque le plus
-souvent ailleurs, et ce qui coûte le plus cher quand on l'ignore : une saison
-peut passer de l'hebdomadaire à l'intégrale d'un coup, ou s'arrêter deux mois au
-milieu. Voir le rythme, c'est comprendre pourquoi rien n'est sorti depuis trois
-semaines sans avoir à vérifier si vous avez raté quelque chose.</p>
-
+<section>
 <h2>Une alerte le jour venu</h2>
-<p>Le matin d'une sortie, une notification arrive sur l'appareil. Pas un
-courriel de plus à trier, pas de fil à surveiller : l'information vous atteint
-le jour où elle sert, et pas avant.</p>
+<p>Le matin d'une sortie, une notification arrive sur l'appareil. Pas un email de plus à trier, pas de fil à surveiller : l'information t'atteint le jour où elle sert, et pas avant.</p>
+<p>Si elles t'encombrent, elles se coupent toutes en une seule fois. C'est volontaire : une application qui rend le désabonnement pénible finit désinstallée, ce qui n'arrange personne.</p>
+</section>
 
-<p>Si elles vous encombrent, elles se coupent toutes en une seule fois. C'est
-volontaire : une application qui rend le désabonnement pénible finit
-désinstallée, ce qui n'arrange personne.</p>
-
+<section>
 <h2>Ce que l'accueil peut afficher</h2>
-<p>Les sorties attendues sont l'une des rangées de l'écran d'accueil, et vous
-choisissez lesquelles apparaissent et dans quel ordre. Selon ce que vous en
-faites, l'application s'ouvre sur vos listes, sur vos sorties attendues, sur les
-tendances du jour, sur les séries qui diffusent en ce moment, ou sur les films à
-l'affiche près de chez vous. Si l'agenda est ce qui vous intéresse, il peut être
-la première chose que vous voyez.</p>
+<p>Les sorties attendues sont l'une des rangées de l'écran d'accueil, et tu choisis lesquelles apparaissent et dans quel ordre. Selon ce que tu en fais, l'application s'ouvre sur tes listes, sur tes sorties attendues, sur les tendances du jour, sur les séries qui diffusent en ce moment, ou sur les films à l'affiche près de chez toi. Si l'agenda est ce qui t'intéresse, il peut être la première chose que tu vois.</p>
+</section>
 
+<section>
 <h2>D'où viennent les dates</h2>
-<p>Les calendriers de diffusion proviennent de The Movie Database, une base
-alimentée par une communauté de contributeurs. Elle est bonne, et elle n'est pas
-infaillible : une date annoncée puis déplacée par un diffuseur met parfois un
-jour ou deux à y être corrigée, et les séries confidentielles y sont moins bien
-tenues que les grosses productions. L'application affiche ce que la base
-contient — ni plus, ni mieux.</p>
+<p>Les calendriers de diffusion proviennent de The Movie Database, une base alimentée par une communauté de contributeurs. Elle est bonne, et elle n'est pas infaillible : une date annoncée puis déplacée par un diffuseur met parfois un jour ou deux à y être corrigée, et les séries confidentielles y sont moins bien tenues que les grosses productions. L'application affiche ce que la base contient — ni plus, ni mieux.</p>
+</section>
 
-<div class="encadre">
-  <p class="beta-titre">Bêta fermée en cours</p>
-  <p>Scrini est gratuite, sans publicité et sans pistage, sur Android&nbsp;7 et
-  versions ultérieures. Elle se teste avant sa sortie publique : l'installation
-  passe par le Play Store comme pour n'importe quelle application, et il suffit
-  de l'adresse de votre compte Google. On vous demandera seulement de rester
-  inscrit jusqu'au bout du test.</p>
-  <p><a href="mailto:contact@scrini.fr?subject=Devenir%20testeur%20de%20Scrini">Demander
-  une place de testeur</a></p>
+<section class="action">
+<h2>Essayer Scrini</h2>
+<p>Gratuite, sans publicité ni revente de données.</p>
+<div class="cta">
+<a class="badge" href="https://play.google.com/store/apps/details?id=com.scrini.app"><img src="assets/badge-google-play.svg" alt="Disponible sur Google Play" width="239" height="71"></a>
+<a class="badge" href="https://apps.apple.com/fr/app/id6809466532"><img src="assets/badge-app-store.svg" alt="Télécharger dans l'App Store" width="127" height="40"></a>
 </div>
+</section>
 
+<section class="suite">
 <h2>À lire ensuite</h2>
 <ul>
-  <li><a href="suivre-ses-series.html">Savoir où on en est dans ses séries</a> —
-  cocher les épisodes et lire sa progression.</li>
-  <li><a href="suivre-ses-animes.html">Suivre ses animés</a> — pourquoi ils se
-  filtrent à part.</li>
-  <li><a href="questions-frequentes.html">Questions fréquentes</a> — prix,
-  appareils, compte, données conservées.</li>
-  <li><a href="./">Ce que fait l'application</a>, en une page.</li>
+<li><a href="suivre-ses-series.html">Savoir où on en est dans ses séries</a> <span>— cocher les épisodes et lire sa progression.</span></li>
+<li><a href="suivre-ses-animes.html">Suivre ses animés</a> <span>— pourquoi ils se filtrent à part.</span></li>
+<li><a href="questions-frequentes.html">Questions fréquentes</a> <span>— prix, appareils, compte, données conservées.</span></li>
+<li><a href="./">Ce que fait l'application</a> <span>— en une page.</span></li>
 </ul>
-
+</section>
+</div>
 </main>
 
-<footer>
-  <p>
-    <a href="./">Accueil</a> ·
-    <a href="questions-frequentes.html">Questions fréquentes</a> ·
-    <a href="confidentialite.html">Confidentialité</a> ·
-    <a href="suppression-compte.html">Supprimer son compte</a> ·
-    <a href="mailto:contact@scrini.fr">Contact</a>
-  </p>
-  <p>Les données de films et de séries proviennent de
-  <a href="https://www.themoviedb.org">The Movie Database</a>. Cette application
-  utilise l'API TMDB mais n'est ni approuvée ni certifiée par TMDB.</p>
-  <p>Google Play et le logo Google Play sont des marques de Google LLC.</p>
+<footer class="site-foot">
+<div class="wrap">
+<a href="./">Accueil</a>
+<a href="questions-frequentes.html">Questions fréquentes</a>
+<a href="confidentialite.html">Confidentialité</a>
+<a href="suppression-compte.html">Supprimer son compte</a>
+<a href="mailto:contact@scrini.fr">Contact</a>
+<div class="tmdb"><img src="assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>Ce produit utilise l'API TMDB mais n'est ni approuvé ni certifié par TMDB.</span></div>
+</div>
 </footer>
 
+<script>
+(function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+</script>
 </body>
 </html>

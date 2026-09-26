@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scrini — suivez vos films, vos séries et vos animés</title>
-<meta name="description" content="Application Android pour suivre les films, les séries et les animés que vous regardez : progression épisode par épisode, agenda des sorties, alertes et accueil personnalisable. Sans publicité ni revente de données.">
+<title>Scrini — films, séries, animés</title>
+<meta name="description" content="Suis les films, les séries et les animés que tu regardes, sache où tu en es dans chaque saison, et sois prévenu des sorties à venir. Gratuit, sans publicité ni revente de données.">
 <link rel="icon" href="scrini_icon_224.png" type="image/png">
 <link rel="canonical" href="https://scrini.fr/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://scrini.fr/">
-<meta property="og:title" content="Scrini — suivez vos films, vos séries et vos animés">
-<meta property="og:description" content="Progression épisode par épisode, agenda des sorties, alertes. Sans publicité ni revente de données.">
+<meta property="og:title" content="Scrini — films, séries, animés">
+<meta property="og:description" content="Tu en étais où, déjà ? Suis ce que tu regardes, épisode par épisode, et sois prévenu des sorties. Sans publicité ni revente de données.">
 <meta property="og:image" content="https://scrini.fr/og-scrini.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Scrini — suivez vos films, vos séries et vos animés">
+<meta property="og:image:alt" content="Scrini — films, séries, animés">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -23,10 +23,11 @@
   "@type": "SoftwareApplication",
   "name": "Scrini",
   "applicationCategory": "EntertainmentApplication",
-  "operatingSystem": "Android 7.0+",
+  "operatingSystem": "Android, iOS",
   "url": "https://scrini.fr/",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.scrini.app",
   "inLanguage": "fr-FR",
-  "description": "Application Android pour suivre les films, les séries et les animés que vous regardez : progression épisode par épisode, agenda des sorties, alertes. Sans publicité ni revente de données.",
+  "description": "Application pour suivre les films, les séries et les animés que tu regardes : progression épisode par épisode, agenda des sorties, alertes. Sans publicité ni revente de données.",
   "image": "https://scrini.fr/scrini_icon.png",
   "offers": {
     "@type": "Offer",
@@ -36,126 +37,139 @@
 }
 </script>
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.className="js";try{var t=localStorage.getItem("scrini-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
 
-<main class="accueil">
-
-<header class="hero">
-  <img src="scrini_icon_224.png" alt="" width="112" height="112" class="marque">
-  <h1>Scrini</h1>
-  <p class="chapeau">Suivez les films, les séries et les animés que vous
-  regardez, sachez où vous en êtes dans chaque saison, et soyez prévenu des
-  sorties à venir.</p>
-
-  <!-- Le badge Play a laissé la place à cet encadré : tant que la production
-       n'est pas ouverte, la fiche renvoie un 404, et la charte de Google
-       interdit de faire pointer le badge vers une page indisponible.
-       `google-play-badge.png` reste dans le dépôt pour le jour de la sortie —
-       sa charte interdit alors de le redessiner, de le recolorer ou de le
-       rogner : la marge blanche fait partie de l'image. -->
-  <div class="beta">
-    <p class="beta-titre">Bêta fermée en cours</p>
-    <p>Scrini se teste avant sa sortie publique. Les places sont limitées, et
-    l'installation se fait par le Play Store comme pour n'importe quelle
-    application — il suffit de l'adresse de votre compte Google.</p>
-    <p>Une seule contrainte : rester inscrit jusqu'au bout du test. Une
-    désinscription en cours de route remet le compteur à zéro, pour vous comme
-    pour l'application.</p>
-    <p><a href="mailto:contact@scrini.fr?subject=Devenir%20testeur%20de%20Scrini">Demander
-    une place de testeur</a></p>
-  </div>
-  <p class="mention">Gratuite, sans publicité. Android&nbsp;7 et versions
-  ultérieures.</p>
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="./"><img src="scrini_icon_224.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">FILMS · SÉRIES · ANIMÉS</span></span></a>
+<div class="head-sp"></div>
+<button class="icon-btn" id="theme" type="button" aria-label="Changer de thème"><svg class="ico ico-light" aria-hidden="true"><use href="assets/icons.svg#i-light"/></svg><svg class="ico ico-dark" aria-hidden="true"><use href="assets/icons.svg#i-dark"/></svg></button>
+<!-- Plus tard, quand l'application web existera :
+<a class="btn btn-primary" href="https://app.scrini.fr">Se connecter</a> -->
+</div>
 </header>
 
-<h2>Ce que fait l'application</h2>
-
-<div class="grille">
-  <section class="carte">
-    <h3>Épisode par épisode</h3>
-    <p>Cochez ce que vous avez vu. L'accueil rappelle l'épisode suivant de
-    chaque série en cours, et la progression ne compte que les épisodes
-    réellement sortis.</p>
-  </section>
-
-  <section class="carte">
-    <h3>L'agenda des sorties</h3>
-    <p>Toutes les diffusions à venir de vos séries, semaine par semaine, avec le
-    rythme de chacune — utile quand une saison passe de l'hebdomadaire à
-    l'intégrale d'un coup.</p>
-  </section>
-
-  <section class="carte">
-    <h3>Une alerte le jour venu</h3>
-    <p>Une notification le matin de la sortie, sur l'appareil, sans email à
-    trier. Elles se coupent toutes en une fois si elles vous encombrent.</p>
-  </section>
-
-  <section class="carte">
-    <h3>Un accueil à votre main</h3>
-    <p>Choisissez les rangées qui s'affichent et leur ordre : vos listes, vos
-    sorties attendues, les tendances du jour, les séries qui diffusent, les
-    films à l'affiche près de chez vous.</p>
-  </section>
-
-  <section class="carte">
-    <h3>Des filtres qui font la différence</h3>
-    <p>Les animés ne sont ni des films ni des séries, et se filtrent à part.
-    Genre, note minimale, décennies et sorties à venir se cumulent, dans la
-    recherche comme dans vos listes.</p>
-  </section>
-
-  <section class="carte">
-    <h3>Où le regarder</h3>
-    <p>Les plateformes qui proposent chaque titre en France, la distribution,
-    et des suggestions autour de ce que vous venez de terminer.</p>
-  </section>
+<main>
+<section class="hero" id="telecharger">
+<div class="wrap">
+<div>
+<h1>Tu en étais où, déjà ?</h1>
+<p>Suis les films, les séries et les animés que tu regardes, et sois prévenu des sorties à venir.</p>
+<!-- Les badges des deux magasins. Leur charte interdit de les redessiner, de
+     les recolorer ou de les rogner, et de les faire pointer vers une fiche
+     indisponible : ne pas déployer avant la publication sur les deux. -->
+<div class="cta">
+<a class="badge" href="https://play.google.com/store/apps/details?id=com.scrini.app"><img src="assets/badge-google-play.svg" alt="Disponible sur Google Play" width="239" height="71"></a>
+<a class="badge" href="https://apps.apple.com/fr/app/id6809466532"><img src="assets/badge-app-store.svg" alt="Télécharger dans l'App Store" width="127" height="40"></a>
 </div>
+<small>Gratuit, sans publicité ni revente de données.</small>
+</div>
+<div class="phone"><img src="assets/ecran-accueil.jpg" alt="L'accueil de Scrini : séries en cours, séries à voir, tendances du jour" width="1080" height="2400"></div>
+</div>
+</section>
 
-<h2>En détail</h2>
-<ul>
-  <li><a href="suivre-ses-series.html">Savoir où on en est dans ses séries</a> —
-  cocher les épisodes vus, et une progression qui ne compte que ce qui est sorti.</li>
-  <li><a href="agenda-sorties.html">Quand sort le prochain épisode</a> —
-  l'agenda des diffusions, le rythme de chaque série, et l'alerte du matin.</li>
-  <li><a href="suivre-ses-animes.html">Suivre ses animés</a> — pourquoi ils se
-  filtrent à part, et ce que vaut la base sur ce terrain.</li>
-  <li><a href="questions-frequentes.html">Questions fréquentes</a> — prix,
-  appareils, compte, données conservées, export, suppression.</li>
-</ul>
+<section>
+<div class="wrap">
+<div class="points">
+<div class="point"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-movie"/></svg><h3>Les sorties cinéma</h3><p>Ce qui sort en salle près de chez toi.</p></div>
+<div class="point"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-filter"/></svg><h3>Des filtres vraiment utiles</h3><p>À venir, en cours de diffusion — et ça se cumule.</p></div>
+<div class="point"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-calendar"/></svg><h3><a href="agenda-sorties.html">Agenda et alertes</a></h3><p>Les sorties qui t'intéressent, et une notification le jour de la sortie.</p></div>
+<div class="point"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-sparkle"/></svg><h3><a href="suivre-ses-animes.html">Films, séries, animés</a></h3><p>Les trois au même endroit, suivis épisode par épisode.</p></div>
+</div>
+<div class="lists">
+<div class="list"><h3>Aussi dans l'app</h3><ul class="cols">
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg><a href="suivre-ses-series.html">Suivi des séries</a></li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg>Listes personnalisées</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg>Revisionnage</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg>Accueil personnalisable</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg>Statistiques</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg>Thème sombre ou clair</li>
+</ul></div>
+<div class="list soon"><h3>À venir</h3><ul class="cols one">
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg>Import et export de tes données depuis d'autres applications</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg>Traduction de l'application dans d'autres langues</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg>Développement du volet social : amis et commentaires</li>
+<li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg>Badges et succès</li>
+</ul></div>
+</div>
+</div>
+</section>
 
-<h2>Vos données restent les vôtres</h2>
-<p>Pas de publicité, pas de pistage, pas de revente de données. Scrini conserve
-ce qu'il lui faut pour fonctionner — votre adresse e-mail et votre bibliothèque —
-et rien d'autre. Vous pouvez l'exporter au format tableur à tout moment depuis
-l'application. Le détail figure dans la
-<a href="confidentialite.html">politique de confidentialité</a>, et un compte se
-supprime depuis l'application ou
-<a href="suppression-compte.html">depuis cette page</a>, avec toutes ses
-données.</p>
+<section>
+<div class="wrap">
+<h2 class="sec-title">L'application</h2>
+<div class="shots" tabindex="0" role="group" aria-label="Captures d'écran de l'application">
+<figure class="shot"><div class="phone sm"><img src="assets/ecran-recherche.jpg" alt="Recherche, onglets Films, Séries, Animés" width="1080" height="2400" loading="lazy"></div><figcaption><p>Recherche</p></figcaption></figure>
+<figure class="shot"><div class="phone sm"><img src="assets/ecran-bibliotheque.jpg" alt="Bibliothèque : à voir, en cours, vu" width="1080" height="2400" loading="lazy"></div><figcaption><p>Bibliothèque</p></figcaption></figure>
+<figure class="shot"><div class="phone sm"><img src="assets/ecran-stats.jpg" alt="Statistiques de visionnage" width="1080" height="2400" loading="lazy"></div><figcaption><p>Statistiques</p></figcaption></figure>
+</div>
+</div>
+</section>
 
-<h2>Crédits</h2>
-<p>Les données de films et de séries proviennent de
-<a href="https://www.themoviedb.org">The Movie Database</a>, et les
-disponibilités en streaming de JustWatch via TMDB. Cette application utilise
-l'API TMDB mais n'est ni approuvée ni certifiée par TMDB.</p>
-
-<h2>Contact</h2>
-<p><a href="mailto:contact@scrini.fr">contact@scrini.fr</a></p>
-
+<section>
+<div class="wrap">
+<div class="privacy">
+<svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-lock"/></svg>
+<div>
+<h2>Tes données, à toi et à personne d'autre</h2>
+<p>Scrini ne montre pas de publicité et ne revend pas tes données. Ta bibliothèque t'appartient — tu peux l'exporter en tableur, ou supprimer ton compte et tout ce qu'il contient.</p>
+<a href="confidentialite.html">Politique de confidentialité</a>
+</div>
+</div>
+</div>
+</section>
 </main>
 
-<footer>
-  <p>
-    <a href="questions-frequentes.html">Questions fréquentes</a> ·
-    <a href="confidentialite.html">Confidentialité</a> ·
-    <a href="suppression-compte.html">Supprimer son compte</a> ·
-    <a href="mailto:contact@scrini.fr">Contact</a>
-  </p>
-  <!-- Mention imposée dès que le badge ou le nom Google Play apparaît. -->
-  <p>Google Play et le logo Google Play sont des marques de Google LLC.</p>
+<footer class="site-foot">
+<div class="wrap">
+<a href="questions-frequentes.html">Questions fréquentes</a>
+<a href="confidentialite.html">Confidentialité</a>
+<a href="suppression-compte.html">Supprimer son compte</a>
+<a href="mailto:contact@scrini.fr">Contact</a>
+<div class="tmdb"><img src="assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>Ce produit utilise l'API TMDB mais n'est ni approuvé ni certifié par TMDB.</span></div>
+</div>
 </footer>
 
+<script>
+(function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+
+/* Le carrousel des captures à la souris. Le doigt n'a besoin de rien : un
+   bloc `overflow-x` se fait glisser nativement. La souris, elle, n'a aucune
+   prise — la molette verticale fait défiler la page, pas la bande — d'où ce
+   clic-glissé. Il ne s'active que pour un pointeur de type souris, et que
+   si la bande déborde vraiment : aux largeurs où les trois captures tiennent
+   côte à côte, il ne se passe rien. L'accrochage est suspendu pendant le
+   geste, sinon `mandatory` ramènerait la bande à chaque pixel parcouru. */
+(function(){
+  var b=document.querySelector(".shots");
+  if(!b||!window.PointerEvent)return;
+  var on=false,x0=0,l0=0,moved=false;
+  b.addEventListener("pointerdown",function(e){
+    if(e.pointerType!=="mouse"||e.button!==0)return;
+    if(b.scrollWidth<=b.clientWidth)return;
+    on=true;moved=false;x0=e.clientX;l0=b.scrollLeft;
+    b.classList.add("drag");
+    try{b.setPointerCapture(e.pointerId)}catch(x){}
+  });
+  b.addEventListener("pointermove",function(e){
+    if(!on)return;
+    var d=e.clientX-x0;
+    if(Math.abs(d)>3)moved=true;
+    b.scrollLeft=l0-d;
+    e.preventDefault();
+  });
+  function end(e){
+    if(!on)return;
+    on=false;b.classList.remove("drag");
+    try{b.releasePointerCapture(e.pointerId)}catch(x){}
+  }
+  b.addEventListener("pointerup",end);
+  b.addEventListener("pointercancel",end);
+  /* Sans quoi le navigateur part en glisser-déposer d'image au premier geste. */
+  b.addEventListener("dragstart",function(e){e.preventDefault()});
+})();
+</script>
 </body>
 </html>

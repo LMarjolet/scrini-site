@@ -1,228 +1,304 @@
-/* Pages publiques de Scrini (accueil, politique de confidentialité,
-   suppression de compte). Feuille unique, sans dépendance externe : ces pages
-   doivent s'afficher même si un réseau bloque les CDN, et Google doit pouvoir
-   les consulter sans exécuter de script.
+/* Pages publiques de Scrini. Feuille unique, dérivée du système de design de
+   l'application : les jetons de couleur ci-dessous sont ceux de
+   `lib/core/theme/app_theme.dart`, relevés tels quels. Trois règles du thème :
 
-   La palette est celle de l'application — rouge et bleu nuit tirés du logo —
-   et non plus le bleu-gris de l'identité précédente. Les valeurs viennent de
-   `lib/core/theme/app_theme.dart`, pour qu'un lien du site et un bouton de
-   l'application soient du même rouge.
+   1. Le rouge n'habille que les ornements — icônes, filets, liens. Aucun bouton
+      d'action ne le porte.
+   2. Les actions sont neutres : nuit sur blanc en clair, blanc sur nuit en
+      sombre. C'est le contraste qui dit « bouton principal ».
+   3. Le destructif a sa propre nuance, plus sombre que l'accent.
 
-   L'accent est la seule teinte qui change d'un mode à l'autre : le rouge vif de
-   l'application (#f44144) ne donne que 3,7:1 sur blanc, sous le seuil AA pour
-   du texte. Le rouge sombre le remplace en clair (5,4:1), un rouge éclairci
-   prend le relais en sombre (5,5:1 sur la carte). */
+   Le sombre est le thème par défaut, comme dans l'application. Le clair
+   s'applique quand le système le demande, ou quand l'inverseur de l'en-tête
+   l'a fixé (attribut `data-theme` sur <html>, mémorisé en localStorage). Sans
+   script, la page suit simplement le système.
+
+   Une seule dépendance externe : Roboto, chargée depuis Google Fonts. Si elle
+   ne vient pas, la pile de repli prend le relais et rien ne casse — c'est
+   pourquoi les icônes sont des SVG inline et non une police d'icônes. */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
 
 :root {
-  --fond: #f1f5fa;
-  --carte: #ffffff;
-  --texte: #0d1b31;
-  --texte-doux: #5b6b85;
-  --trait: #dde5ef;
-  --accent: #cf1f2e;
+  color-scheme: dark;
+  --font-sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
+
+  --primary: #f44144;
+  --secondary-container: #e6eef9;
+  --on-secondary-container: #0b172f;
+  --surface: #1a2540;
+  --on-surface: #e6eef9;
+  --on-surface-variant: #9db0cc;
+  --outline: #7e8da6;
+  --outline-variant: #2a3a57;
+  --surface-container-lowest: #0b172f;
+  --surface-container-low: #12203c;
+  --surface-container-high: #1d2c4a;
+  --error-container: #b91c1c;
+  --on-error-container: #ffffff;
+  --app-background: #0b172f;
+  --app-background-image: url("assets/scrini_background.jpg");
+  --phone-shadow: 0 18px 44px rgba(0, 0, 0, .35);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fond: #0b172f;
-    --carte: #1a2540;
-    --texte: #e6eef9;
-    --texte-doux: #9db0cc;
-    --trait: #2a3a57;
-    --accent: #ff6b6e;
+/* Les valeurs du clair, deux fois : une pour le choix explicite, une pour le
+   système. CSS ne permet pas de les partager entre une règle et une media
+   query — garder les deux blocs identiques. */
+[data-theme="light"] {
+  color-scheme: light;
+  --primary: #cf1f2e;
+  --secondary-container: #0d1b31;
+  --on-secondary-container: #ffffff;
+  --surface: #ffffff;
+  --on-surface: #0d1b31;
+  --on-surface-variant: #5b6b85;
+  --outline: #6e7c93;
+  --outline-variant: #d8e0ea;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f1f5fa;
+  --surface-container-high: #e6edf5;
+  --app-background: #e9eef6;
+  --app-background-image: url("assets/scrini_background_light.jpg");
+  --phone-shadow: 0 18px 44px rgba(13, 27, 49, .18);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --primary: #cf1f2e;
+    --secondary-container: #0d1b31;
+    --on-secondary-container: #ffffff;
+    --surface: #ffffff;
+    --on-surface: #0d1b31;
+    --on-surface-variant: #5b6b85;
+    --outline: #6e7c93;
+    --outline-variant: #d8e0ea;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f1f5fa;
+    --surface-container-high: #e6edf5;
+    --app-background: #e9eef6;
+    --app-background-image: url("assets/scrini_background_light.jpg");
+    --phone-shadow: 0 18px 44px rgba(13, 27, 49, .18);
   }
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);color:var(--on-surface);background:var(--app-background) var(--app-background-image) center/cover fixed no-repeat;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.ico{width:1em;height:1em;fill:currentColor;flex:none}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 20px}
 
-body {
-  margin: 0;
-  padding: 2.5rem 1.25rem 4rem;
-  background: var(--fond);
-  color: var(--texte);
-  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* En-tête */
+.site-head{position:sticky;top:0;z-index:5;background:var(--surface-container-lowest);border-bottom:1px solid var(--outline-variant)}
+.site-head .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.brand:hover{text-decoration:none}
+.brand img{width:32px;height:32px;border-radius:8px}
+.brand b{font-size:18px;font-weight:700;letter-spacing:.06em}
+.brand .sub{display:block;font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--on-surface-variant);margin-top:1px}
+.head-sp{flex:1}
+
+/* L'inverseur de thème n'a de sens qu'avec le script : sans lui, il reste
+   caché et la page suit le système. Il montre l'icône du thème vers lequel on
+   bascule — la lune quand on est en clair, le soleil en sombre. */
+.icon-btn{display:none;place-items:center;width:40px;height:40px;border:0;border-radius:12px;background:transparent;color:var(--on-surface-variant);cursor:pointer;font-size:22px;padding:0}
+.js .icon-btn{display:grid}
+.icon-btn:hover{background:var(--surface-container-high);color:var(--on-surface)}
+.icon-btn .ico{display:none}
+.icon-btn .ico-light{display:block}
+[data-theme="light"] .icon-btn .ico-light{display:none}
+[data-theme="light"] .icon-btn .ico-dark{display:block}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]) .icon-btn .ico-light{display:none}
+  :root:not([data-theme="dark"]) .icon-btn .ico-dark{display:block}
 }
 
-main {
-  max-width: 46rem;
-  margin: 0 auto;
-  background: var(--carte);
-  border: 1px solid var(--trait);
-  border-radius: 14px;
-  padding: 2.5rem;
+/* Boutons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:14px;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.btn:hover{text-decoration:none}
+.btn .ico{font-size:22px}
+.btn-primary{background:var(--secondary-container);color:var(--on-secondary-container)}
+.btn-outline{border:1px solid var(--outline);color:var(--on-surface)}
+.btn-outline:hover{background:var(--surface-container-high)}
+.btn-danger{background:var(--error-container);color:var(--on-error-container)}
+
+/* Héros */
+.hero{padding:72px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center}
+.hero h1{margin:0 0 18px;font-size:clamp(32px,4.4vw,52px);line-height:1.1;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.hero p{margin:0 0 32px;font-size:17px;line-height:1.55;color:var(--on-surface-variant);max-width:30em;text-wrap:pretty}
+.cta{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.badge{display:block;line-height:0}
+.badge:hover{text-decoration:none}
+.badge img{height:54px;width:auto}
+.hero small{display:block;margin-top:22px;font-size:12px;color:var(--on-surface-variant)}
+
+/* Téléphone */
+.phone{width:248px;padding:8px;border-radius:32px;background:var(--surface-container-lowest);border:1px solid var(--outline-variant);box-shadow:var(--phone-shadow)}
+.phone img{border-radius:24px;width:100%}
+.phone.sm{width:100%;max-width:240px}
+
+/* Sections */
+section{padding:56px 0}
+.sec-title{margin:0 0 28px;font-size:22px;font-weight:500}
+.points{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--outline-variant);border-bottom:1px solid var(--outline-variant)}
+.point{padding:30px 26px 34px;border-left:1px solid var(--outline-variant)}
+.point:first-child{border-left:0;padding-left:0}
+.point .ico{display:block;font-size:34px;color:var(--primary);margin-bottom:18px}
+.point h3{margin:0 0 8px;font-size:21px;line-height:1.2;font-weight:500;letter-spacing:-.01em;text-wrap:pretty}
+.point h3 a{color:inherit}
+.point h3 a:hover{color:var(--primary);text-decoration:none}
+.point p{margin:0;font-size:14px;line-height:20px;color:var(--on-surface-variant);text-wrap:pretty}
+.lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;margin-top:40px}
+.list h3{margin:0 0 14px;font-size:14px;font-weight:500;color:var(--on-surface-variant)}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin:0;padding:0;list-style:none}
+.cols.one{grid-template-columns:1fr}
+.cols li{display:flex;align-items:center;gap:10px;font-size:15px}
+.cols li .ico{font-size:18px;color:var(--primary)}
+.cols a{color:inherit;text-decoration:underline;text-decoration-color:var(--outline);text-underline-offset:3px}
+.cols a:hover{color:var(--primary);text-decoration-color:currentColor}
+.soon .cols li,.soon .cols li .ico{color:var(--on-surface-variant)}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;justify-items:center}
+.shot{margin:0}
+.shot p{margin:14px 0 0;font-size:12px;font-weight:500;text-align:center;color:var(--on-surface-variant)}
+
+/* Encadré confidentialité de l'accueil */
+.privacy{display:flex;gap:20px;align-items:flex-start;background:var(--surface);border-radius:16px;padding:26px}
+.privacy .ico{font-size:28px;color:var(--primary);margin-top:2px}
+.privacy h2{margin:0 0 8px;font-size:22px;font-weight:500}
+.privacy p{margin:0 0 14px;font-size:14px;line-height:20px;color:var(--on-surface-variant);max-width:60ch;text-wrap:pretty}
+
+/* Pied */
+.site-foot{border-top:1px solid var(--outline-variant);padding:28px 0 40px;margin-top:24px}
+.site-foot .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+.site-foot a{font-size:14px;color:var(--on-surface-variant)}
+.site-foot a:hover{color:var(--on-surface)}
+.tmdb{display:flex;align-items:center;gap:12px;margin-left:auto;max-width:44ch}
+.tmdb img{width:124px;flex:none}
+.tmdb span{font-size:10px;line-height:1.35;color:var(--on-surface-variant)}
+
+/* Page de contenu : politique, suppression, FAQ, pages d'usage */
+.doc{padding:48px 0 24px}
+.doc .btn{margin-top:6px}
+.doc h1{margin:0 0 8px;font-size:32px;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.doc .maj{font-size:12px;color:var(--on-surface-variant);margin:0 0 32px}
+.doc .chapeau{font-size:17px;line-height:1.55;color:var(--on-surface-variant);max-width:60ch;margin:0 0 40px;text-wrap:pretty}
+.doc section{padding:0;margin:0 0 28px;max-width:70ch}
+.doc h2{font-size:18px;font-weight:500;margin:0 0 8px}
+.doc h3{font-size:15px;font-weight:500;margin:22px 0 6px}
+.doc table{width:100%;border-collapse:collapse;margin:0 0 14px}
+.doc th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--on-surface-variant);padding:0 16px 8px 0;border-bottom:1px solid var(--outline-variant)}
+.doc td{font-size:14px;line-height:22px;color:var(--on-surface-variant);padding:10px 16px 10px 0;border-bottom:1px solid var(--outline-variant);vertical-align:top}
+.doc td:first-child{color:var(--on-surface);width:38%}
+.doc p,.doc li{font-size:14px;line-height:22px;color:var(--on-surface-variant);text-wrap:pretty}
+.doc p{margin:0 0 10px}
+.doc ul{margin:0 0 10px;padding-left:20px}
+.doc li{margin-bottom:4px}
+.doc b{color:var(--on-surface);font-weight:500}
+
+/* Appel à action des pages d'usage : les badges, comme sur l'accueil */
+.doc .action{max-width:none;background:var(--surface);border-radius:16px;padding:26px;margin:40px 0 36px}
+.doc .action h2{font-size:22px}
+.doc .action p{max-width:60ch}
+.doc .action .cta{margin-top:18px}
+
+/* Suite de lecture */
+.doc .suite{max-width:none;border-top:1px solid var(--outline-variant);padding-top:28px}
+.doc .suite h2{font-size:14px;font-weight:500;color:var(--on-surface-variant);margin-bottom:14px}
+.doc .suite ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
+.doc .suite li{font-size:15px;line-height:22px}
+.doc .suite a{color:var(--on-surface)}
+.doc .suite a:hover{color:var(--primary)}
+.doc .suite span{color:var(--on-surface-variant)}
+
+/* Trois paliers, du plus large au plus étroit — l'ordre compte, les règles
+   ont la même spécificité et la dernière l'emporte.
+
+   Bureau serré (861–1000) : les quatre points passent à deux colonnes, le
+   reste tient.
+
+   Téléphone et tablette (≤ 860) : le héros s'empile. Les badges, la mention
+   « gratuit » et la capture se centrent — alignés à gauche sous un titre qui
+   occupe toute la largeur, ils flottaient dans le vide. Le titre et le chapeau
+   restent au fer à gauche : du texte courant se lit mal centré.
+
+   Tablette (601–860) : la largeur porte deux colonnes, pas trois. Les listes
+   se mettent côte à côte, et leurs puces repassent sur une colonne — deux
+   colonnes dans une demi-largeur hacheraient les libellés.
+
+   Téléphone (≤ 600) : une colonne partout.
+
+   Les captures d'écran, elles, ne suivent pas ces paliers : elles restent
+   côte à côte tant que les trois tiennent, puis passent en carrousel (voir
+   plus bas). */
+
+@media (min-width:861px) and (max-width:1000px){
+  .points{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .point:nth-child(3){border-left:0;padding-left:0}
+  .point:nth-child(n+3){border-top:1px solid var(--outline-variant)}
 }
 
-@media (max-width: 40rem) {
-  main { padding: 1.5rem; }
+@media (max-width:860px){
+  .hero{padding:48px 0}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero .cta{justify-content:center}
+  .hero small{text-align:center}
+  .hero .phone{justify-self:center}
+  .tmdb{margin-left:0}
 }
 
-header { margin-bottom: 2rem; }
-
-h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .5rem; }
-h2 { font-size: 1.2rem; margin: 2.25rem 0 .75rem; color: var(--accent); }
-h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; }
-
-p, li { color: var(--texte); }
-ul { padding-left: 1.25rem; }
-li { margin: .35rem 0; }
-
-.date, .chapeau { color: var(--texte-doux); }
-.date { font-size: .875rem; margin: 0; }
-.chapeau { font-size: 1.05rem; }
-
-a { color: var(--accent); }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: .95rem;
-}
-th, td {
-  text-align: left;
-  padding: .6rem .5rem;
-  border-bottom: 1px solid var(--trait);
-  vertical-align: top;
-}
-th { color: var(--texte-doux); font-weight: 600; }
-
-.encadre {
-  border: 1px solid var(--trait);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  background: var(--fond);
+@media (min-width:601px) and (max-width:860px){
+  .points{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .point:nth-child(3){border-left:0;padding-left:0}
+  .point:nth-child(n+3){border-top:1px solid var(--outline-variant)}
+  .lists{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+  .cols{grid-template-columns:1fr}
 }
 
-footer {
-  max-width: 46rem;
-  margin: 1.5rem auto 0;
-  color: var(--texte-doux);
-  font-size: .875rem;
+@media (max-width:600px){
+  .lists,.cols,.points,.doc .suite ul{grid-template-columns:1fr}
+  .point{border-left:0;padding:24px 0;border-top:1px solid var(--outline-variant)}
+  .point:first-child{border-top:0;padding-top:24px}
+  .lists{gap:28px}
+  .doc td:first-child{width:auto}
 }
 
-/* ---------------------------------------------------------------------------
-   Page d'accueil
+/* Les captures d'écran. Trois de front demandent environ 700 px : en dessous,
+   chacune tomberait sous 200 px de large, où l'interface montrée n'est plus
+   lisible. Plutôt que de les empiler — trois écrans l'un sous l'autre, c'est
+   trois fois la même hauteur à faire défiler pour rien — elles passent en
+   carrousel : une glissade horizontale avec accrochage.
 
-   Les pages légales sont un long texte dans une carte étroite ; l'accueil est
-   une vitrine. Il partage la palette et la typographie, mais retire le cadre
-   de `main` pour poser ses propres blocs.
-   --------------------------------------------------------------------------- */
-
-.accueil {
-  max-width: 54rem;
-  background: none;
-  border: 0;
-  padding: 0;
+   Aucun script : `scroll-snap` suffit, et un navigateur qui l'ignore garde un
+   bloc simplement défilable. Les marges négatives annulent la gouttière pour
+   que la bande touche les deux bords, et la carte suivante dépasse dans
+   l'écran — c'est ce débord qui dit qu'il y a une suite, sans flèche ni point.
+   Le `tabindex` sur la bande la rend atteignable au clavier : sans lui, une
+   zone défilante sans élément focalisable à l'intérieur est inatteignable
+   autrement qu'à la souris. */
+@media (max-width:700px){
+  .shots{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    overscroll-behavior-x:contain;
+    margin:0 -20px;
+    padding:0 20px 16px;
+    scrollbar-width:none;
+  }
+  .shots::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 70%;max-width:260px;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center}
+  .shots .phone.sm{max-width:100%}
+  /* La main ne s'offre que si le script du clic-glissé tourne (voir
+     index.html) ; au doigt, rien à montrer, le geste va de soi. */
+  .js .shots{cursor:grab}
 }
 
-.hero {
-  text-align: center;
-  background: var(--carte);
-  border: 1px solid var(--trait);
-  border-radius: 18px;
-  padding: 3rem 2rem 2.5rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 40rem) {
-  .hero { padding: 2.25rem 1.25rem 2rem; }
-}
-
-/* L'icône est un carré plein bord : sans arrondi elle jurerait avec le reste,
-   Android l'affichant elle-même rognée. */
-.marque {
-  width: 112px;
-  height: 112px;
-  border-radius: 26px;
-  margin-bottom: 1.25rem;
-}
-
-.hero h1 {
-  font-size: 2.6rem;
-  letter-spacing: -.5px;
-  margin: 0 0 .75rem;
-}
-
-.hero .chapeau {
-  max-width: 34rem;
-  margin: 0 auto;
-}
-
-.action { margin: 2rem 0 .75rem; }
-
-/* Badge Google Play, à hauteur libre mais jamais sous 40 px pour le badge
-   lui-même. La marge de respect étant incluse dans l'image, on affiche un peu
-   plus grand que ce minimum. `height: auto` conserve les proportions, que la
-   charte interdit de modifier. */
-.badge {
-  width: 200px;
-  height: auto;
-}
-
-.mention {
-  margin: 0;
-  font-size: .875rem;
-  color: var(--texte-doux);
-}
-
-/* `auto-fit` plutôt qu'un nombre de colonnes fixe : deux de front sur un
-   écran large, une seule sur un téléphone, sans requête de média. */
-.grille {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1rem;
-}
-
-.carte {
-  background: var(--carte);
-  border: 1px solid var(--trait);
-  border-radius: 14px;
-  padding: 1.5rem;
-}
-
-.carte h3 { margin: 0 0 .5rem; color: var(--accent); }
-.carte p { margin: 0; }
-
-/* Hors de la carte de `main`, les titres et paragraphes de l'accueil n'ont plus
-   de fond : on leur rend la marge que le cadre donnait. */
-.accueil > h2 { margin: 2.5rem 0 1rem; }
-.accueil > p { margin: 0 0 1rem; }
-
-footer a { color: var(--texte-doux); }
-footer p { margin: .25rem 0; }
-
-/* ---------------------------------------------------------------------------
-   Pages d'usage
-
-   Elles reprennent la carte étroite des pages légales, mais se terminent par un
-   rappel du badge Play. Dans l'encadré, `.action` n'a plus besoin de la marge
-   qu'elle prend sur l'accueil : le cadre fait déjà la respiration.
-   --------------------------------------------------------------------------- */
-
-.encadre > :first-child { margin-top: 0; }
-.encadre > :last-child { margin-bottom: 0; }
-.encadre .action { margin: 1rem 0 0; }
-
-/* Encadré de la bêta fermée, sur le bandeau d'accueil. Le texte y repasse à
-   gauche : trois lignes centrées se lisent mal, et le bandeau, lui, reste
-   centré autour. Il remplace le badge Play jusqu'à l'ouverture de la
-   production — voir le commentaire d'`index.html`. */
-.beta {
-  max-width: 34rem;
-  margin: 2rem auto .75rem;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid var(--trait);
-  border-radius: 12px;
-  background: var(--fond);
-  text-align: left;
-}
-
-.beta > :first-child { margin-top: 0; }
-.beta > :last-child { margin-bottom: 0; }
-
-.beta-titre {
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: .5rem;
-}
+/* Pendant le geste : l'accrochage se tait — `mandatory` ramènerait la bande à
+   chaque pixel parcouru — et la sélection de texte aussi, sans quoi glisser
+   sur une légende surligne la page. Hors média query : la classe n'est posée
+   que là où la bande déborde. */
+.shots.drag{scroll-snap-type:none;cursor:grabbing;user-select:none;-webkit-user-select:none}
+.shots img{-webkit-user-drag:none}
