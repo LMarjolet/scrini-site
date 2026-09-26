@@ -227,7 +227,11 @@ section{padding:56px 0}
    se mettent côte à côte, et leurs puces repassent sur une colonne — deux
    colonnes dans une demi-largeur hacheraient les libellés.
 
-   Téléphone (≤ 600) : une colonne partout. */
+   Téléphone (≤ 600) : une colonne partout.
+
+   Les captures d'écran, elles, ne suivent pas ces paliers : elles restent
+   côte à côte tant que les trois tiennent, puis passent en carrousel (voir
+   plus bas). */
 
 @media (min-width:861px) and (max-width:1000px){
   .points{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -250,18 +254,41 @@ section{padding:56px 0}
   .point:nth-child(n+3){border-top:1px solid var(--outline-variant)}
   .lists{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
   .cols{grid-template-columns:1fr}
-  .shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
-  /* Trois captures sur deux colonnes : la dernière prend la ligne entière
-     pour rester au milieu plutôt que de pendre à gauche. */
-  .shot:nth-child(3){grid-column:1/-1}
 }
 
 @media (max-width:600px){
-  .shots,.lists,.cols,.points,.doc .suite ul{grid-template-columns:1fr}
+  .lists,.cols,.points,.doc .suite ul{grid-template-columns:1fr}
   .point{border-left:0;padding:24px 0;border-top:1px solid var(--outline-variant)}
   .point:first-child{border-top:0;padding-top:24px}
   .lists{gap:28px}
-  .shots{gap:32px}
-  .phone.sm{max-width:260px}
   .doc td:first-child{width:auto}
+}
+
+/* Les captures d'écran. Trois de front demandent environ 700 px : en dessous,
+   chacune tomberait sous 200 px de large, où l'interface montrée n'est plus
+   lisible. Plutôt que de les empiler — trois écrans l'un sous l'autre, c'est
+   trois fois la même hauteur à faire défiler pour rien — elles passent en
+   carrousel : une glissade horizontale avec accrochage.
+
+   Aucun script : `scroll-snap` suffit, et un navigateur qui l'ignore garde un
+   bloc simplement défilable. Les marges négatives annulent la gouttière pour
+   que la bande touche les deux bords, et la carte suivante dépasse dans
+   l'écran — c'est ce débord qui dit qu'il y a une suite, sans flèche ni point.
+   Le `tabindex` sur la bande la rend atteignable au clavier : sans lui, une
+   zone défilante sans élément focalisable à l'intérieur est inatteignable
+   autrement qu'à la souris. */
+@media (max-width:700px){
+  .shots{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    overscroll-behavior-x:contain;
+    margin:0 -20px;
+    padding:0 20px 16px;
+    scrollbar-width:none;
+  }
+  .shots::-webkit-scrollbar{display:none}
+  .shot{flex:0 0 70%;max-width:260px;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center}
+  .shots .phone.sm{max-width:100%}
 }
