@@ -291,4 +291,14 @@ section{padding:56px 0}
   .shots::-webkit-scrollbar{display:none}
   .shot{flex:0 0 70%;max-width:260px;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center}
   .shots .phone.sm{max-width:100%}
+  /* La main ne s'offre que si le script du clic-glissé tourne (voir
+     index.html) ; au doigt, rien à montrer, le geste va de soi. */
+  .js .shots{cursor:grab}
 }
+
+/* Pendant le geste : l'accrochage se tait — `mandatory` ramènerait la bande à
+   chaque pixel parcouru — et la sélection de texte aussi, sans quoi glisser
+   sur une légende surligne la page. Hors média query : la classe n'est posée
+   que là où la bande déborde. */
+.shots.drag{scroll-snap-type:none;cursor:grabbing;user-select:none;-webkit-user-select:none}
+.shots img{-webkit-user-drag:none}
