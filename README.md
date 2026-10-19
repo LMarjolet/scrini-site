@@ -22,7 +22,7 @@ disponible sur un dépôt privé.
 | `assets/icons.svg` | Les icônes, un `<symbol>` chacune, référencées par `<use>` |
 | `assets/ecran-*.jpg` | Captures de l'application, 1080×2400 |
 | `assets/scrini_background*.jpg` | Le fond de l'application, en sombre et en clair |
-| `assets/badge-*.svg` | Badges officiels Google Play et App Store, à ne pas redessiner ni recolorer |
+| `assets/badge-*.svg` | Badges officiels Google Play et App Store, à ne pas redessiner ni recolorer. Celui de l'App Store n'est pas servi pour l'instant — voir plus bas |
 | `assets/tmdb_logo.svg` | Logo TMDB, pour le crédit obligatoire du pied de page |
 | `scrini_icon.png` | Icône 512 px, copie de `design/scrini_icon_512.png` : la source |
 | `scrini_icon_224.png` | La même en 224 px, sans alpha — c'est elle que les pages chargent |
@@ -83,10 +83,21 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   Toute nouvelle donnée enregistrée côté serveur doit y figurer **avant** la
   publication de la version qui l'écrit — c'est un engagement, pas une
   documentation.
-- **Les badges des magasins**, présents sur quatre pages (accueil et trois
-  pages d'usage). Google Play : `com.scrini.app`. App Store : Apple ID
-  `6809466532`. La charte des deux magasins interdit de rediriger un badge vers
-  une fiche indisponible : ne pas déployer avant la publication sur les deux.
+- **Les badges des magasins**, sur quatre pages (accueil et les trois pages
+  d'usage). Seul **Google Play** (`com.scrini.app`) porte aujourd'hui son
+  badge. Celui de l'**App Store** a laissé la place à la mention « Bientôt sur
+  l'App Store » (`.soon-store`) le temps de la validation par Apple : sa charte
+  interdit d'afficher le badge d'une application qu'on ne peut pas encore
+  télécharger, et un badge grisé serait une modification, qu'elle proscrit
+  aussi. Nommer « App Store » en toutes lettres reste licite.
+
+  **Le jour où Apple valide**, remettre le badge dans les quatre pages — le
+  fichier `assets/badge-app-store.svg` est resté pour ça, et l'Apple ID est
+  `6809466532`, soit `https://apps.apple.com/fr/app/id6809466532` — puis
+  corriger `operatingSystem` dans le bloc JSON-LD de l'accueil et **les deux
+  copies** de la réponse « Sur quels appareils » de la FAQ. Trois endroits
+  promettent aujourd'hui une version iPhone « soumise à l'App Store » ; ils se
+  démentent le jour où elle paraît comme le jour où elle est refusée.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
   export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc
