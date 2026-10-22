@@ -89,7 +89,18 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   une fiche indisponible : si l'une des deux se ferme, son badge part avec, et
   avec lui `operatingSystem` du bloc JSON-LD de l'accueil et **les deux copies**
   de la réponse « Sur quels appareils » de la FAQ, qui nomment les deux
-  plateformes.
+  plateformes et la version web.
+- **Le lien vers la version web** (`https://app.scrini.fr`), dans l'en-tête des
+  sept pages — et nulle part ailleurs qu'en toutes lettres dans la FAQ. Il n'a
+  pas sa place à côté des badges des magasins : ceux-là font installer une
+  application, lui ouvre une page, et les aligner laisse croire à un troisième
+  magasin. L'application est servie ailleurs — ce dépôt ne l'héberge pas et n'a
+  rien à faire de son domaine. Deux conséquences : c'est un lien ordinaire, et
+  il **n'entre pas dans `sitemap.xml`**, l'application étant volontairement
+  servie en `X-Robots-Tag: noindex` — elle peint dans un canvas et n'offre
+  aucun texte à indexer. Si le sous-domaine change, c'est onze mentions à
+  reprendre : les neuf liens, plus les deux rappels en toutes lettres du bloc
+  `FAQPage`, qui ne peut pas porter de lien.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
   export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc

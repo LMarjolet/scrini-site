@@ -122,6 +122,15 @@ a:hover{text-decoration:underline}
 .btn-outline{border:1px solid var(--outline);color:var(--on-surface)}
 .btn-outline:hover{background:var(--surface-container-high)}
 .btn-danger{background:var(--error-container);color:var(--on-error-container)}
+/* Celui de l'en-tête, seul chemin vers la version web, est plus bas que les
+   boutons de contenu : 48 px dans une barre de 56 ne laisserait rien autour.
+   En dessous de 600 px il s'efface : à trois, la marque, l'inverseur et lui
+   débordent de la barre, et c'est la marque qui cède — son sous-titre passe
+   sur deux lignes. Le téléphone y perd peu : « ouvrir dans le navigateur »
+   s'adresse d'abord à l'ordinateur, le téléphone ayant les deux magasins, et
+   la FAQ donne l'adresse en toutes lettres. */
+.btn-head{height:40px;padding:0 16px;font-size:14px;border-radius:12px}
+@media (max-width:600px){.btn-head{display:none}}
 
 /* Héros */
 .hero{padding:72px 0 64px}
