@@ -132,12 +132,6 @@ a:hover{text-decoration:underline}
 .badge{display:block;line-height:0}
 .badge:hover{text-decoration:none}
 .badge img{height:54px;width:auto}
-/* La place du second badge, le temps que l'App Store valide. Même hauteur que
-   le badge voisin pour que la ligne ne boite pas, mais un trait discontinu et
-   des teintes sourdes : rien qui puisse se prendre pour un bouton. Voir le
-   commentaire de `index.html` sur ce qu'interdit la charte d'Apple. */
-.soon-store{display:inline-flex;align-items:center;gap:9px;height:54px;padding:0 20px;border:1px dashed var(--outline);border-radius:12px;font-size:14px;font-weight:500;color:var(--on-surface-variant);white-space:nowrap}
-.soon-store .ico{font-size:19px}
 .hero small{display:block;margin-top:22px;font-size:12px;color:var(--on-surface-variant)}
 
 /* Téléphone */
