@@ -18,18 +18,19 @@ disponible sur un dépôt privé.
 | `suivre-ses-series.html` | Page d'usage : cocher les épisodes, lire sa progression |
 | `agenda-sorties.html` | Page d'usage : l'agenda des diffusions et les alertes |
 | `suivre-ses-animes.html` | Page d'usage : le filtre animé et ses limites |
+| `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/` | Les mêmes sept pages, traduites — voir « Les langues » |
 | `style.css` | Feuille unique, sombre et clair, jetons repris du système de design de l'application |
 | `assets/icons.svg` | Les icônes, un `<symbol>` chacune, référencées par `<use>` |
 | `assets/ecran-*.jpg` | Captures de l'application, 1080×2400 |
 | `assets/scrini_background*.jpg` | Le fond de l'application, en sombre et en clair |
-| `assets/badge-*.svg` | Badges officiels Google Play et App Store, à ne pas redessiner ni recolorer |
+| `assets/badge-*.svg`, `assets/badge-*.png` | Badges officiels Google Play et App Store, un par langue, à ne pas redessiner ni recolorer |
 | `assets/tmdb_logo.svg` | Logo TMDB, pour le crédit obligatoire du pied de page |
 | `scrini_icon.png` | Icône 512 px, copie de `design/scrini_icon_512.png` : la source |
 | `scrini_icon_224.png` | La même en 224 px, sans alpha — c'est elle que les pages chargent |
 | `og-scrini.png` | Carte de partage 1200×630, pour les aperçus sur les réseaux |
 | `favicon.ico` | 16/32/48 px, pour les clients qui le demandent à la racine |
 | `robots.txt` | Autorise l'indexation et déclare le plan du site |
-| `sitemap.xml` | Toutes les pages, à compléter dès qu'une s'ajoute |
+| `sitemap.xml` | Toutes les pages de toutes les langues, à compléter dès qu'une s'ajoute |
 | `CNAME` | Le domaine, pour GitHub Pages |
 
 ## Ce qui tourne dans la page, et ce qui n'y tourne pas
@@ -84,7 +85,7 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   publication de la version qui l'écrit — c'est un engagement, pas une
   documentation.
 - **Les badges des magasins**, présents sur quatre pages (accueil et trois
-  pages d'usage). Google Play : `com.scrini.app`. App Store : Apple ID
+  pages d'usage) de chaque langue. Google Play : `com.scrini.app`. App Store : Apple ID
   `6809466532`. La charte des deux magasins interdit de rediriger un badge vers
   une fiche indisponible : si l'une des deux se ferme, son badge part avec, et
   avec lui `operatingSystem` du bloc JSON-LD de l'accueil et **les deux copies**
@@ -99,8 +100,9 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   il **n'entre pas dans `sitemap.xml`**, l'application étant volontairement
   servie en `X-Robots-Tag: noindex` — elle peint dans un canvas et n'offre
   aucun texte à indexer. Si le sous-domaine change, c'est onze mentions à
-  reprendre : les neuf liens, plus les deux rappels en toutes lettres du bloc
-  `FAQPage`, qui ne peut pas porter de lien.
+  reprendre par langue : les neuf liens, plus les deux rappels en toutes
+  lettres du bloc `FAQPage`, qui ne peut pas porter de lien — quatre-vingt-huit
+  en tout. Un `grep -r app.scrini.fr` les trouve toutes.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
   export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc
@@ -113,13 +115,64 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   page qui promet ce que l'application ne fait plus se paie en désinstallations,
   et en signalements sur les magasins.
 - **L'en-tête, le pied de page et le script de thème** sont recopiés dans
-  chaque page, sans système de gabarit. Un changement s'y fait sept fois.
+  chaque page, sans système de gabarit. Un changement s'y fait sept fois par
+  langue, soit cinquante-six.
 
 Le site tutoie, comme l'application. Les pages ne comparent pas Scrini à une
 application nommée. La publicité comparative est licite, mais suppose des
 caractéristiques objectivement vérifiables et aucun dénigrement — deux
 conditions qu'on ne tient pas sur une page écrite de mémoire. Elles décrivent
 donc un usage, jamais un concurrent.
+
+## Les langues
+
+Le site parle les langues de l'application : le français à la racine, et un
+dossier par autre langue — `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/`.
+Chaque dossier porte **les sept mêmes fichiers, sous les mêmes noms** : on ne
+traduit pas les noms de fichiers, ce qui permet de passer d'une langue à
+l'autre en changeant seulement le dossier.
+
+L'application a aussi des variantes régionales (`fr_CA`, `en_GB`, `es_MX`,
+`pt_PT`). Le site n'en a pas : elles ne diffèrent que de quelques mots, et
+quatre jeux de pages presque identiques se désynchroniseraient pour rien. Une
+variante lit la page de sa langue. `pt/` est donc en portugais du Brésil,
+`es/` en espagnol d'Espagne, `en/` en anglais américain — les variantes
+principales de l'application.
+
+**Le français fait référence.** Une page se corrige d'abord en français, puis
+dans les sept autres langues, dans le même commit. La politique de
+confidentialité traduite le dit en tête et renvoie à la version française :
+c'est celle qui engage. Un changement de l'en-tête ou du pied de page se fait
+donc désormais cinquante-six fois.
+
+Les traductions reprennent **le vocabulaire de l'application** dans chaque
+langue — noms d'onglets, statuts, libellés cités entre guillemets — tel que
+l'écrivent les fichiers `lib/l10n/arb/app_*.arb` de son dépôt, et son
+registre : tutoiement en allemand, en espagnol et en italien, *você* en
+portugais, forme polie en japonais, 해요체 en coréen. Un libellé renommé dans
+l'application se renomme ici aussi, dans chaque langue.
+
+Ce qui est propre à chaque page, et à reporter si on en ajoute une :
+
+- **Les liens `hreflang`** de l'en-tête HTML (les huit langues, plus
+  `x-default` vers l'anglais, langue de repli de l'application) et les
+  `og:locale:alternate`. Chaque page les porte tous, y compris vers elle-même.
+- **Le menu des langues** de l'en-tête, un `<details>` qui s'ouvre sans script,
+  chaque langue écrite dans sa langue. Le script de l'en-tête ne fait que le
+  refermer d'un clic à côté ou d'Échap.
+- **Les badges des magasins**, dans la langue de la page : la charte des deux
+  magasins demande la version localisée quand elle existe. Ceux d'Apple sont
+  les SVG de son outil (`toolbox.marketingtools.apple.com`) ; ceux de Google,
+  les PNG de `play.google.com/intl/en_us/badges/`, rognés de leur marge
+  transparente et de rien d'autre. Le lien Google Play porte `&hl=` ; le lien
+  App Store n'a pas de pays, Apple renvoyant chacun vers sa boutique.
+
+Restent en français, faute de mieux, **les captures** et **la carte de
+partage** `og-scrini.png`, communes à toutes les langues. Des captures par
+langue sortiraient de l'application elle-même, réglée dans chaque langue.
+
+Le japonais et le coréen ne sont pas couverts par Roboto : `style.css` leur
+nomme une pile de polices du système (`:lang(ja)`, `:lang(ko)`).
 
 ## Refaire les images dérivées
 

@@ -82,6 +82,11 @@
 }
 
 *{box-sizing:border-box}
+/* Roboto n'a ni kana, ni kanji, ni hangeul : en japonais et en coréen, le
+   texte tombe sur la police du système, qu'on nomme pour ne pas laisser le
+   navigateur choisir une police chinoise. */
+:lang(ja){--font-sans:"Roboto","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Meiryo","Noto Sans JP",sans-serif}
+:lang(ko){--font-sans:"Roboto","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
 body{margin:0;font-family:var(--font-sans);color:var(--on-surface);background:var(--app-background) var(--app-background-image) center/cover fixed no-repeat;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 a{color:var(--primary);text-decoration:none}
@@ -129,6 +134,20 @@ a:hover{text-decoration:underline}
    sur deux lignes. Le téléphone y perd peu : « ouvrir dans le navigateur »
    s'adresse d'abord à l'ordinateur, le téléphone ayant les deux magasins, et
    la FAQ donne l'adresse en toutes lettres. */
+/* Le choix de la langue : un <details>, qui s'ouvre et se ferme sans script.
+   Le script de l'en-tête ne fait que le refermer d'un clic à côté ou d'Échap.
+   Les noms des langues sont écrits chacun dans sa langue : « Deutsch » se
+   reconnaît depuis une page en japonais, « Allemand » non. */
+.lang{position:relative}
+.lang summary{list-style:none;display:flex;align-items:center;gap:6px;height:40px;padding:0 10px;border-radius:12px;color:var(--on-surface-variant);cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.06em}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary .ico{width:22px;height:22px}
+.lang summary:hover,.lang[open] summary{background:var(--surface-container-high);color:var(--on-surface)}
+.lang ul{position:absolute;right:0;top:46px;z-index:10;margin:0;padding:6px;list-style:none;min-width:190px;background:var(--surface-container-lowest);border:1px solid var(--outline-variant);border-radius:12px;box-shadow:var(--phone-shadow)}
+.lang li a{display:block;padding:9px 12px;border-radius:8px;color:var(--on-surface);font-size:14px}
+.lang li a:hover{background:var(--surface-container-high);text-decoration:none}
+.lang li a[aria-current]{color:var(--primary);font-weight:700}
+
 .btn-head{height:40px;padding:0 16px;font-size:14px;border-radius:12px}
 @media (max-width:600px){.btn-head{display:none}}
 
