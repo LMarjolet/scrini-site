@@ -19,6 +19,9 @@ disponible sur un dépôt privé.
 | `agenda-sorties.html` | Page d'usage : l'agenda des diffusions et les alertes |
 | `suivre-ses-animes.html` | Page d'usage : le filtre animé et ses limites |
 | `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/` | Les mêmes sept pages, traduites — voir « Les langues » |
+| `templates/` | La structure des sept pages, écrite une seule fois — voir « Générer les pages » |
+| `i18n/*.json` | Les textes d'une langue, plus ce qui la décrit : badges, `og:locale`, nom |
+| `tools/build.mjs` | Écrit les 56 pages et `sitemap.xml` à partir des deux dossiers ci-dessus |
 | `style.css` | Feuille unique, sombre et clair, jetons repris du système de design de l'application |
 | `assets/icons.svg` | Les icônes, un `<symbol>` chacune, référencées par `<use>` |
 | `assets/ecran-*.jpg` | Captures de l'application, 1080×2400 |
@@ -30,7 +33,7 @@ disponible sur un dépôt privé.
 | `og-scrini.png` | Carte de partage 1200×630, pour les aperçus sur les réseaux |
 | `favicon.ico` | 16/32/48 px, pour les clients qui le demandent à la racine |
 | `robots.txt` | Autorise l'indexation et déclare le plan du site |
-| `sitemap.xml` | Toutes les pages de toutes les langues, à compléter dès qu'une s'ajoute |
+| `sitemap.xml` | Toutes les pages de toutes les langues — **généré**, ne pas éditer à la main |
 | `CNAME` | Le domaine, pour GitHub Pages |
 
 ## Ce qui tourne dans la page, et ce qui n'y tourne pas
@@ -99,16 +102,21 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   rien à faire de son domaine. Deux conséquences : c'est un lien ordinaire, et
   il **n'entre pas dans `sitemap.xml`**, l'application étant volontairement
   servie en `X-Robots-Tag: noindex` — elle peint dans un canvas et n'offre
-  aucun texte à indexer. Si le sous-domaine change, c'est onze mentions à
-  reprendre par langue : les neuf liens, plus les deux rappels en toutes
-  lettres du bloc `FAQPage`, qui ne peut pas porter de lien — quatre-vingt-huit
-  en tout. Un `grep -r app.scrini.fr` les trouve toutes.
+  aucun texte à indexer. Si le sous-domaine change, il se reprend dans les
+  sources, pas dans le HTML : douze mentions dans `templates/`, et trois par
+  langue dans `i18n/` — les rappels en toutes lettres de la FAQ et de son bloc
+  `FAQPage`, qui ne peut pas porter de lien. Trente-six en tout, puis une
+  régénération. Un `grep -r app.scrini.fr templates i18n` les trouve toutes.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
-  export, suppression. Ses réponses existent deux fois, en HTML et dans le bloc
-  `FAQPage` de la même page — donc **trois copies à corriger ensemble**. Une FAQ
-  qui contredit la politique est pire que pas de FAQ : c'est la politique qui
-  engage, et l'écart se retourne contre elle.
+  export, suppression. Ses réponses figurent deux fois dans la page, en HTML et
+  dans le bloc `FAQPage`. Douze des vingt-six chaînes de la FAQ étant
+  identiques des deux côtés, elles partagent leur clé et ne s'écrivent plus
+  qu'une fois ; les réponses qui portent un lien gardent deux formes, l'une
+  balisée, l'autre en texte brut, et **restent à corriger ensemble**. La
+  politique de confidentialité, elle, est un texte séparé : une FAQ qui la
+  contredit est pire que pas de FAQ — c'est la politique qui engage, et l'écart
+  se retourne contre elle.
 - **Les pages d'usage** (`suivre-ses-series`, `agenda-sorties`,
   `suivre-ses-animes`), qui décrivent des fonctions précises pour être trouvées
   par une recherche. Une fonction retirée ou modifiée doit y être corrigée : une
@@ -139,11 +147,12 @@ variante lit la page de sa langue. `pt/` est donc en portugais du Brésil,
 `es/` en espagnol d'Espagne, `en/` en anglais américain — les variantes
 principales de l'application.
 
-**Le français fait référence.** Une page se corrige d'abord en français, puis
-dans les sept autres langues, dans le même commit. La politique de
-confidentialité traduite le dit en tête et renvoie à la version française :
-c'est celle qui engage. Un changement de l'en-tête ou du pied de page se fait
-donc désormais cinquante-six fois.
+**Le français fait référence.** Un texte se corrige d'abord dans
+`i18n/fr.json`, puis dans les sept autres fichiers, dans le même commit. La
+politique de confidentialité traduite le dit en tête et renvoie à la version
+française : c'est celle qui engage. En revanche, un changement de l'en-tête ou
+du pied de page ne se fait **qu'une fois**, dans le gabarit — voir « Générer
+les pages ».
 
 Les traductions reprennent **le vocabulaire de l'application** dans chaque
 langue — noms d'onglets, statuts, libellés cités entre guillemets — tel que
@@ -152,7 +161,8 @@ registre : tutoiement en allemand, en espagnol et en italien, *você* en
 portugais, forme polie en japonais, 해요체 en coréen. Un libellé renommé dans
 l'application se renomme ici aussi, dans chaque langue.
 
-Ce qui est propre à chaque page, et à reporter si on en ajoute une :
+Ce qui est propre à chaque page est **calculé**, plus jamais recopié — c'est
+ce que `tools/build.mjs` sait faire tout seul :
 
 - **Les liens `hreflang`** de l'en-tête HTML (les huit langues, plus
   `x-default` vers l'anglais, langue de repli de l'application) et les
@@ -160,12 +170,16 @@ Ce qui est propre à chaque page, et à reporter si on en ajoute une :
 - **Le menu des langues** de l'en-tête, un `<details>` qui s'ouvre sans script,
   chaque langue écrite dans sa langue. Le script de l'en-tête ne fait que le
   refermer d'un clic à côté ou d'Échap.
+- **Les chemins relatifs** (`../`), les URL canoniques et les `og:url`, qui ne
+  dépendent que du dossier de la langue.
 - **Les badges des magasins**, dans la langue de la page : la charte des deux
   magasins demande la version localisée quand elle existe. Ceux d'Apple sont
   les SVG de son outil (`toolbox.marketingtools.apple.com`) ; ceux de Google,
   les PNG de `play.google.com/intl/en_us/badges/`, rognés de leur marge
   transparente et de rien d'autre. Le lien Google Play porte `&hl=` ; le lien
-  App Store n'a pas de pays, Apple renvoyant chacun vers sa boutique.
+  App Store n'a pas de pays, Apple renvoyant chacun vers sa boutique. Le
+  fichier, ses dimensions et son texte alternatif sont déclarés dans
+  `i18n/<langue>.json`, puisqu'ils changent d'une langue à l'autre.
 
 Restent en français, faute de mieux, **les captures** et **la carte de
 partage** `og-scrini.png`, communes à toutes les langues. Des captures par
@@ -173,6 +187,52 @@ langue sortiraient de l'application elle-même, réglée dans chaque langue.
 
 Le japonais et le coréen ne sont pas couverts par Roboto : `style.css` leur
 nomme une pile de polices du système (`:lang(ja)`, `:lang(ko)`).
+
+## Générer les pages
+
+Les 56 fichiers HTML et `sitemap.xml` **ne s'éditent pas à la main** : ils sont
+écrits par un script, à partir de deux sources.
+
+| Source | Ce qu'elle porte |
+|---|---|
+| `templates/<page>.html` | La structure de la page, une seule fois pour les huit langues |
+| `i18n/<langue>.json` | Les textes de cette langue, et ce qui la décrit (badges, `og:locale`, nom) |
+
+```sh
+node tools/build.mjs          # écrit les 56 pages et sitemap.xml
+node tools/build.mjs --check  # n'écrit rien, sort en erreur si un fichier a dérivé
+```
+
+Aucune dépendance : Node seul suffit, il n'y a pas de `package.json`. Le HTML
+produit reste commité, pour que GitHub Pages continue de servir des fichiers
+simples et que les diffs restent lisibles en revue. **Régénérer fait donc
+partie du commit**, au même titre que la modification elle-même ; `--check` est
+là pour le vérifier avant de pousser.
+
+Un gabarit est du HTML ordinaire, avec quatre sortes de marques :
+
+| Marque | Effet |
+|---|---|
+| `{{une-cle}}` | Le texte de cette clé, pris dans `i18n/<langue>.json` |
+| `{{?une-cle}}` | Pareil, mais la ligne entière disparaît si la clé vaut `null` — c'est ainsi que l'avertissement « ceci est une traduction » n'apparaît pas en français |
+| `{{@prefix}}`, `{{@dir}}`, `{{@lang}}`, `{{@htmlLang}}`, `{{@locale}}`, `{{@hl}}` | Ce qui se déduit de la langue seule |
+| `{{#hreflangLinks}}`, `{{#ogLocales}}`, `{{#langMenu}}`, `{{#storeBadges}}` | Un bloc entier, reconstruit ligne à ligne |
+
+Les clés sont nommées d'après le texte français qu'elles portaient à
+l'extraction. Une même suite de huit traductions n'a qu'une clé : les libellés
+repris d'une page à l'autre, comme ceux du pied de page, sont donc partagés —
+les corriger une fois les corrige partout.
+
+Le script refuse de produire une page dont une clé manque, plutôt que d'écrire
+un trou : une traduction oubliée arrête la génération au lieu d'être publiée.
+
+**Ajouter une langue** : un fichier `i18n/<code>.json` complet, le code ajouté
+à `MENU` et à `SITEMAP_ORDER` dans `tools/build.mjs`, les deux badges du
+magasin dans `assets/`. **Ajouter une page** : un gabarit dans `templates/`,
+son nom dans `PAGES`, et son entrée dans `SITEMAP_PAGES` avec sa priorité.
+
+La date annoncée aux moteurs (`LASTMOD`) se change à la main. La recalculer à
+chaque génération ferait mentir `sitemap.xml` sur des pages qui n'ont pas bougé.
 
 ## Refaire les images dérivées
 
