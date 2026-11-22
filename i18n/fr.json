@@ -2,7 +2,6 @@
  "name": "Français",
  "htmlLang": "fr",
  "ogLocale": "fr_FR",
- "dir": "",
  "play": {
   "href": "https://play.google.com/store/apps/details?id=com.scrini.app",
   "src": "assets/badge-google-play.svg",
