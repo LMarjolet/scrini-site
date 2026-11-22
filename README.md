@@ -36,6 +36,11 @@ disponible sur un dépôt privé.
 | `sitemap.xml` | Toutes les pages de toutes les langues — **généré**, ne pas éditer à la main |
 | `CNAME` | Le domaine, pour GitHub Pages |
 
+**Les sept pages, leurs sept traductions et `sitemap.xml` sont générés** — 57
+fichiers qui ne s'éditent pas à la main. Ils se corrigent dans `templates/` et
+`i18n/`, puis se réécrivent par `node tools/build.mjs` ; voir « Générer les
+pages ».
+
 ## Ce qui tourne dans la page, et ce qui n'y tourne pas
 
 Ces pages doivent rester lisibles par un relecteur qui n'exécute pas de
@@ -43,8 +48,8 @@ JavaScript, et consultables derrière un réseau qui bloque les CDN. Trois
 exceptions, mesurées — dans les trois cas, l'absence du script ou du fichier
 dégrade la page sans la casser :
 
-- **L'inverseur de thème** de l'en-tête, quelques lignes dans `index.html` et
-  recopiées dans chaque page. Sans lui, le bouton n'apparaît pas et la page
+- **L'inverseur de thème** de l'en-tête, quelques lignes présentes dans chacun
+  des sept gabarits. Sans lui, le bouton n'apparaît pas et la page
   suit simplement le réglage du système (`prefers-color-scheme`). Avec lui, le
   choix est mémorisé en `localStorage` sous `scrini-theme` et posé en
   `data-theme` sur `<html>` avant le premier rendu, pour ne pas voir la page
@@ -103,9 +108,9 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   il **n'entre pas dans `sitemap.xml`**, l'application étant volontairement
   servie en `X-Robots-Tag: noindex` — elle peint dans un canvas et n'offre
   aucun texte à indexer. Si le sous-domaine change, il se reprend dans les
-  sources, pas dans le HTML : douze mentions dans `templates/`, et trois par
+  sources, pas dans le HTML : onze mentions dans `templates/`, et deux par
   langue dans `i18n/` — les rappels en toutes lettres de la FAQ et de son bloc
-  `FAQPage`, qui ne peut pas porter de lien. Trente-six en tout, puis une
+  `FAQPage`, qui ne peut pas porter de lien. Vingt-sept en tout, puis une
   régénération. Un `grep -r app.scrini.fr templates i18n` les trouve toutes.
 - **La FAQ** (`questions-frequentes.html`), qui **recopie en abrégé** ce que dit
   la politique de confidentialité : données conservées, notifications locales,
@@ -122,9 +127,9 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   par une recherche. Une fonction retirée ou modifiée doit y être corrigée : une
   page qui promet ce que l'application ne fait plus se paie en désinstallations,
   et en signalements sur les magasins.
-- **L'en-tête, le pied de page et le script de thème** sont recopiés dans
-  chaque page, sans système de gabarit. Un changement s'y fait sept fois par
-  langue, soit cinquante-six.
+- **L'en-tête, le pied de page et le script de thème** vivent dans les sept
+  gabarits de `templates/`, un par page. Un changement commun aux sept s'y
+  fait donc sept fois — mais plus cinquante-six.
 
 Le site tutoie, comme l'application. Les pages ne comparent pas Scrini à une
 application nommée. La publicité comparative est licite, mais suppose des
@@ -161,8 +166,9 @@ registre : tutoiement en allemand, en espagnol et en italien, *você* en
 portugais, forme polie en japonais, 해요체 en coréen. Un libellé renommé dans
 l'application se renomme ici aussi, dans chaque langue.
 
-Ce qui est propre à chaque page est **calculé**, plus jamais recopié — c'est
-ce que `tools/build.mjs` sait faire tout seul :
+Ce qui est propre à chaque page est **calculé** par `tools/build.mjs`, à une
+exception près, signalée plus bas : l'URL du magasin Google Play, déclarée
+langue par langue.
 
 - **Les liens `hreflang`** de l'en-tête HTML (les huit langues, plus
   `x-default` vers l'anglais, langue de repli de l'application) et les
@@ -177,9 +183,15 @@ ce que `tools/build.mjs` sait faire tout seul :
   les SVG de son outil (`toolbox.marketingtools.apple.com`) ; ceux de Google,
   les PNG de `play.google.com/intl/en_us/badges/`, rognés de leur marge
   transparente et de rien d'autre. Le lien Google Play porte `&hl=` ; le lien
-  App Store n'a pas de pays, Apple renvoyant chacun vers sa boutique. Le
-  fichier, ses dimensions et son texte alternatif sont déclarés dans
-  `i18n/<langue>.json`, puisqu'ils changent d'une langue à l'autre.
+  App Store n'a pas de pays, Apple renvoyant chacun vers sa boutique. Les deux
+  URL, le fichier, ses dimensions et son texte alternatif sont déclarés dans
+  `i18n/<langue>.json`, puisqu'ils changent d'une langue à l'autre — y compris
+  le `&hl=`, qui ne se déduit pas du code de langue (`pt/` demande `hl=pt-BR`).
+  Deux détails hérités des pages écrites à la main y attendent une passe :
+  l'esperluette est échappée en `&amp;` pour `en` et `es` seulement, et
+  `inLanguage` du bloc JSON-LD de l'accueil liste les huit langues en dur dans
+  `templates/index.html`. Les corriger changerait le HTML publié, donc ce sera
+  un commit à part.
 
 Restent en français, faute de mieux, **les captures** et **la carte de
 partage** `og-scrini.png`, communes à toutes les langues. Des captures par
@@ -215,7 +227,7 @@ Un gabarit est du HTML ordinaire, avec quatre sortes de marques :
 |---|---|
 | `{{une-cle}}` | Le texte de cette clé, pris dans `i18n/<langue>.json` |
 | `{{?une-cle}}` | Pareil, mais la ligne entière disparaît si la clé vaut `null` — c'est ainsi que l'avertissement « ceci est une traduction » n'apparaît pas en français |
-| `{{@prefix}}`, `{{@dir}}`, `{{@lang}}`, `{{@htmlLang}}`, `{{@locale}}`, `{{@hl}}` | Ce qui se déduit de la langue seule |
+| `{{@prefix}}`, `{{@dir}}`, `{{@lang}}`, `{{@htmlLang}}`, `{{@locale}}` | Ce qui se déduit de la langue seule |
 | `{{#hreflangLinks}}`, `{{#ogLocales}}`, `{{#langMenu}}`, `{{#storeBadges}}` | Un bloc entier, reconstruit ligne à ligne |
 
 Les clés sont nommées d'après le texte français qu'elles portaient à

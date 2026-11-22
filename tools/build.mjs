@@ -70,24 +70,52 @@ function render(page, l){
   const vars = {
     prefix: preOf(l), dir: dirOf(l), lang: l,
     htmlLang: loc[l].htmlLang, locale: loc[l].ogLocale,
-    hl: l === 'fr' ? '' : '&amp;hl=' + l,
   };
+  const subst = line => line.replace(/\{\{(@?[\w-]+)\}\}/g, (m, k) => {
+    if (k[0] === '@'){
+      if (!(k.slice(1) in vars)) throw new Error(`${page}/${l} : variable inconnue ${m}`);
+      return vars[k.slice(1)];
+    }
+    if (!(k in s)) throw new Error(`${page}/${l} : texte manquant ${m}`);
+    return s[k];
+  });
+
   const out = [];
-  for (const line of tpl.split('\n')){
-    const block = line.match(/^\{\{#(\w+)\}\}$/);
-    if (block){ out.push(...blk[block[1]]); continue; }
-    const opt = line.match(/^\{\{\?([\w-]+)\}\}$/);
-    if (opt){ if (s[opt[1]] != null) out.push(s[opt[1]]); continue; }
-    out.push(line.replace(/\{\{(@?[\w-]+)\}\}/g, (m, k) => {
-      if (k[0] === '@'){
-        if (!(k.slice(1) in vars)) throw new Error(`${page}/${l} : variable inconnue ${m}`);
-        return vars[k.slice(1)];
-      }
-      if (!(k in s)) throw new Error(`${page}/${l} : texte manquant ${m}`);
-      return s[k];
-    }));
+  // Un gabarit enregistre en CRLF laisserait un \r colle a la fin de chaque
+  // ligne : une marque de bloc ne serait alors plus reconnue et sortirait en
+  // clair dans la page. On le retire avant toute chose.
+  for (const line of tpl.split('\n').map(x => x.replace(/\r$/, ''))){
+    const block = line.match(/^\s*\{\{#(\w+)\}\}\s*$/);
+    if (block){
+      if (!(block[1] in blk)) throw new Error(`${page}/${l} : bloc inconnu {{#${block[1]}}}`);
+      out.push(...blk[block[1]]); continue;
+    }
+    const opt = line.match(/^\s*\{\{\?([\w-]+)\}\}\s*$/);
+    if (opt){
+      // La cle doit exister. Seul un null explicite vaut renoncement : sans
+      // cette exigence, une faute de frappe ferait disparaitre la ligne en
+      // silence — et c'est par la qu'arrive l'avertissement de traduction.
+      if (!(opt[1] in s)) throw new Error(`${page}/${l} : texte manquant {{?${opt[1]}}}`);
+      if (s[opt[1]] !== null) out.push(subst(s[opt[1]]));
+      continue;
+    }
+    out.push(subst(line));
   }
-  return out.join('\n');
+  const html = out.join('\n');
+
+  // Aucune marque ne doit survivre a la substitution : une marque indentee,
+  // ou mal orthographiee, sortirait sinon telle quelle dans la page publiee.
+  const reste = html.match(/\{\{[@#?]?[\w-]+\}\}/);
+  if (reste) throw new Error(`${page}/${l} : marque non remplacee ${reste[0]}`);
+
+  // Les blocs JSON-LD portent des textes traduits. Un guillemet droit dans
+  // une traduction les rendrait inanalysables sans rien changer au rendu
+  // visible : le defaut passerait donc inapercu jusqu'aux outils des moteurs.
+  for (const m of html.matchAll(/<script type="application\/ld\+json">\n([\s\S]*?)\n<\/script>/g)){
+    try { JSON.parse(m[1]); }
+    catch (e) { throw new Error(`${page}/${l} : bloc JSON-LD invalide — ${e.message}`); }
+  }
+  return html;
 }
 
 // Le plan du site : les sept pages dans les huit langues. L'application web
@@ -108,6 +136,17 @@ const SITEMAP_PAGES = [
 // generation ferait mentir le fichier sur des pages qui n'ont pas bouge.
 const LASTMOD = '2026-11-20';
 
+// Les deux listes ci-dessus ne font qu'ordonner : elles doivent porter
+// exactement les memes langues et les memes pages que le site. Sans ce
+// controle, ajouter une langue a MENU seul la publierait sans l'annoncer, et
+// l'oublier dans MENU ferait annoncer sept URL inexistantes.
+const memeEnsemble = (a, b) =>
+  a.length === b.length && [...a].sort().join() === [...b].sort().join();
+if (!memeEnsemble(SITEMAP_ORDER, MENU))
+  throw new Error('SITEMAP_ORDER et MENU ne portent pas les memes langues');
+if (!memeEnsemble(SITEMAP_PAGES.map(([p]) => p), PAGES))
+  throw new Error('SITEMAP_PAGES et PAGES ne portent pas les memes pages');
+
 function sitemap(){
   const out = ['<?xml version="1.0" encoding="UTF-8"?>',
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
@@ -125,32 +164,30 @@ function sitemap(){
 }
 
 const check = process.argv.includes('--check');
-let bad = 0, n = 0;
-for (const page of PAGES){
-  for (const l of MENU){
-    const file = path.join(ROOT, dirOf(l), page + '.html');
-    const html = render(page, l);
-    n++;
-    if (check){
-      const cur = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
-      if (cur !== html){ bad++; console.error('differe :', path.relative(ROOT, file)); }
-    } else {
-      fs.mkdirSync(path.dirname(file), { recursive: true });
-      fs.writeFileSync(file, html);
-    }
+
+// Tout est rendu avant qu'une seule ligne ne soit ecrite : une erreur laisse
+// l'arbre intact, plutot qu'a moitie regenere.
+const fichiers = [];
+for (const page of PAGES)
+  for (const l of MENU)
+    fichiers.push([path.join(ROOT, dirOf(l), page + '.html'), render(page, l)]);
+fichiers.push([path.join(ROOT, 'sitemap.xml'), sitemap()]);
+
+let bad = 0;
+for (const [file, texte] of fichiers){
+  if (check){
+    const cur = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+    if (cur !== texte){ bad++; console.error('differe :', path.relative(ROOT, file)); }
+  } else {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, texte);
   }
 }
-const mapFile = path.join(ROOT, 'sitemap.xml');
-const mapText = sitemap();
-n++;
-if (check){
-  if (fs.readFileSync(mapFile, 'utf8') !== mapText){ bad++; console.error('differe : sitemap.xml'); }
-} else {
-  fs.writeFileSync(mapFile, mapText);
-}
 
+const n = fichiers.length;
 if (check){
-  console.log(bad ? `${bad} fichier(s) sur ${n} ne correspondent pas aux gabarits.` : `${n} fichiers conformes aux gabarits.`);
+  console.log(bad ? `${bad} fichier(s) sur ${n} ne correspondent pas aux gabarits.`
+                  : `${n} fichiers conformes aux gabarits.`);
   process.exit(bad ? 1 : 0);
 }
-console.log(`${n} fichiers ecrits (56 pages et sitemap.xml).`);
+console.log(`${n} fichiers ecrits (${n - 1} pages et sitemap.xml).`);
