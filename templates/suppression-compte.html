@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="{{@htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{supprimer-son-compte-scrini}}</title>
+<meta name="description" content="{{comment-supprimer-ton-compte-scrini-et}}">
+<link rel="icon" href="{{@prefix}}scrini_icon_224.png" type="image/png">
+<link rel="canonical" href="https://scrini.fr/{{@dir}}suppression-compte.html">
+{{#hreflangLinks}}
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://scrini.fr/{{@dir}}suppression-compte.html">
+<meta property="og:title" content="{{supprimer-son-compte-scrini}}">
+<meta property="og:description" content="{{comment-supprimer-ton-compte-scrini-et-2}}">
+<meta property="og:image" content="https://scrini.fr/og-scrini.png">
+{{#ogLocales}}
+<link rel="stylesheet" href="{{@prefix}}style.css">
+<script>document.documentElement.className="js";try{var t=localStorage.getItem("scrini-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="./"><img src="{{@prefix}}scrini_icon_224.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">{{films-series-animes}}</span></span></a>
+<div class="head-sp"></div>
+<details class="lang"><summary aria-label="{{langue-francais}}" title="{{langue}}"><svg class="ico" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-language"/></svg>{{fr}}</summary>
+<ul>
+{{#langMenu}}
+</ul>
+</details>
+<button class="icon-btn" id="theme" type="button" aria-label="{{changer-de-theme}}"><svg class="ico ico-light" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-light"/></svg><svg class="ico ico-dark" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-dark"/></svg></button>
+<a class="btn btn-head btn-primary" href="https://app.scrini.fr">{{ouvrir-dans-le-navigateur}}</a>
+</div>
+</header>
+
+<main class="doc">
+<div class="wrap">
+<h1>{{supprimer-ton-compte}}</h1>
+<p class="maj">{{application-concernee}}<a href="index.html">Scrini</a></p>
+
+<section>
+<h2>{{depuis-l-application}}</h2>
+<p>{{c-est-le-chemin-le-plus-rapide-et-il-n-a}}</p>
+<ul>
+<li>{{ouvre-le-menu-lateral-puis}}<b>{{parametres}}</b>{{x-6}}</li>
+{{li-descends-jusqu-a-b-supprimer-mon}}
+<li>{{confirme-la-suppression-est-immediate-et}}</li>
+</ul>
+<p>{{pense-a-exporter-ta-bibliotheque-en}}</p>
+</section>
+
+<section>
+<h2>{{sans-passer-par-l-application}}</h2>
+<p>{{si-tu-n-as-plus-l-application-installee}}</p>
+<p><a class="btn btn-outline" href="{{mailto-contact-scrini-fr-subject}}"><svg class="ico" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-mail"/></svg>{{ecrire-pour-demander-la-suppression}}</a></p>
+</section>
+
+<section>
+<h2>{{ce-qui-est-supprime}}</h2>
+<ul>
+<li>{{ton-compte-et-ton-adresse-email}}</li>
+<li>{{ta-bibliotheque-titres-suivis-statuts}}</li>
+<li>{{tes-preferences-et-tes-alertes-de-sortie}}</li>
+<li>{{les-signalements-d-erreur-rattaches-a-ton}}</li>
+</ul>
+<p>{{tout-part-en-meme-temps-rien-n-est}}</p>
+</section>
+
+<section>
+<h2>{{une-question}}</h2>
+{{p-ecris-a-a-href-mailto-contact-scrini-fr}}
+</section>
+</div>
+</main>
+
+<footer class="site-foot">
+<div class="wrap">
+<a href="./">{{accueil}}</a>
+<a href="questions-frequentes.html">{{questions-frequentes}}</a>
+<a href="confidentialite.html">{{confidentialite}}</a>
+<a href="mailto:contact@scrini.fr">{{contact}}</a>
+<div class="tmdb"><img src="{{@prefix}}assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>{{ce-produit-utilise-l-api-tmdb-mais-n-est}}</span></div>
+</div>
+</footer>
+
+<script>
+(function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+(function(){var d=document.querySelector(".lang");if(!d)return;document.addEventListener("click",function(e){if(d.open&&!d.contains(e.target))d.open=false});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&d.open){d.open=false;d.querySelector("summary").focus()}})})();
+</script>
+</body>
+</html>
