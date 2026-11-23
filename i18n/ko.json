@@ -312,7 +312,7 @@
   "youtube-bandes-annonces": "YouTube(예고편)",
   "p-les-bandes-annonces-sont-lues-dans-le": "<p>예고편은 Google 서비스인 YouTube의 내장 플레이어에서 YouTube API 서비스를 통해 재생돼요. 플레이어는 예고편을 재생할 때만 불러오며, 그 전에는 YouTube에 아무것도 전달되지 않아요. 재생을 시작하면 Google은 재생할 영상, IP 주소, Scrini에서 선택한 언어, 브라우저나 휴대폰에 관한 기술 정보를 받고, 개인 정보 보호 강화 모드에서도 기기에 정보를 저장하거나 읽을 수 있어요(쿠키, 로컬 저장소). YouTube 플레이어에는 광고가 나올 수도 있어요. Scrini는 내 신원이나 보관함을 Google에 넘기지 않아요. 예고편을 재생하면 <a href=\"https://www.youtube.com/t/terms\">YouTube 서비스 약관</a>에 동의하는 것이며, Google이 이 데이터를 어떻게 다루는지는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요. 아무것도 전달되지 않게 하려면 예고편을 재생하지 않으면 돼요.</p>",
   "version-web-google": "웹 버전: Google 서비스",
-  "p-sur-la-version-web-app-scrini-fr-la": "<p>웹 버전(app.scrini.fr)에서는 로그인 화면이 표시되자마자, 사용 여부와 관계없이 Google 로그인 버튼을 Google 서버에서 불러와요. 이때 Google은 IP 주소와 브라우저 정보를 받아요. 그 브라우저에서 이미 Google 계정에 로그인되어 있다면, Google은 자체 쿠키를 읽어 내가 Scrini 로그인 화면을 열었다는 것을 알 수도 있어요. 또한 웹 버전의 화면 표시 엔진과 글꼴들도 Google 서버에서 내려받으며, 이때 IP 주소가 Google에 전달돼요. Android 앱과 iOS 앱은 이런 통신을 전혀 하지 않아요. 이 처리는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요.</p>",
+  "p-sur-la-version-web-app-scrini-fr-la": "<p>웹 버전(app.scrini.fr)에서는 Google로 로그인하든 하지 않든, 앱을 여는 순간 Google 로그인 스크립트를 Google 서버에서 불러와요. 이때 Google은 IP 주소와 브라우저 정보를 받아요. 그 브라우저에서 이미 Google 계정에 로그인되어 있다면, Google은 자체 쿠키를 읽어 내가 Scrini를 열었다는 것을 알 수도 있어요. 또한 웹 버전의 화면 표시 엔진과 글꼴들도 Google 서버에서 내려받으며, 이때 IP 주소가 Google에 전달돼요. Android 앱과 iOS 앱은 이런 통신을 전혀 하지 않아요. 이 처리는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요.</p>",
   "mentions-legales-scrini": "법적 고지 — Scrini",
   "qui-edite-scrini-et-qui-l-heberge": "Scrini와 scrini.fr의 운영자와 호스팅 업체.",
   "mentions-legales": "법적 고지",
