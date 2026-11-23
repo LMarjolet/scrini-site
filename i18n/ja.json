@@ -239,7 +239,7 @@
   "elles-sont-programmees-par-l-application": "です。アプリがシステムに登録するもので、トークンや識別子が外部の通知サービスに送られることはありません。",
   "ce-que-nous-ne-collectons-pas": "収集しないもの",
   "aucune-mesure-d-audience-aucun-outil-d": "アクセス解析や行動分析のツールは一切使用しません。",
-  "aucun-traceur-ni-identifiant-publicitaire": "トラッカーや広告IDは一切使用しません。",
+  "aucun-traceur-ni-identifiant-publicitaire": "私たちがトラッカーや広告IDを使用することは一切ありません。端末に情報を保存することがあるのは、予告編を再生したときやウェブ版を開いたときのGoogleだけです（後述）。",
   "aucune-donnee-de-localisation": "位置情報は一切収集しません。",
   "aucun-acces-a-tes-contacts-a-tes-fichiers": "連絡先、ファイル、カメラには一切アクセスしません。",
   "ou-tes-donnees-sont-hebergees": "データの保存場所",
@@ -247,7 +247,7 @@
   "dans-la-region": "の",
   "eu-west-3-paris-france": "eu-west-3（フランス・パリ）",
   "ta-bibliotheque-et-ton-compte-sont": "リージョンでホスティングされています。ライブラリとアカウントは、フランス国内のサーバーに保存されます。Supabaseは米国の企業ですが、この場合のデータ基盤は欧州にあります。",
-  "seul-l-acheminement-des-emails-de": "唯一の例外はログイン用メールの配信で、後述のとおり欧州連合（EU）の外を経由します。",
+  "seul-l-acheminement-des-emails-de": "例外は、ログイン用メールの配信と、利用するGoogleのサービス（Googleでのログイン、YouTubeの予告編、ウェブ版）で、後述のとおり欧州連合（EU）の外を経由します。",
   "chaque-compte-est-cloisonne-au-niveau-de": "各アカウントはデータベースそのもののレベルで分離されています。サーバーのセキュリティルールにより、各行の読み書きはその行を作成したアカウントにしか許可されません。",
   "les-services-tiers": "外部サービス",
   "the-movie-database-tmdb": "The Movie Database (TMDB)",
@@ -256,7 +256,7 @@
   "tmdb-recoit-la-recherche-jamais-l": "TMDBに問い合わせます。TMDBが受け取るのは検索内容だけで、誰が検索したかは伝わりません。配信状況はTMDB経由でJustWatchから取得しています。本アプリはTMDB APIを使用していますが、TMDBによって承認または認定されたものではありません。",
   "resend-envoi-des-emails": "Resend（メール送信）",
   "les-codes-de-connexion-te-sont-envoyes-par": "ログインコードは米国の企業",
-  "societe-americaine-qui-recoit-a-cette": "から送信されます。その際、Resendはメールアドレスとコードを受け取ります。ライブラリやその他のデータにはアクセスできません。利用者に関するデータがEUの外に出るのは、この取り扱いだけです。",
+  "societe-americaine-qui-recoit-a-cette": "から送信されます。その際、Resendはメールアドレスとコードを受け取ります。ライブラリやその他のデータにはアクセスできません。",
   "connexion-google-ou-apple": "GoogleまたはAppleでのログイン",
   "si-tu-choisis-de-te-connecter-avec-un": "GoogleまたはAppleのアカウントでログインした場合、そのサービス提供者はScriniへのログインを把握し、当方にメールアドレスと名前、さらにGoogleの場合はプロフィール写真のURLを送ります。名前と写真のURLは、アプリのどの機能でも必要としていません。アカウントとともに保存されますが、読み込まれることも表示されることもありません。パスワードや、GoogleまたはAppleのアカウントの内容を当方が受け取ることはありません。メールで届くコードでログインすれば、こうした経由そのものを避けられます。",
   "combien-de-temps-tes-donnees-sont": "データの保存期間",
@@ -308,6 +308,10 @@
   "les-signalements-d-erreur-rattaches-a-ton": "アカウントにひも付いたエラーの記録。",
   "tout-part-en-meme-temps-rien-n-est": "すべてが同時に削除されます。コピーも保存期間もなく、何も残りません。削除は取り消せないため、新しくアカウントを作成した場合はゼロからのスタートになります。",
   "une-question": "ご質問",
-  "p-ecris-a-a-href-mailto-contact-scrini-fr": "<p><a href=\"mailto:contact@scrini.fr\">contact@scrini.fr</a>までご連絡ください。<a href=\"confidentialite.html\">プライバシーポリシー</a>もあわせてご覧ください。</p>"
+  "p-ecris-a-a-href-mailto-contact-scrini-fr": "<p><a href=\"mailto:contact@scrini.fr\">contact@scrini.fr</a>までご連絡ください。<a href=\"confidentialite.html\">プライバシーポリシー</a>もあわせてご覧ください。</p>",
+  "youtube-bandes-annonces": "YouTube（予告編）",
+  "p-les-bandes-annonces-sont-lues-dans-le": "<p>予告編は、GoogleのサービスであるYouTubeの埋め込みプレーヤーで、YouTube APIサービスを通じて再生されます。プレーヤーは予告編を再生したときにだけ読み込まれ、それまでYouTubeには何も送信されません。再生を始めると、GoogleはIPアドレス、端末の言語、ブラウザやスマートフォンに関する技術情報を受け取り、プライバシー強化モードでも端末に情報を保存したり読み取ったりすることがあります（Cookie、ローカルストレージ）。Scriniが利用者の身元やライブラリをGoogleに渡すことはありません。予告編を再生すると、<a href=\"https://www.youtube.com/t/terms\">YouTube利用規約</a>に同意したことになります。Googleによるこれらのデータの取り扱いは、<a href=\"https://policies.google.com/privacy\">Googleプライバシーポリシー</a>に従います。何も送信されないようにするには、予告編を再生しないでください。</p>",
+  "version-web-google": "ウェブ版：Googleのサービス",
+  "p-sur-la-version-web-app-scrini-fr-la": "<p>ウェブ版（app.scrini.fr）では、ログイン画面が表示されると同時に、使うかどうかにかかわらず「Googleでログイン」ボタンがGoogleのサーバーから読み込まれます。その際、GoogleはIPアドレスとブラウザに関する情報を受け取ります。そのブラウザですでにGoogleアカウントにログインしている場合は、Google自身のCookieを読み取り、Scriniのログイン画面を開いたことを知ることもできます。また、ウェブ版の描画エンジンとフォントもGoogleのサーバーからダウンロードされ、その際にIPアドレスがGoogleに送られます。AndroidアプリとiOSアプリは、これらの通信を一切行いません。これらの取り扱いは<a href=\"https://policies.google.com/privacy\">Googleプライバシーポリシー</a>に従います。</p>"
  }
 }

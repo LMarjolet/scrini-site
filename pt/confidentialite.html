@@ -99,7 +99,7 @@
 <h3>O que não coletamos</h3>
 <ul>
 <li>Nenhuma medição de audiência, nenhuma ferramenta de análise de comportamento.</li>
-<li>Nenhum rastreador nem identificador de publicidade.</li>
+<li>Nenhum rastreador nem identificador de publicidade da nossa parte. Só o Google pode armazenar informações no seu dispositivo, quando você inicia um trailer ou abre a versão web — veja mais abaixo.</li>
 <li>Nenhum dado de localização.</li>
 <li>Nenhum acesso aos seus contatos, aos seus arquivos ou à sua câmera.</li>
 </ul>
@@ -108,7 +108,7 @@
 <section>
 <h2>Onde seus dados ficam hospedados</h2>
 <p>O banco de dados e o serviço de autenticação são hospedados pela <b>Supabase</b>, na região <b>eu-west-3 (Paris, França)</b>: sua biblioteca e sua conta ficam armazenadas em servidores localizados na França. A Supabase é uma empresa americana, cuja infraestrutura de dados fica, neste caso, na Europa.</p>
-<p>A única exceção é o envio dos e-mails de login, que sai da União Europeia, como explicado mais abaixo.</p>
+<p>As exceções, que saem da União Europeia, são o envio dos e-mails de login e os serviços do Google que você usa — login com o Google, trailers do YouTube, versão web —, como explicado mais abaixo.</p>
 <p>Cada conta é isolada no nível do próprio banco de dados: as regras de segurança do servidor só permitem ler e gravar uma linha à conta que a criou.</p>
 </section>
 
@@ -117,9 +117,13 @@
 <h3>The Movie Database (TMDB)</h3>
 <p>As fichas de filmes e séries vêm do TMDB. Suas requisições passam por um servidor intermediário que consulta o TMDB <b>sem transmitir sua identidade</b>: o TMDB recebe a busca, nunca a informação de quem a fez. A disponibilidade nos streamings vem do JustWatch, via TMDB. Este app usa a API do TMDB, mas não é endossado nem certificado pelo TMDB.</p>
 <h3>Resend (envio dos e-mails)</h3>
-<p>Os códigos de login são enviados a você pela <b>Resend</b>, empresa americana, que recebe nessa ocasião seu endereço de e-mail e o código. Ela não tem acesso à sua biblioteca nem ao restante dos seus dados. É o único tratamento em que um dado sobre você sai da União Europeia.</p>
+<p>Os códigos de login são enviados a você pela <b>Resend</b>, empresa americana, que recebe nessa ocasião seu endereço de e-mail e o código. Ela não tem acesso à sua biblioteca nem ao restante dos seus dados.</p>
 <h3>Login com Google ou Apple</h3>
 <p>Se você escolher entrar com uma conta Google ou Apple, o provedor em questão fica sabendo que você entra no Scrini e nos envia seu endereço de e-mail, seu nome e — no caso do Google — o endereço da sua foto de perfil. Esses dois últimos dados não são pedidos por nenhuma função do app. Eles são guardados com a sua conta, sem serem lidos nem exibidos. Não recebemos sua senha nem o conteúdo da sua conta nesses serviços. O login com código recebido por e-mail evita totalmente essa etapa.</p>
+<h3>YouTube (trailers)</h3>
+<p>Os trailers são reproduzidos no player incorporado do YouTube, um serviço do Google, por meio dos Serviços de API do YouTube. O player só é carregado quando você inicia um trailer: antes disso, o YouTube não recebe nada. Assim que você o inicia, o Google recebe seu endereço IP, o idioma do seu dispositivo e informações técnicas sobre seu navegador ou celular, e pode armazenar ou ler informações no seu dispositivo (cookies, armazenamento local), inclusive no modo de privacidade aprimorada. O Scrini não transmite a ele nem sua identidade nem sua biblioteca. Ao iniciar um trailer, você aceita os <a href="https://www.youtube.com/t/terms">Termos de Serviço do YouTube</a>; o que o Google faz com esses dados é regido pela <a href="https://policies.google.com/privacy">Política de Privacidade</a> dele. Para que nada chegue a ele, basta não iniciar nenhum trailer.</p>
+<h3>Versão web: serviços do Google</h3>
+<p>Na versão web (app.scrini.fr), a página de login carrega o botão “Fazer login com o Google” dos servidores do Google assim que é exibida, quer você o use ou não. O Google recebe então seu endereço IP e informações sobre seu navegador; se você já estiver conectado a uma conta do Google nesse navegador, ele também pode ler os próprios cookies e saber que você abriu a página de login do Scrini. Além disso, o mecanismo de exibição da versão web e sua fonte são baixados dos servidores do Google, que recebem nessa ocasião seu endereço IP. Os apps para Android e iOS não fazem nenhuma dessas chamadas. Esses tratamentos são regidos pela <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</p>
 </section>
 
 <section>
