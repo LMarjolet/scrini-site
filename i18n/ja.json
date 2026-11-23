@@ -145,7 +145,7 @@
   "peut-on-utiliser-scrini-sur-ordinateur": "Scriniはパソコンでも使えますか？",
   "oui-sur-https-app-scrini-fr-c-est-la-meme": "はい、https://app.scrini.fr で使えます。ブラウザで開くのは同じアプリなので、スマートフォンと同じアカウント、同じライブラリをそのまま使えます。インストールは不要です。ただし、公開通知はモバイルアプリだけの機能です。モバイルアプリがスマートフォンのシステムに通知を登録する仕組みのためです。",
   "peut-on-regarder-des-films-ou-des-series": "Scriniで映画やドラマを観られますか？",
-  "non-scrini-n-heberge-ne-diffuse-et-ne-lit": "いいえ。Scriniは動画コンテンツのホスティング、配信、再生を一切行いません。アプリで設定した国・地域で各作品を配信しているサービスを表示するので、契約しているサービスを開いて観てください。",
+  "non-scrini-n-heberge-ne-diffuse-et-ne-lit": "映画やドラマそのものは観られません。Scriniはそれらのホスティングや配信を一切行いません。アプリで設定した国・地域で各作品を配信しているサービスを表示するので、契約しているサービスを開いて観てください。アプリ内で観られるのは予告編だけで、YouTubeのプレーヤーで再生されます。",
   "faut-il-creer-un-compte-pour-utiliser": "Scriniを使うにはアカウント登録が必要ですか？",
   "oui-c-est-ce-qui-rattache-ta-bibliotheque": "はい。アカウントがあることで、ライブラリが端末ではなく利用者本人にひも付き、スマートフォンを替えても元どおりに引き継げます。ログインは、メールで届くコード、またはGoogleかAppleで行えます。コードでログインした場合に受け取るのはメールアドレスだけです。GoogleとAppleの場合は名前とプロフィール写真のURLも送られてきますが、アプリがそれを読み込んだり表示したりすることはありません。",
   "quelles-donnees-scrini-conserve-t-elle": "Scriniはどんなデータを保存しますか？",

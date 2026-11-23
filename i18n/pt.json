@@ -145,7 +145,7 @@
   "peut-on-utiliser-scrini-sur-ordinateur": "Dá para usar o Scrini no computador?",
   "oui-sur-https-app-scrini-fr-c-est-la-meme": "Sim, em https://app.scrini.fr: é o mesmo app, aberto no navegador, com a mesma conta e a mesma biblioteca do celular. Não precisa instalar nada. Já os alertas de lançamento continuam sendo coisa do app para celular, que os programa no sistema do aparelho.",
   "peut-on-regarder-des-films-ou-des-series": "Dá para assistir a filmes ou séries no Scrini?",
-  "non-scrini-n-heberge-ne-diffuse-et-ne-lit": "Não. O Scrini não hospeda, não transmite e não reproduz nenhum vídeo. Ele mostra as plataformas que oferecem cada título no país escolhido nas preferências do app; depois é só abrir aquela que você assina.",
+  "non-scrini-n-heberge-ne-diffuse-et-ne-lit": "Os filmes e séries em si, não: o Scrini não hospeda nem transmite nenhum deles. Ele mostra as plataformas que oferecem cada título no país escolhido nas preferências do app; depois é só abrir aquela que você assina. Só os trailers são assistidos dentro do app, no player do YouTube.",
   "faut-il-creer-un-compte-pour-utiliser": "Preciso criar uma conta para usar o Scrini?",
   "oui-c-est-ce-qui-rattache-ta-bibliotheque": "Sim: é a conta que liga sua biblioteca a você, e não a um aparelho, e que a devolve quando você troca de celular. O login é feito com um código recebido por e-mail, ou com o Google ou a Apple. O login por código só fornece seu endereço de e-mail, enquanto o Google e a Apple incluem seu nome e o endereço da sua foto de perfil — que o app não lê nem exibe.",
   "quelles-donnees-scrini-conserve-t-elle": "Quais dados o Scrini guarda?",
