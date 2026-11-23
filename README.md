@@ -1,9 +1,11 @@
 # scrini-site
 
 Pages publiques de l'application **Scrini**, servies par GitHub Pages sur
-[scrini.fr](https://scrini.fr) : la vitrine, la politique de confidentialité et
-la procédure de suppression de compte. Les deux dernières sont exigées par
-Google Play pour toute application permettant la création d'un compte.
+[scrini.fr](https://scrini.fr) : la vitrine, la politique de confidentialité, la
+procédure de suppression de compte et les mentions légales. La politique et la
+suppression sont exigées par Google Play pour toute application permettant la
+création d'un compte ; les mentions légales, par la LCEN (art. 1-1) pour tout
+site public.
 
 Ce dépôt ne contient que ces pages. Le code de l'application est ailleurs, dans
 un dépôt privé — c'est la raison d'être de celui-ci, GitHub Pages n'étant pas
@@ -14,14 +16,15 @@ disponible sur un dépôt privé.
 | `index.html` | Vitrine : accroche, badges des magasins, points forts, captures, crédits TMDB |
 | `confidentialite.html` | Politique de confidentialité (RGPD) |
 | `suppression-compte.html` | Procédure de suppression de compte |
+| `mentions-legales.html` | Mentions légales (LCEN) : éditeur, hébergeurs, crédits |
 | `questions-frequentes.html` | FAQ : réponses courtes, et balisage `FAQPage` |
 | `suivre-ses-series.html` | Page d'usage : cocher les épisodes, lire sa progression |
 | `agenda-sorties.html` | Page d'usage : l'agenda des diffusions et les alertes |
 | `suivre-ses-animes.html` | Page d'usage : le filtre animé et ses limites |
-| `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/` | Les mêmes sept pages, traduites — voir « Les langues » |
-| `templates/` | La structure des sept pages, écrite une seule fois — voir « Générer les pages » |
+| `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/` | Les mêmes huit pages, traduites — voir « Les langues » |
+| `templates/` | La structure des huit pages, écrite une seule fois — voir « Générer les pages » |
 | `i18n/*.json` | Les textes d'une langue, plus ce qui la décrit : badges, `og:locale`, nom |
-| `tools/build.mjs` | Écrit les 56 pages et `sitemap.xml` à partir des deux dossiers ci-dessus |
+| `tools/build.mjs` | Écrit les 64 pages et `sitemap.xml` à partir des deux dossiers ci-dessus |
 | `tools/serve.mjs` | Sert le site en local, pour le regarder avant de pousser |
 | `.claude/launch.json` | Lance ce serveur depuis l'onglet Code de Claude |
 | `style.css` | Feuille unique, sombre et clair, jetons repris du système de design de l'application |
@@ -40,7 +43,7 @@ disponible sur un dépôt privé.
 | `sitemap.xml` | Toutes les pages de toutes les langues — **généré**, ne pas éditer à la main |
 | `CNAME` | Le domaine, pour GitHub Pages |
 
-**Les sept pages, leurs sept traductions et `sitemap.xml` sont générés** — 57
+**Les huit pages, leurs sept traductions et `sitemap.xml` sont générés** — 65
 fichiers qui ne s'éditent pas à la main. Ils se corrigent dans `templates/` et
 `i18n/`, puis se réécrivent par `node tools/build.mjs` ; voir « Générer les
 pages ».
@@ -53,7 +56,7 @@ exceptions, mesurées — dans les trois cas, l'absence du script ou du fichier
 dégrade la page sans la casser :
 
 - **L'inverseur de thème** de l'en-tête, quelques lignes présentes dans chacun
-  des sept gabarits. Sans lui, le bouton n'apparaît pas et la page
+  des huit gabarits. Sans lui, le bouton n'apparaît pas et la page
   suit simplement le réglage du système (`prefers-color-scheme`). Avec lui, le
   choix est mémorisé en `localStorage` sous `scrini-theme` et posé en
   `data-theme` sur `<html>` avant le premier rendu, pour ne pas voir la page
@@ -86,6 +89,10 @@ dépôt.
 
 Plusieurs choses vivent ici en copie et se désynchronisent en silence :
 
+- **Les hébergeurs**, nommés avec leur adresse dans les mentions légales :
+  GitHub (ce site), Cloudflare (la version web), Supabase (les données). Un
+  changement d'hébergement se reporte là, et dans la politique de
+  confidentialité.
 - **L'icône** — quand l'identité change, recopier `design/scrini_icon_512.png`
   depuis le dépôt de l'application, puis **régénérer les trois images dérivées**
   qui en descendent : `scrini_icon_224.png`, `favicon.ico` et `og-scrini.png`
@@ -111,7 +118,7 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   de la réponse « Sur quels appareils » de la FAQ, qui nomment les deux
   plateformes et la version web.
 - **Le lien vers la version web** (`https://app.scrini.fr`), dans l'en-tête des
-  sept pages — et nulle part ailleurs qu'en toutes lettres dans la FAQ. Il n'a
+  huit pages — et nulle part ailleurs qu'en toutes lettres dans la FAQ. Il n'a
   pas sa place à côté des badges des magasins : ceux-là font installer une
   application, lui ouvre une page, et les aligner laisse croire à un troisième
   magasin. L'application est servie ailleurs — ce dépôt ne l'héberge pas et n'a
@@ -138,9 +145,9 @@ Plusieurs choses vivent ici en copie et se désynchronisent en silence :
   par une recherche. Une fonction retirée ou modifiée doit y être corrigée : une
   page qui promet ce que l'application ne fait plus se paie en désinstallations,
   et en signalements sur les magasins.
-- **L'en-tête, le pied de page et le script de thème** vivent dans les sept
-  gabarits de `templates/`, un par page. Un changement commun aux sept s'y
-  fait donc sept fois — mais plus cinquante-six.
+- **L'en-tête, le pied de page et le script de thème** vivent dans les huit
+  gabarits de `templates/`, un par page. Un changement commun aux huit s'y
+  fait donc huit fois — mais plus soixante-quatre.
 
 Le site tutoie, comme l'application. Les pages ne comparent pas Scrini à une
 application nommée. La publicité comparative est licite, mais suppose des
@@ -152,7 +159,7 @@ donc un usage, jamais un concurrent.
 
 Le site parle les langues de l'application : le français à la racine, et un
 dossier par autre langue — `en/`, `de/`, `es/`, `it/`, `pt/`, `ja/`, `ko/`.
-Chaque dossier porte **les sept mêmes fichiers, sous les mêmes noms** : on ne
+Chaque dossier porte **les huit mêmes fichiers, sous les mêmes noms** : on ne
 traduit pas les noms de fichiers, ce qui permet de passer d'une langue à
 l'autre en changeant seulement le dossier.
 
@@ -210,7 +217,7 @@ nomme une pile de polices du système (`:lang(ja)`, `:lang(ko)`).
 
 ## Générer les pages
 
-Les 56 fichiers HTML et `sitemap.xml` **ne s'éditent pas à la main** : ils sont
+Les 64 fichiers HTML et `sitemap.xml` **ne s'éditent pas à la main** : ils sont
 écrits par un script, à partir de deux sources.
 
 | Source | Ce qu'elle porte |
@@ -219,7 +226,7 @@ Les 56 fichiers HTML et `sitemap.xml` **ne s'éditent pas à la main** : ils son
 | `i18n/<langue>.json` | Les textes de cette langue, et ce qui la décrit (badges, `og:locale`, nom) |
 
 ```sh
-node tools/build.mjs          # écrit les 56 pages et sitemap.xml
+node tools/build.mjs          # écrit les 64 pages et sitemap.xml
 node tools/build.mjs --check  # n'écrit rien, sort en erreur si un fichier a dérivé
 node tools/serve.mjs          # http://localhost:4173, pour regarder le résultat
 ```

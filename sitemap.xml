@@ -2,282 +2,322 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://scrini.fr/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/en/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/en/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/en/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/de/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/de/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/de/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/es/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/es/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/es/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/it/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/it/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/it/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/pt/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/pt/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/pt/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/ja/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ja/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://scrini.fr/ja/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
+  </url>
+  <url>
     <loc>https://scrini.fr/ko/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/suivre-ses-series.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/agenda-sorties.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/suivre-ses-animes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/questions-frequentes.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/confidentialite.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://scrini.fr/ko/suppression-compte.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://scrini.fr/ko/mentions-legales.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.1</priority>
   </url>
 </urlset>

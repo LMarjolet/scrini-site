@@ -82,6 +82,9 @@
 <tr><td>Commenti agli episodi</td><td>Le tue note personali, visibili solo a te.</td></tr>
 <tr><td>Impostazioni della schermata iniziale: le righe che mantieni e il loro ordine</td><td>Ritrovare la tua home così come l'hai impostata, da un dispositivo all'altro. Non dicono nulla di ciò che guardi.</td></tr>
 <tr><td>Lingua dell'app (ad esempio italiano, inglese degli Stati Uniti)</td><td>Mostrare l'app, i titoli e le trame nella tua lingua su tutti i tuoi dispositivi. Viene ripresa dal tuo dispositivo al primo accesso e si può cambiare nelle impostazioni.</td></tr>
+<tr><td>Regioni del catalogo e del cinema (un paese ciascuna)</td><td>Mostrare ciò che esce e ciò che è in sala nel tuo paese, e dove guardare ogni titolo. Si impostano nelle impostazioni e, di default, seguono il paese del tuo dispositivo.</td></tr>
+<tr><td>Nome utente, se ne scegli uno</td><td>Chiamarti per nome nell'app. È unico e, per ora, nessun altro lo vede.</td></tr>
+<tr><td>Cronologia delle importazioni: origine, nome del file, titoli aggiunti e le righe del file non riconosciute</td><td>Poter annullare un’importazione e ritrovare ciò che non è stato possibile collegare a un titolo.</td></tr>
 </table>
 <p>La base giuridica di questi trattamenti è l'<b>esecuzione del servizio</b> che richiedi creando un account. Senza questi dati, l'app non ha ragione di esistere.</p>
 
@@ -93,13 +96,16 @@
 <h3>Il conteggio delle richieste al catalogo</h3>
 <p>Le schede di film e serie passano da un server relay (vedi TMDB più avanti). Perché un solo account non possa esaurire l'accesso di tutti, questo relay conta, <b>per account e per finestra di pochi minuti</b>, il numero di richieste che inoltra — un numero, nulla sul loro contenuto. Questo conteggio viene <b>cancellato ogni notte</b>. La base giuridica è il <b>legittimo interesse</b> a mantenere il servizio disponibile per tutti.</p>
 
+<h3>Senza account</h3>
+<p>«Continua senza account» apre una sessione anonima, che non contiene né indirizzo email né nome. Serve solo a sfogliare il catalogo, e il conteggio delle richieste descritto sopra vale anche per lei; non viene salvato nient'altro. Una sessione anonima inattiva da trenta giorni viene cancellata.</p>
+
 <h3>Ciò che non lascia mai il tuo telefono</h3>
 <p>Il tema scelto, l'attivazione degli avvisi di uscita e le immagini in cache restano sul dispositivo. Le notifiche sono <b>locali</b>: vengono programmate dall'app tramite il sistema, senza che alcun token o identificativo venga trasmesso a un servizio di notifica di terze parti.</p>
 
 <h3>Ciò che non raccogliamo</h3>
 <ul>
 <li>Nessuna misurazione dell'audience, nessuno strumento di analisi comportamentale.</li>
-<li>Nessun tracker né identificativo pubblicitario.</li>
+<li>Nessun tracker né identificativo pubblicitario da parte nostra. Solo Google può memorizzare informazioni sul tuo dispositivo, quando avvii un trailer o apri la versione web: vedi più avanti.</li>
 <li>Nessun dato di localizzazione.</li>
 <li>Nessun accesso ai tuoi contatti, ai tuoi file o alla tua fotocamera.</li>
 </ul>
@@ -108,7 +114,7 @@
 <section>
 <h2>Dove sono ospitati i tuoi dati</h2>
 <p>Il database e il servizio di autenticazione sono ospitati da <b>Supabase</b>, nella regione <b>eu-west-3 (Parigi, Francia)</b>: la tua libreria e il tuo account sono archiviati su server situati in Francia. Supabase è una società statunitense, la cui infrastruttura dati si trova in questo caso in Europa.</p>
-<p>L'unica eccezione è l'invio delle email di accesso, che esce dall'Unione europea, come spiegato più avanti.</p>
+<p>Alcuni servizi di terzi, descritti più avanti, ricevono comunque dei dati e possono trattarli fuori dall'Unione europea: l'invio delle email di accesso, l'accesso con Google o Apple se lo scegli, le locandine e le immagini, caricate dai server di TMDB, e i servizi di Google (trailer di YouTube, versione web).</p>
 <p>Ogni account è isolato a livello del database stesso: le regole di sicurezza del server consentono la lettura e la scrittura di una riga solo all'account che l'ha creata.</p>
 </section>
 
@@ -116,10 +122,15 @@
 <h2>I servizi di terze parti</h2>
 <h3>The Movie Database (TMDB)</h3>
 <p>Le schede di film e serie provengono da TMDB. Le tue richieste passano da un server relay che interroga TMDB <b>senza trasmettere la tua identità</b>: TMDB riceve la ricerca, mai l'informazione su chi la fa. La disponibilità in streaming proviene da JustWatch, tramite TMDB. Questa app utilizza l'API di TMDB ma non è approvata né certificata da TMDB.</p>
+<p>Le locandine e le immagini, invece, vengono caricate direttamente dai server di immagini di TMDB, che ricevono in quell'occasione il tuo indirizzo IP, ma né il tuo account né la tua libreria.</p>
 <h3>Resend (invio delle email)</h3>
-<p>I codici di accesso ti vengono inviati da <b>Resend</b>, società statunitense, che riceve in questa occasione il tuo indirizzo email e il codice. Non ha accesso né alla tua libreria né al resto dei tuoi dati. È l'unico trattamento per cui un dato che ti riguarda lascia l'Unione europea.</p>
+<p>I codici di accesso ti vengono inviati da <b>Resend</b>, società statunitense, che riceve in questa occasione il tuo indirizzo email e il codice. Non ha accesso né alla tua libreria né al resto dei tuoi dati.</p>
 <h3>Accesso con Google o Apple</h3>
 <p>Se scegli di accedere con un account Google o Apple, il fornitore interessato sa che accedi a Scrini e ci trasmette il tuo indirizzo email, il tuo nome e — per Google — l'indirizzo della tua foto profilo. Questi ultimi due non sono richiesti da nessuna funzione dell'app. Vengono conservati con il tuo account, senza essere letti né mostrati. Non riceviamo né la tua password né il contenuto del tuo account presso di loro. L'accesso con un codice ricevuto via email evita del tutto questo passaggio.</p>
+<h3>YouTube (trailer)</h3>
+<p>I trailer vengono riprodotti nel player integrato di YouTube, un servizio di Google, tramite i Servizi API di YouTube. Il player si carica solo quando avvii un trailer: prima, YouTube non riceve nulla. Appena lo avvii, Google riceve il video richiesto, il tuo indirizzo IP, la lingua scelta in Scrini e informazioni tecniche sul tuo browser o telefono, e può memorizzare o leggere informazioni sul tuo dispositivo (cookie, archiviazione locale), anche in modalità di privacy avanzata. YouTube può anche mostrare pubblicità nel suo player. Scrini non gli trasmette né la tua identità né la tua libreria. Avviando un trailer accetti i <a href="https://www.youtube.com/t/terms">Termini di servizio di YouTube</a>; ciò che Google fa di questi dati è regolato dalla sua <a href="https://policies.google.com/privacy">Informativa sulla privacy</a>. Perché non gli arrivi nulla, basta non avviare alcun trailer.</p>
+<h3>Versione web: servizi di Google</h3>
+<p>Nella versione web (app.scrini.fr), lo script di accesso di Google viene caricato dai suoi server non appena si apre l'app, che tu acceda con Google o no. Google riceve allora il tuo indirizzo IP e informazioni sul tuo browser; se in quel browser hai già effettuato l'accesso a un account Google, può anche leggere i propri cookie e sapere che hai aperto Scrini. Inoltre, il motore di visualizzazione della versione web e i suoi caratteri tipografici vengono scaricati dai server di Google, che ricevono in quell'occasione il tuo indirizzo IP. Le app per Android e iOS non effettuano nessuna di queste chiamate. Questi trattamenti sono regolati dall'<a href="https://policies.google.com/privacy">Informativa sulla privacy di Google</a>.</p>
 </section>
 
 <section>
@@ -162,6 +173,7 @@
 <a href="./">Home</a>
 <a href="questions-frequentes.html">Domande frequenti</a>
 <a href="suppression-compte.html">Elimina il tuo account</a>
+<a href="mentions-legales.html">Note legali</a>
 <a href="mailto:contact@scrini.fr">Contatti</a>
 <div class="tmdb"><img src="../assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>Questo prodotto utilizza l'API di TMDB ma non è approvato né certificato da TMDB.</span></div>
 </div>
