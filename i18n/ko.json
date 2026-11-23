@@ -312,6 +312,19 @@
   "youtube-bandes-annonces": "YouTube(예고편)",
   "p-les-bandes-annonces-sont-lues-dans-le": "<p>예고편은 Google 서비스인 YouTube의 내장 플레이어에서 YouTube API 서비스를 통해 재생돼요. 플레이어는 예고편을 재생할 때만 불러오며, 그 전에는 YouTube에 아무것도 전달되지 않아요. 재생을 시작하면 Google은 IP 주소, 기기 언어, 브라우저나 휴대폰에 관한 기술 정보를 받고, 개인 정보 보호 강화 모드에서도 기기에 정보를 저장하거나 읽을 수 있어요(쿠키, 로컬 저장소). Scrini는 내 신원이나 보관함을 Google에 넘기지 않아요. 예고편을 재생하면 <a href=\"https://www.youtube.com/t/terms\">YouTube 서비스 약관</a>에 동의하는 것이며, Google이 이 데이터를 어떻게 다루는지는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요. 아무것도 전달되지 않게 하려면 예고편을 재생하지 않으면 돼요.</p>",
   "version-web-google": "웹 버전: Google 서비스",
-  "p-sur-la-version-web-app-scrini-fr-la": "<p>웹 버전(app.scrini.fr)에서는 로그인 화면이 표시되자마자, 사용 여부와 관계없이 'Google로 로그인' 버튼을 Google 서버에서 불러와요. 이때 Google은 IP 주소와 브라우저 정보를 받아요. 그 브라우저에서 이미 Google 계정에 로그인되어 있다면, Google은 자체 쿠키를 읽어 내가 Scrini 로그인 화면을 열었다는 것을 알 수도 있어요. 또한 웹 버전의 화면 표시 엔진과 글꼴도 Google 서버에서 내려받으며, 이때 IP 주소가 Google에 전달돼요. Android 앱과 iOS 앱은 이런 통신을 전혀 하지 않아요. 이 처리는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요.</p>"
+  "p-sur-la-version-web-app-scrini-fr-la": "<p>웹 버전(app.scrini.fr)에서는 로그인 화면이 표시되자마자, 사용 여부와 관계없이 'Google로 로그인' 버튼을 Google 서버에서 불러와요. 이때 Google은 IP 주소와 브라우저 정보를 받아요. 그 브라우저에서 이미 Google 계정에 로그인되어 있다면, Google은 자체 쿠키를 읽어 내가 Scrini 로그인 화면을 열었다는 것을 알 수도 있어요. 또한 웹 버전의 화면 표시 엔진과 글꼴도 Google 서버에서 내려받으며, 이때 IP 주소가 Google에 전달돼요. Android 앱과 iOS 앱은 이런 통신을 전혀 하지 않아요. 이 처리는 <a href=\"https://policies.google.com/privacy\">Google 개인정보처리방침</a>을 따라요.</p>",
+  "mentions-legales-scrini": "법적 고지 — Scrini",
+  "qui-edite-scrini-et-qui-l-heberge": "Scrini와 scrini.fr의 운영자와 호스팅 업체.",
+  "mentions-legales": "법적 고지",
+  "p-class-maj-traduction-mentions-legales": "<p class=\"maj\">이 페이지는 번역본이에요. 기준이 되는 건 <a href=\"../mentions-legales.html\" hreflang=\"fr\" lang=\"fr\">프랑스어 원문</a>이에요.</p>",
+  "editeur": "운영자",
+  "p-le-site-scrini-fr-et-l-application": "<p>웹사이트 scrini.fr와 Scrini 앱은 <b>Louis Marjolet</b>가 운영하고 발행해요. 문의: <a href=\"mailto:contact@scrini.fr\">contact@scrini.fr</a></p>",
+  "hebergement": "호스팅",
+  "p-le-site-scrini-fr-est-heberge-par": "<p>웹사이트 scrini.fr 호스팅: <b>GitHub, Inc.</b>(GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, 미국</p>",
+  "p-la-version-web-de-l-application-app": "<p>앱의 웹 버전 app.scrini.fr 호스팅: <b>Cloudflare, Inc.</b>(Cloudflare Pages), 101 Townsend Street, San Francisco, CA 94107, 미국</p>",
+  "p-les-comptes-et-les-bibliotheques-sont": "<p>계정과 보관함은 <b>Supabase</b>가 파리에서 보관해요. 자세한 내용은 <a href=\"confidentialite.html\">개인정보처리방침</a>에 있어요.</p>",
+  "credits": "출처",
+  "p-les-fiches-affiches-et-images-des": "<p>영화와 시리즈의 정보, 포스터, 이미지는 <a href=\"https://www.themoviedb.org\">The Movie Database(TMDB)</a>에서 가져와요. 이 제품은 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지는 않았어요.</p>",
+  "p-google-play-et-le-logo-google-play": "<p>Google Play 및 Google Play 로고는 Google LLC의 상표예요. Apple, Apple 로고, App Store는 Apple Inc.의 상표예요.</p>"
  }
 }

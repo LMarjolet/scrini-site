@@ -7,7 +7,7 @@
 // deduit de la langue — chemins relatifs, URL canoniques, liens hreflang,
 // menu de langue, badges des magasins — est calcule, jamais recopie.
 //
-//   node tools/build.mjs          ecrit les 56 pages et sitemap.xml
+//   node tools/build.mjs          ecrit les 64 pages et sitemap.xml
 //   node tools/build.mjs --check  n'ecrit rien, signale ce qui differe
 //
 // --check sert de garde-fou : il echoue si les fichiers commites ne sont plus
@@ -26,7 +26,8 @@ const XDEFAULT = 'en';
 const SITE = 'https://scrini.fr/';
 
 const PAGES = ['index', 'agenda-sorties', 'suivre-ses-series', 'suivre-ses-animes',
-               'questions-frequentes', 'confidentialite', 'suppression-compte'];
+               'questions-frequentes', 'confidentialite', 'suppression-compte',
+               'mentions-legales'];
 
 const dirOf = l => l === 'fr' ? '' : l + '/';
 const preOf = l => l === 'fr' ? '' : '../';
@@ -122,7 +123,7 @@ function render(page, l){
   return html;
 }
 
-// Le plan du site : les sept pages dans les huit langues. L'application web
+// Le plan du site : les huit pages dans les huit langues. L'application web
 // n'y figure pas, elle est servie en noindex. L'ordre des langues et les
 // priorites sont des choix editoriaux, pas une consequence de la structure :
 // ils s'ecrivent ici, une fois.
@@ -135,15 +136,16 @@ const SITEMAP_PAGES = [
   ['questions-frequentes', '0.8'],
   ['confidentialite',      '0.3'],
   ['suppression-compte',   '0.3'],
+  ['mentions-legales',     '0.1'],
 ];
 // Date annoncee aux moteurs. Elle se change a la main : la recalculer a chaque
 // generation ferait mentir le fichier sur des pages qui n'ont pas bouge.
-const LASTMOD = '2026-11-20';
+const LASTMOD = '2026-11-23';
 
 // Les deux listes ci-dessus ne font qu'ordonner : elles doivent porter
 // exactement les memes langues et les memes pages que le site. Sans ce
 // controle, ajouter une langue a MENU seul la publierait sans l'annoncer, et
-// l'oublier dans MENU ferait annoncer sept URL inexistantes.
+// l'oublier dans MENU ferait annoncer huit URL inexistantes.
 const memeEnsemble = (a, b) =>
   a.length === b.length && [...a].sort().join() === [...b].sort().join();
 if (!memeEnsemble(SITEMAP_ORDER, MENU))

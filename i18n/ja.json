@@ -312,6 +312,19 @@
   "youtube-bandes-annonces": "YouTube（予告編）",
   "p-les-bandes-annonces-sont-lues-dans-le": "<p>予告編は、GoogleのサービスであるYouTubeの埋め込みプレーヤーで、YouTube APIサービスを通じて再生されます。プレーヤーは予告編を再生したときにだけ読み込まれ、それまでYouTubeには何も送信されません。再生を始めると、GoogleはIPアドレス、端末の言語、ブラウザやスマートフォンに関する技術情報を受け取り、プライバシー強化モードでも端末に情報を保存したり読み取ったりすることがあります（Cookie、ローカルストレージ）。Scriniが利用者の身元やライブラリをGoogleに渡すことはありません。予告編を再生すると、<a href=\"https://www.youtube.com/t/terms\">YouTube利用規約</a>に同意したことになります。Googleによるこれらのデータの取り扱いは、<a href=\"https://policies.google.com/privacy\">Googleプライバシーポリシー</a>に従います。何も送信されないようにするには、予告編を再生しないでください。</p>",
   "version-web-google": "ウェブ版：Googleのサービス",
-  "p-sur-la-version-web-app-scrini-fr-la": "<p>ウェブ版（app.scrini.fr）では、ログイン画面が表示されると同時に、使うかどうかにかかわらず「Googleでログイン」ボタンがGoogleのサーバーから読み込まれます。その際、GoogleはIPアドレスとブラウザに関する情報を受け取ります。そのブラウザですでにGoogleアカウントにログインしている場合は、Google自身のCookieを読み取り、Scriniのログイン画面を開いたことを知ることもできます。また、ウェブ版の描画エンジンとフォントもGoogleのサーバーからダウンロードされ、その際にIPアドレスがGoogleに送られます。AndroidアプリとiOSアプリは、これらの通信を一切行いません。これらの取り扱いは<a href=\"https://policies.google.com/privacy\">Googleプライバシーポリシー</a>に従います。</p>"
+  "p-sur-la-version-web-app-scrini-fr-la": "<p>ウェブ版（app.scrini.fr）では、ログイン画面が表示されると同時に、使うかどうかにかかわらず「Googleでログイン」ボタンがGoogleのサーバーから読み込まれます。その際、GoogleはIPアドレスとブラウザに関する情報を受け取ります。そのブラウザですでにGoogleアカウントにログインしている場合は、Google自身のCookieを読み取り、Scriniのログイン画面を開いたことを知ることもできます。また、ウェブ版の描画エンジンとフォントもGoogleのサーバーからダウンロードされ、その際にIPアドレスがGoogleに送られます。AndroidアプリとiOSアプリは、これらの通信を一切行いません。これらの取り扱いは<a href=\"https://policies.google.com/privacy\">Googleプライバシーポリシー</a>に従います。</p>",
+  "mentions-legales-scrini": "法的情報 — Scrini",
+  "qui-edite-scrini-et-qui-l-heberge": "Scriniとscrini.frの運営者とホスティング事業者。",
+  "mentions-legales": "法的情報",
+  "p-class-maj-traduction-mentions-legales": "<p class=\"maj\">これは翻訳です。このページは<a href=\"../mentions-legales.html\" hreflang=\"fr\" lang=\"fr\">フランス語版</a>が正本です。</p>",
+  "editeur": "運営者",
+  "p-le-site-scrini-fr-et-l-application": "<p>ウェブサイトscrini.frとアプリScriniは、<b>Louis Marjolet</b>が運営・発行しています。お問い合わせ：<a href=\"mailto:contact@scrini.fr\">contact@scrini.fr</a></p>",
+  "hebergement": "ホスティング",
+  "p-le-site-scrini-fr-est-heberge-par": "<p>ウェブサイトscrini.frのホスティング：<b>GitHub, Inc.</b>（GitHub Pages）、88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, アメリカ合衆国</p>",
+  "p-la-version-web-de-l-application-app": "<p>アプリのウェブ版app.scrini.frのホスティング：<b>Cloudflare, Inc.</b>（Cloudflare Pages）、101 Townsend Street, San Francisco, CA 94107, アメリカ合衆国</p>",
+  "p-les-comptes-et-les-bibliotheques-sont": "<p>アカウントとライブラリは<b>Supabase</b>がパリで保管しています。詳しくは<a href=\"confidentialite.html\">プライバシーポリシー</a>をご覧ください。</p>",
+  "credits": "クレジット",
+  "p-les-fiches-affiches-et-images-des": "<p>映画やドラマの情報、ポスター、画像は<a href=\"https://www.themoviedb.org\">The Movie Database（TMDB）</a>から提供されています。本製品はTMDB APIを使用していますが、TMDBによる承認や認定を受けたものではありません。</p>",
+  "p-google-play-et-le-logo-google-play": "<p>Google PlayおよびGoogle PlayロゴはGoogle LLCの商標です。Apple、AppleロゴおよびApp StoreはApple Inc.の商標です。</p>"
  }
 }
