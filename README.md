@@ -24,12 +24,14 @@ disponible sur un dépôt privé.
 | `tools/build.mjs` | Écrit les 56 pages et `sitemap.xml` à partir des deux dossiers ci-dessus |
 | `style.css` | Feuille unique, sombre et clair, jetons repris du système de design de l'application |
 | `assets/icons.svg` | Les icônes, un `<symbol>` chacune, référencées par `<use>` |
+| `assets/fonts/*.woff2` | Roboto auto-hébergé, latin et latin-ext — aucun appel à Google Fonts |
+| `assets/scrini-logo-64.png` | Le logo de l'en-tête, 6,6 Ko, rendu en 64 px pour un affichage en 32 |
 | `assets/ecran-*.jpg` | Captures de l'application, 1080×2400 |
 | `assets/scrini_background*.jpg` | Le fond de l'application, en sombre et en clair |
 | `assets/badge-*.svg`, `assets/badge-*.png` | Badges officiels Google Play et App Store, un par langue, à ne pas redessiner ni recolorer |
 | `assets/tmdb_logo.svg` | Logo TMDB, pour le crédit obligatoire du pied de page |
 | `scrini_icon.png` | Icône 512 px, copie de `design/scrini_icon_512.png` : la source |
-| `scrini_icon_224.png` | La même en 224 px, sans alpha — c'est elle que les pages chargent |
+| `scrini_icon_224.png` | La même en 224 px, sans alpha — la favicon déclarée par `rel="icon"` |
 | `og-scrini.png` | Carte de partage 1200×630, pour les aperçus sur les réseaux |
 | `favicon.ico` | 16/32/48 px, pour les clients qui le demandent à la racine |
 | `robots.txt` | Autorise l'indexation et déclare le plan du site |
@@ -61,15 +63,22 @@ dégrade la page sans la casser :
   page, pas la bande. Le script ne s'active que pour un pointeur de type
   souris et que si la bande déborde ; sans lui, restent la molette horizontale
   et `Maj`+molette.
-- **Roboto, depuis Google Fonts**, parce que c'est la police de l'application.
-  Si elle ne vient pas, la pile de repli (Helvetica, Arial) prend le relais et
-  rien ne casse. C'est pour cette raison que les icônes ne sont *pas* une
-  police d'icônes : une police d'icônes absente affiche « movie » en toutes
-  lettres. Elles sont des SVG (`assets/icons.svg`, tirés de Material Symbols
-  Rounded), qui ne dépendent de rien.
+- **Roboto**, parce que c'est la police de l'application. Elle est
+  **auto-hébergée** dans `assets/fonts/` : quatre fichiers `woff2` pris chez
+  Google Fonts (licence Apache 2.0), sous-ensembles latin et latin-ext
+  seulement. Elle arrivait auparavant par un `@import` vers
+  `fonts.googleapis.com` dans `style.css` — soit trois allers-retours en série
+  avant le premier caractère, et l'adresse IP de chaque visiteur envoyée à
+  Google. Si un fichier manque, la pile de repli (Helvetica, Arial) prend le
+  relais et rien ne casse. C'est pour cette raison que les icônes ne sont
+  *pas* une police d'icônes : une police d'icônes absente affiche « movie » en
+  toutes lettres. Elles sont des SVG (`assets/icons.svg`, tirés de Material
+  Symbols Rounded), qui ne dépendent de rien.
 
-Pas de script de build, pas de dépendance npm : ce qui est servi est ce qui
-est dans le dépôt.
+Le site ne fait **aucune requête vers un domaine tiers**. Aucune dépendance
+npm non plus : le seul script du dépôt, `tools/build.mjs`, s'exécute avant le
+commit, jamais chez le visiteur. Ce qui est servi est ce qui est dans le
+dépôt.
 
 ## Ce qui doit suivre l'application
 
@@ -167,8 +176,8 @@ portugais, forme polie en japonais, 해요체 en coréen. Un libellé renommé d
 l'application se renomme ici aussi, dans chaque langue.
 
 Ce qui est propre à chaque page est **calculé** par `tools/build.mjs`, à une
-exception près, signalée plus bas : l'URL du magasin Google Play, déclarée
-langue par langue.
+exception près, signalée plus bas : les URL des deux magasins, déclarées
+langue par langue parce qu'elles ne se déduisent pas du code de langue.
 
 - **Les liens `hreflang`** de l'en-tête HTML (les huit langues, plus
   `x-default` vers l'anglais, langue de repli de l'application) et les
@@ -187,11 +196,8 @@ langue par langue.
   URL, le fichier, ses dimensions et son texte alternatif sont déclarés dans
   `i18n/<langue>.json`, puisqu'ils changent d'une langue à l'autre — y compris
   le `&hl=`, qui ne se déduit pas du code de langue (`pt/` demande `hl=pt-BR`).
-  Deux détails hérités des pages écrites à la main y attendent une passe :
-  l'esperluette est échappée en `&amp;` pour `en` et `es` seulement, et
-  `inLanguage` du bloc JSON-LD de l'accueil liste les huit langues en dur dans
-  `templates/index.html`. Les corriger changerait le HTML publié, donc ce sera
-  un commit à part.
+  L'esperluette s'y écrit `&amp;` : nue, c'est une erreur de conformité dans
+  un attribut, que les navigateurs rattrapent sans le dire.
 
 Restent en français, faute de mieux, **les captures** et **la carte de
 partage** `og-scrini.png`, communes à toutes les langues. Des captures par
@@ -227,7 +233,7 @@ Un gabarit est du HTML ordinaire, avec quatre sortes de marques :
 |---|---|
 | `{{une-cle}}` | Le texte de cette clé, pris dans `i18n/<langue>.json` |
 | `{{?une-cle}}` | Pareil, mais la ligne entière disparaît si la clé vaut `null` — c'est ainsi que l'avertissement « ceci est une traduction » n'apparaît pas en français |
-| `{{@prefix}}`, `{{@dir}}`, `{{@lang}}`, `{{@htmlLang}}`, `{{@locale}}` | Ce qui se déduit de la langue seule |
+| `{{@prefix}}`, `{{@dir}}`, `{{@lang}}`, `{{@htmlLang}}`, `{{@locale}}`, `{{@inLanguage}}` | Ce qui se déduit de la langue, ou de la liste des langues |
 | `{{#hreflangLinks}}`, `{{#ogLocales}}`, `{{#langMenu}}`, `{{#storeBadges}}` | Un bloc entier, reconstruit ligne à ligne |
 
 Les clés sont nommées d'après le texte français qu'elles portaient à
@@ -243,15 +249,24 @@ un trou : une traduction oubliée arrête la génération au lieu d'être publi�
 magasin dans `assets/`. **Ajouter une page** : un gabarit dans `templates/`,
 son nom dans `PAGES`, et son entrée dans `SITEMAP_PAGES` avec sa priorité.
 
+Dans les deux cas, oublier la seconde liste **arrête la génération** : les
+paires `MENU`/`SITEMAP_ORDER` et `PAGES`/`SITEMAP_PAGES` doivent porter les
+mêmes éléments, sans quoi le plan du site annoncerait des URL inexistantes ou
+en tairait. Le reste suit tout seul — liens `hreflang`, menu de langue,
+`og:locale` et `inLanguage` du bloc JSON-LD se dérivent de `MENU`.
+
 La date annoncée aux moteurs (`LASTMOD`) se change à la main. La recalculer à
 chaque génération ferait mentir `sitemap.xml` sur des pages qui n'ont pas bougé.
 
 ## Refaire les images dérivées
 
-Il n'y a pas de script dans ce dépôt, et il ne doit pas y en avoir. Les images
-se refont donc à la main, avec n'importe quel éditeur, à partir de
-`scrini_icon.png`.
+`tools/build.mjs` écrit du HTML, pas des images : celles-ci se refont à la
+main, avec n'importe quel éditeur, à partir de `scrini_icon.png`.
 
+- **`assets/scrini-logo-64.png`** — le logo de l'en-tête, affiché en 32 px donc
+  rendu en 64 pour les écrans à deux fois la densité. 6,6 Ko. L'en-tête
+  chargeait auparavant `scrini_icon_224.png`, soit 74 Ko pour un logo de
+  32 px, et le fichier partait deux fois : comme favicon et comme logo.
 - **`scrini_icon_224.png`** — l'icône réduite à 224 px, et **sans canal alpha** :
   la source est entièrement opaque, son alpha ne transportait que du poids.
   C'est ce qui fait passer le fichier de 324 Ko à 74 Ko. Un encodeur PNG

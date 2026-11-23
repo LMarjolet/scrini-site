@@ -3,7 +3,7 @@
  "htmlLang": "pt-BR",
  "ogLocale": "pt_BR",
  "play": {
-  "href": "https://play.google.com/store/apps/details?id=com.scrini.app&hl=pt-BR",
+  "href": "https://play.google.com/store/apps/details?id=com.scrini.app&amp;hl=pt-BR",
   "src": "assets/badge-google-play-pt.png",
   "alt": "Disponível no Google Play",
   "width": "646",
