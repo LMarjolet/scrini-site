@@ -82,6 +82,7 @@
 <tr><td>Comentários de episódio</td><td>Suas anotações pessoais, visíveis só para você.</td></tr>
 <tr><td>Configurações da tela inicial: as seções que você mantém e a ordem delas</td><td>Encontrar sua tela inicial do jeito que você a deixou, de um aparelho para outro. Elas não dizem nada sobre o que você assiste.</td></tr>
 <tr><td>Idioma do app (por exemplo, português do Brasil, inglês dos Estados Unidos)</td><td>Exibir o app, os títulos e as sinopses no seu idioma em todos os seus aparelhos. Ele é copiado do seu aparelho no primeiro login e pode ser mudado nas configurações.</td></tr>
+<tr><td>Regiões do catálogo e dos cinemas (um país cada)</td><td>Mostrar o que está sendo lançado e o que está em cartaz no seu país, e onde assistir a cada título. Elas são definidas nas configurações e, por padrão, seguem o país do seu aparelho.</td></tr>
 </table>
 <p>A base legal desses tratamentos é a <b>execução do serviço</b> que você solicita ao criar uma conta. Sem esses dados, o app não tem razão de ser.</p>
 
@@ -92,6 +93,9 @@
 
 <h3>A contagem das consultas ao catálogo</h3>
 <p>As fichas de filmes e séries passam por um servidor intermediário (veja TMDB mais abaixo). Para que uma única conta não possa esgotar o acesso de todo mundo, esse intermediário conta, <b>por conta e por janela de alguns minutos</b>, o número de requisições que repassa — um número, nada sobre o conteúdo delas. Essa contagem é <b>apagada toda noite</b>. A base legal é o <b>interesse legítimo</b> em manter o serviço disponível para todos.</p>
+
+<h3>Sem conta</h3>
+<p>“Continuar sem conta” abre uma sessão anônima, que não tem endereço de e-mail nem nome. Ela serve apenas para navegar pelo catálogo, e a contagem de consultas descrita acima também se aplica a ela; nada mais é guardado. Uma sessão anônima inativa há trinta dias é apagada.</p>
 
 <h3>O que nunca sai do seu celular</h3>
 <p>O tema escolhido, a ativação dos alertas de lançamento e as imagens em cache ficam no aparelho. As notificações são <b>locais</b>: elas são programadas pelo app no sistema, sem que nenhum token ou identificador seja enviado a um serviço de notificação de terceiros.</p>
@@ -108,7 +112,7 @@
 <section>
 <h2>Onde seus dados ficam hospedados</h2>
 <p>O banco de dados e o serviço de autenticação são hospedados pela <b>Supabase</b>, na região <b>eu-west-3 (Paris, França)</b>: sua biblioteca e sua conta ficam armazenadas em servidores localizados na França. A Supabase é uma empresa americana, cuja infraestrutura de dados fica, neste caso, na Europa.</p>
-<p>As exceções, que saem da União Europeia, são o envio dos e-mails de login e os serviços do Google que você usa — login com o Google, trailers do YouTube, versão web —, como explicado mais abaixo.</p>
+<p>Alguns serviços de terceiros, descritos mais abaixo, recebem no entanto dados e podem tratá-los fora da União Europeia: o envio dos e-mails de login, o login com o Google ou a Apple, se você escolher, os pôsteres e as imagens, carregados dos servidores do TMDB, e os serviços do Google (trailers do YouTube, versão web).</p>
 <p>Cada conta é isolada no nível do próprio banco de dados: as regras de segurança do servidor só permitem ler e gravar uma linha à conta que a criou.</p>
 </section>
 
@@ -116,14 +120,15 @@
 <h2>Os serviços de terceiros</h2>
 <h3>The Movie Database (TMDB)</h3>
 <p>As fichas de filmes e séries vêm do TMDB. Suas requisições passam por um servidor intermediário que consulta o TMDB <b>sem transmitir sua identidade</b>: o TMDB recebe a busca, nunca a informação de quem a fez. A disponibilidade nos streamings vem do JustWatch, via TMDB. Este app usa a API do TMDB, mas não é endossado nem certificado pelo TMDB.</p>
+<p>Já os pôsteres e as imagens são carregados diretamente dos servidores de imagens do TMDB, que recebem nessa ocasião seu endereço IP, mas não sua conta nem sua biblioteca.</p>
 <h3>Resend (envio dos e-mails)</h3>
 <p>Os códigos de login são enviados a você pela <b>Resend</b>, empresa americana, que recebe nessa ocasião seu endereço de e-mail e o código. Ela não tem acesso à sua biblioteca nem ao restante dos seus dados.</p>
 <h3>Login com Google ou Apple</h3>
 <p>Se você escolher entrar com uma conta Google ou Apple, o provedor em questão fica sabendo que você entra no Scrini e nos envia seu endereço de e-mail, seu nome e — no caso do Google — o endereço da sua foto de perfil. Esses dois últimos dados não são pedidos por nenhuma função do app. Eles são guardados com a sua conta, sem serem lidos nem exibidos. Não recebemos sua senha nem o conteúdo da sua conta nesses serviços. O login com código recebido por e-mail evita totalmente essa etapa.</p>
 <h3>YouTube (trailers)</h3>
-<p>Os trailers são reproduzidos no player incorporado do YouTube, um serviço do Google, por meio dos Serviços de API do YouTube. O player só é carregado quando você inicia um trailer: antes disso, o YouTube não recebe nada. Assim que você o inicia, o Google recebe seu endereço IP, o idioma do seu dispositivo e informações técnicas sobre seu navegador ou celular, e pode armazenar ou ler informações no seu dispositivo (cookies, armazenamento local), inclusive no modo de privacidade aprimorada. O Scrini não transmite a ele nem sua identidade nem sua biblioteca. Ao iniciar um trailer, você aceita os <a href="https://www.youtube.com/t/terms">Termos de Serviço do YouTube</a>; o que o Google faz com esses dados é regido pela <a href="https://policies.google.com/privacy">Política de Privacidade</a> dele. Para que nada chegue a ele, basta não iniciar nenhum trailer.</p>
+<p>Os trailers são reproduzidos no player incorporado do YouTube, um serviço do Google, por meio dos Serviços de API do YouTube. O player só é carregado quando você inicia um trailer: antes disso, o YouTube não recebe nada. Assim que você o inicia, o Google recebe o vídeo solicitado, seu endereço IP, o idioma escolhido no Scrini e informações técnicas sobre seu navegador ou celular, e pode armazenar ou ler informações no seu dispositivo (cookies, armazenamento local), inclusive no modo de privacidade aprimorada. O YouTube também pode exibir anúncios no player. O Scrini não transmite a ele nem sua identidade nem sua biblioteca. Ao iniciar um trailer, você aceita os <a href="https://www.youtube.com/t/terms">Termos de Serviço do YouTube</a>; o que o Google faz com esses dados é regido pela <a href="https://policies.google.com/privacy">Política de Privacidade</a> dele. Para que nada chegue a ele, basta não iniciar nenhum trailer.</p>
 <h3>Versão web: serviços do Google</h3>
-<p>Na versão web (app.scrini.fr), a página de login carrega o botão “Fazer login com o Google” dos servidores do Google assim que é exibida, quer você o use ou não. O Google recebe então seu endereço IP e informações sobre seu navegador; se você já estiver conectado a uma conta do Google nesse navegador, ele também pode ler os próprios cookies e saber que você abriu a página de login do Scrini. Além disso, o mecanismo de exibição da versão web e sua fonte são baixados dos servidores do Google, que recebem nessa ocasião seu endereço IP. Os apps para Android e iOS não fazem nenhuma dessas chamadas. Esses tratamentos são regidos pela <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</p>
+<p>Na versão web (app.scrini.fr), a página de login carrega o botão de login do Google dos servidores dele assim que é exibida, quer você o use ou não. O Google recebe então seu endereço IP e informações sobre seu navegador; se você já estiver conectado a uma conta do Google nesse navegador, ele também pode ler os próprios cookies e saber que você abriu a página de login do Scrini. Além disso, o mecanismo de exibição da versão web e suas fontes são baixados dos servidores do Google, que recebem nessa ocasião seu endereço IP. Os apps para Android e iOS não fazem nenhuma dessas chamadas. Esses tratamentos são regidos pela <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</p>
 </section>
 
 <section>

@@ -82,6 +82,7 @@
 <tr><td>Episode comments</td><td>Your personal notes, visible only to you.</td></tr>
 <tr><td>Home screen settings: the rows you keep, and their order</td><td>To bring back your home screen just as you set it up, from one device to another. They say nothing about what you watch.</td></tr>
 <tr><td>App language (for example French (France), English (US))</td><td>To show the app, titles and synopses in your language on all your devices. It's taken from your device the first time you sign in, and you can change it in the settings.</td></tr>
+<tr><td>Catalog and theater regions (one country each)</td><td>Show what's coming out and what's playing in theaters in your country, and where to watch each title. They're set in Settings, and follow your device's country by default.</td></tr>
 </table>
 <p>The legal basis for this processing is the <b>performance of the service</b> you request by creating an account. Without this data, the app has no purpose.</p>
 
@@ -92,6 +93,9 @@
 
 <h3>Counting catalog requests</h3>
 <p>Movie and TV show pages go through a relay server (see TMDB below). So that a single account can't use up everyone's access, this relay counts, <b>per account and per window of a few minutes</b>, the number of requests it forwards — a number, nothing about their content. This count is <b>deleted every night</b>. The legal basis is our <b>legitimate interest</b> in keeping the service available to everyone.</p>
+
+<h3>Without an account</h3>
+<p>“Continue without an account” opens an anonymous session, which carries no email address or name. It's only used to browse the catalog, and the request count described above applies to it; nothing else is stored. An anonymous session inactive for thirty days is deleted.</p>
 
 <h3>What never leaves your phone</h3>
 <p>Your chosen theme, whether release alerts are turned on, and cached images stay on the device. Notifications are <b>local</b>: the app schedules them with the system, without any token or identifier being sent to a third-party notification service.</p>
@@ -108,7 +112,7 @@
 <section>
 <h2>Where your data is hosted</h2>
 <p>The database and the authentication service are hosted by <b>Supabase</b>, in the <b>eu-west-3 (Paris, France)</b> region: your library and your account are stored on servers located in France. Supabase is an American company, whose data infrastructure here is in Europe.</p>
-<p>The exceptions, which leave the European Union, are the delivery of sign-in emails and the Google services you use — Google sign-in, YouTube trailers, the web version — as explained below.</p>
+<p>Some third-party services, described below, do receive data and may process it outside the European Union: the delivery of sign-in emails, Google or Apple sign-in if you choose it, posters and images, loaded from TMDB's servers, and Google services (YouTube trailers, the web version).</p>
 <p>Each account is isolated at the database level itself: the server's security rules only allow a row to be read and written by the account that created it.</p>
 </section>
 
@@ -116,14 +120,15 @@
 <h2>Third-party services</h2>
 <h3>The Movie Database (TMDB)</h3>
 <p>Movie and TV show pages come from TMDB. Your requests go through a relay server that queries TMDB <b>without passing on your identity</b>: TMDB receives the search, never who made it. Streaming availability comes from JustWatch, via TMDB. This app uses the TMDB API but is not endorsed or certified by TMDB.</p>
+<p>Posters and images, however, are loaded directly from TMDB's image servers, which receive your IP address in the process — but neither your account nor your library.</p>
 <h3>Resend (sending emails)</h3>
 <p>Sign-in codes are sent to you by <b>Resend</b>, an American company, which receives your email address and the code for that purpose. It has no access to your library or to the rest of your data.</p>
 <h3>Signing in with Google or Apple</h3>
 <p>If you choose to sign in with a Google or Apple account, that provider knows you're signing in to Scrini and sends us your email address, your name and — for Google — the address of your profile picture. None of the app's features ask for the last two. They're kept with your account, without being read or displayed. We never receive your password or the contents of your account with them. Signing in with a code sent by email avoids this step entirely.</p>
 <h3>YouTube (trailers)</h3>
-<p>Trailers play in YouTube's embedded player, a Google service, through the YouTube API Services. The player only loads when you start a trailer: until then, YouTube receives nothing. As soon as you start one, Google receives your IP address, your device's language and technical information about your browser or phone, and may store or read information on your device (cookies, local storage), even in privacy-enhanced mode. Scrini passes on neither your identity nor your library. By starting a trailer, you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>; what Google does with this data is governed by its <a href="https://policies.google.com/privacy">Privacy Policy</a>. To keep anything from reaching it, simply don't start a trailer.</p>
+<p>Trailers play in YouTube's embedded player, a Google service, through the YouTube API Services. The player only loads when you start a trailer: until then, YouTube receives nothing. As soon as you start one, Google receives the requested video, your IP address, the language chosen in Scrini and technical information about your browser or phone, and may store or read information on your device (cookies, local storage), even in privacy-enhanced mode. YouTube may also show ads in its player. Scrini passes on neither your identity nor your library. By starting a trailer, you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>; what Google does with this data is governed by its <a href="https://policies.google.com/privacy">Privacy Policy</a>. To keep anything from reaching it, simply don't start a trailer.</p>
 <h3>Web version: Google services</h3>
-<p>On the web version (app.scrini.fr), the sign-in page loads the “Sign in with Google” button from Google's servers as soon as it appears, whether you use it or not. Google then receives your IP address and information about your browser; if you are already signed in to a Google account in that browser, it can also read its own cookies and learn that you opened Scrini's sign-in page. The web version's rendering engine and its font are also downloaded from Google's servers, which receive your IP address in the process. The Android and iOS apps make none of these calls. This processing is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+<p>On the web version (app.scrini.fr), the sign-in page loads Google's sign-in button from Google's servers as soon as it appears, whether you use it or not. Google then receives your IP address and information about your browser; if you are already signed in to a Google account in that browser, it can also read its own cookies and learn that you opened Scrini's sign-in page. The web version's rendering engine and its fonts are also downloaded from Google's servers, which receive your IP address in the process. The Android and iOS apps make none of these calls. This processing is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 </section>
 
 <section>

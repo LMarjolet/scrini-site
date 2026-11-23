@@ -81,6 +81,7 @@
 <tr><td>Commentaires d'épisode</td><td>Tes notes personnelles, visibles de toi seul.</td></tr>
 <tr><td>Réglages de l'écran d'accueil : les rangées que tu gardes, et leur ordre</td><td>Retrouver ton accueil tel que tu l'as réglé, d'un appareil à l'autre. Ils ne disent rien de ce que tu regardes.</td></tr>
 <tr><td>Langue de l'application (par exemple français de France, anglais des États-Unis)</td><td>Afficher l'application, les titres et les synopsis dans ta langue sur tous tes appareils. Elle est reprise de ton appareil à la première connexion, et se change dans les réglages.</td></tr>
+<tr><td>Régions du catalogue et du cinéma (un pays chacune)</td><td>Montrer ce qui sort et ce qui passe en salle dans ton pays, et où regarder chaque titre. Elles se règlent dans les paramètres, et suivent par défaut le pays de ton appareil.</td></tr>
 </table>
 <p>La base légale de ces traitements est l'<b>exécution du service</b> que tu demandes en créant un compte. Sans ces données, l'application n'a pas d'objet.</p>
 
@@ -92,13 +93,16 @@
 <h3>Le décompte des appels au catalogue</h3>
 <p>Les fiches de films et de séries passent par un serveur relais (voir TMDB plus bas). Pour qu'un seul compte ne puisse pas épuiser l'accès de tout le monde, ce relais compte, <b>par compte et par fenêtre de quelques minutes</b>, le nombre de requêtes qu'il transmet — un nombre, rien sur leur contenu. Ce décompte est <b>effacé chaque nuit</b>. La base légale est l'<b>intérêt légitime</b> à garder le service disponible pour tous.</p>
 
+<h3>Sans compte</h3>
+<p>« Continuer sans compte » ouvre une session anonyme, qui ne porte ni adresse email ni nom. Elle ne sert qu'à parcourir le catalogue, et le décompte des appels décrit plus haut s'y applique ; rien d'autre n'y est enregistré. Une session anonyme inactive depuis trente jours est effacée.</p>
+
 <h3>Ce qui ne quitte jamais ton téléphone</h3>
 <p>Le thème choisi, l'activation des alertes de sorties et les images mises en cache restent sur l'appareil. Les notifications sont <b>locales</b> : elles sont programmées par l'application auprès du système, sans qu'aucun jeton ni identifiant ne soit transmis à un service de notification tiers.</p>
 
 <h3>Ce que nous ne collectons pas</h3>
 <ul>
 <li>Aucune mesure d'audience, aucun outil d'analyse comportementale.</li>
-<li>Aucun traceur ni identifiant publicitaire de notre part. Seul Google peut déposer des informations sur ton appareil, quand tu lances une bande-annonce ou ouvres la version web — voir plus bas.</li>
+<li>Aucun traceur ni identifiant publicitaire de notre part. Seul Google peut déposer des informations sur ton appareil, quand tu lances une bande-annonce ou que tu ouvres la version web — voir plus bas.</li>
 <li>Aucune donnée de localisation.</li>
 <li>Aucun accès à tes contacts, à tes fichiers ou à ton appareil photo.</li>
 </ul>
@@ -107,7 +111,7 @@
 <section>
 <h2>Où tes données sont hébergées</h2>
 <p>La base de données et le service d'authentification sont hébergés par <b>Supabase</b>, dans la région <b>eu-west-3 (Paris, France)</b> : ta bibliothèque et ton compte sont stockés sur des serveurs situés en France. Supabase est une société américaine, dont l'infrastructure de données se trouve ici en Europe.</p>
-<p>Font exception, et sortent de l'Union européenne, l'acheminement des emails de connexion et les services de Google que tu utilises — connexion avec Google, bandes-annonces YouTube, version web —, comme expliqué plus bas.</p>
+<p>Certains services tiers, décrits plus bas, reçoivent toutefois des données et peuvent les traiter hors de l'Union européenne : l'envoi des emails de connexion, la connexion avec Google ou Apple si tu la choisis, les affiches et images des fiches, chargées depuis les serveurs de TMDB, et les services de Google (bandes-annonces YouTube, version web).</p>
 <p>Chaque compte est cloisonné au niveau de la base elle-même : les règles de sécurité du serveur n'autorisent la lecture et l'écriture d'une ligne qu'au compte qui l'a créée.</p>
 </section>
 
@@ -115,14 +119,15 @@
 <h2>Les services tiers</h2>
 <h3>The Movie Database (TMDB)</h3>
 <p>Les fiches de films et de séries proviennent de TMDB. Tes requêtes passent par un serveur relais qui interroge TMDB <b>sans transmettre ton identité</b> : TMDB reçoit la recherche, jamais l'information de qui la formule. Les disponibilités en streaming proviennent de JustWatch, via TMDB. Cette application utilise l'API TMDB mais n'est ni approuvée ni certifiée par TMDB.</p>
+<p>Les affiches et les images, elles, sont chargées directement depuis les serveurs d'images de TMDB, qui reçoivent à cette occasion ton adresse IP — mais ni ton compte ni ta bibliothèque.</p>
 <h3>Resend (envoi des emails)</h3>
 <p>Les codes de connexion te sont envoyés par <b>Resend</b>, société américaine, qui reçoit à cette occasion ton adresse email et le code. Elle n'a accès ni à ta bibliothèque ni au reste de tes données.</p>
 <h3>Connexion Google ou Apple</h3>
 <p>Si tu choisis de te connecter avec un compte Google ou Apple, le fournisseur concerné sait que tu te connectes à Scrini et nous transmet ton adresse email, ton nom et — pour Google — l'adresse de ta photo de profil. Ces deux dernières ne sont demandées par aucune fonction de l'application. Elles sont conservées avec ton compte, sans être lues ni affichées. Nous ne recevons ni ton mot de passe ni le contenu de ton compte chez eux. La connexion par code reçu par email évite entièrement ce passage.</p>
 <h3>YouTube (bandes-annonces)</h3>
-<p>Les bandes-annonces sont lues dans le lecteur intégré de YouTube, un service de Google, par l'intermédiaire des services d'API YouTube. Ce lecteur ne se charge que lorsque tu lances une bande-annonce : avant ce geste, YouTube ne reçoit rien. Dès que tu la lances, Google reçoit ton adresse IP, la langue de ton appareil et des informations techniques sur ton navigateur ou ton téléphone, et peut déposer ou lire des informations sur ton appareil (cookies, stockage local), y compris en mode de confidentialité renforcée. Scrini ne lui transmet ni ton identité ni ta bibliothèque. En lançant une bande-annonce, tu acceptes les <a href="https://www.youtube.com/t/terms">conditions d'utilisation de YouTube</a> ; ce que Google fait de ces données relève de sa <a href="https://policies.google.com/privacy">politique de confidentialité</a>. Pour que rien ne lui parvienne, il suffit de ne pas lancer de bande-annonce.</p>
+<p>Les bandes-annonces sont lues dans le lecteur intégré de YouTube, un service de Google, par l'intermédiaire des services d'API YouTube. Ce lecteur ne se charge que lorsque tu lances une bande-annonce : avant ce geste, YouTube ne reçoit rien. Dès que tu la lances, Google reçoit la vidéo demandée, ton adresse IP, la langue choisie dans Scrini et des informations techniques sur ton navigateur ou ton téléphone, et peut déposer ou lire des informations sur ton appareil (cookies, stockage local), y compris en mode de confidentialité renforcée. YouTube peut aussi afficher des publicités dans son lecteur. Scrini ne lui transmet ni ton identité ni ta bibliothèque. En lançant une bande-annonce, tu acceptes les <a href="https://www.youtube.com/t/terms">conditions d'utilisation de YouTube</a> ; ce que Google fait de ces données relève de sa <a href="https://policies.google.com/privacy">politique de confidentialité</a>. Pour que rien ne lui parvienne, il suffit de ne pas lancer de bande-annonce.</p>
 <h3>Version web : les services de Google</h3>
-<p>Sur la version web (app.scrini.fr), la page de connexion charge le bouton « Se connecter avec Google » depuis les serveurs de Google dès qu'elle s'affiche, que tu l'utilises ou non. Google reçoit alors ton adresse IP et des informations sur ton navigateur ; si tu es déjà connecté à un compte Google dans ce navigateur, il peut aussi lire ses propres cookies et savoir que tu as ouvert la page de connexion de Scrini. Le moteur d'affichage de la version web et sa police de caractères sont en outre téléchargés depuis les serveurs de Google, qui reçoivent à cette occasion ton adresse IP. Les applications Android et iOS ne font aucun de ces appels. Ces traitements relèvent de la <a href="https://policies.google.com/privacy">politique de confidentialité de Google</a>.</p>
+<p>Sur la version web (app.scrini.fr), la page de connexion charge le bouton de connexion de Google depuis ses serveurs dès qu'elle s'affiche, que tu l'utilises ou non. Google reçoit alors ton adresse IP et des informations sur ton navigateur ; si tu es déjà connecté à un compte Google dans ce navigateur, il peut aussi lire ses propres cookies et savoir que tu as ouvert la page de connexion de Scrini. Le moteur d'affichage de la version web et ses polices de caractères sont en outre téléchargés depuis les serveurs de Google, qui reçoivent à cette occasion ton adresse IP. Les applications Android et iOS ne font aucun de ces appels. Ces traitements relèvent de la <a href="https://policies.google.com/privacy">politique de confidentialité de Google</a>.</p>
 </section>
 
 <section>
