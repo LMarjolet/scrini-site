@@ -1,9 +1,11 @@
 # scrini-site
 
 Pages publiques de l'application **Scrini**, servies par GitHub Pages sur
-[scrini.fr](https://scrini.fr) : la vitrine, la politique de confidentialité et
-la procédure de suppression de compte. Les deux dernières sont exigées par
-Google Play pour toute application permettant la création d'un compte.
+[scrini.fr](https://scrini.fr) : la vitrine, la politique de confidentialité, la
+procédure de suppression de compte et les mentions légales. La politique et la
+suppression sont exigées par Google Play pour toute application permettant la
+création d'un compte ; les mentions légales, par la LCEN (art. 1-1) pour tout
+site public.
 
 Ce dépôt ne contient que ces pages. Le code de l'application est ailleurs, dans
 un dépôt privé — c'est la raison d'être de celui-ci, GitHub Pages n'étant pas
@@ -87,6 +89,10 @@ dépôt.
 
 Plusieurs choses vivent ici en copie et se désynchronisent en silence :
 
+- **Les hébergeurs**, nommés avec leur adresse dans les mentions légales :
+  GitHub (ce site), Cloudflare (la version web), Supabase (les données). Un
+  changement d'hébergement se reporte là, et dans la politique de
+  confidentialité.
 - **L'icône** — quand l'identité change, recopier `design/scrini_icon_512.png`
   depuis le dépôt de l'application, puis **régénérer les trois images dérivées**
   qui en descendent : `scrini_icon_224.png`, `favicon.ico` et `og-scrini.png`
