@@ -7,12 +7,29 @@
 <meta name="description" content="Comment supprimer ton compte Scrini et toutes les données associées, depuis l'application ou par email.">
 <link rel="icon" href="scrini_icon_224.png" type="image/png">
 <link rel="canonical" href="https://scrini.fr/suppression-compte.html">
+<link rel="alternate" hreflang="de" href="https://scrini.fr/de/suppression-compte.html">
+<link rel="alternate" hreflang="en" href="https://scrini.fr/en/suppression-compte.html">
+<link rel="alternate" hreflang="es" href="https://scrini.fr/es/suppression-compte.html">
+<link rel="alternate" hreflang="fr" href="https://scrini.fr/suppression-compte.html">
+<link rel="alternate" hreflang="it" href="https://scrini.fr/it/suppression-compte.html">
+<link rel="alternate" hreflang="pt" href="https://scrini.fr/pt/suppression-compte.html">
+<link rel="alternate" hreflang="ja" href="https://scrini.fr/ja/suppression-compte.html">
+<link rel="alternate" hreflang="ko" href="https://scrini.fr/ko/suppression-compte.html">
+<link rel="alternate" hreflang="x-default" href="https://scrini.fr/en/suppression-compte.html">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://scrini.fr/suppression-compte.html">
 <meta property="og:title" content="Supprimer son compte — Scrini">
 <meta property="og:description" content="Comment supprimer ton compte Scrini et toutes les données associées.">
 <meta property="og:image" content="https://scrini.fr/og-scrini.png">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/roboto-latin.woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.className="js";try{var t=localStorage.getItem("scrini-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
@@ -20,8 +37,20 @@
 
 <header class="site-head">
 <div class="wrap">
-<a class="brand" href="./"><img src="scrini_icon_224.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">FILMS · SÉRIES · ANIMÉS</span></span></a>
+<a class="brand" href="./"><img src="assets/scrini-logo-64.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">FILMS · SÉRIES · ANIMÉS</span></span></a>
 <div class="head-sp"></div>
+<details class="lang"><summary aria-label="Langue : Français" title="Langue"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-language"/></svg>FR</summary>
+<ul>
+<li><a href="de/suppression-compte.html" hreflang="de" lang="de">Deutsch</a></li>
+<li><a href="en/suppression-compte.html" hreflang="en" lang="en">English</a></li>
+<li><a href="es/suppression-compte.html" hreflang="es" lang="es">Español</a></li>
+<li><a href="suppression-compte.html" lang="fr" aria-current="page">Français</a></li>
+<li><a href="it/suppression-compte.html" hreflang="it" lang="it">Italiano</a></li>
+<li><a href="pt/suppression-compte.html" hreflang="pt" lang="pt">Português</a></li>
+<li><a href="ja/suppression-compte.html" hreflang="ja" lang="ja">日本語</a></li>
+<li><a href="ko/suppression-compte.html" hreflang="ko" lang="ko">한국어</a></li>
+</ul>
+</details>
 <button class="icon-btn" id="theme" type="button" aria-label="Changer de thème"><svg class="ico ico-light" aria-hidden="true"><use href="assets/icons.svg#i-light"/></svg><svg class="ico ico-dark" aria-hidden="true"><use href="assets/icons.svg#i-dark"/></svg></button>
 <a class="btn btn-head btn-primary" href="https://app.scrini.fr">Ouvrir dans le navigateur</a>
 </div>
@@ -30,13 +59,13 @@
 <main class="doc">
 <div class="wrap">
 <h1>Supprimer ton compte</h1>
-<p class="maj">Application concernée : Scrini (com.scrini.app)</p>
+<p class="maj">Application concernée : <a href="index.html">Scrini</a></p>
 
 <section>
 <h2>Depuis l'application</h2>
 <p>C'est le chemin le plus rapide, et il n'a besoin de personne :</p>
 <ul>
-<li>Ouvre le menu latéral, puis <b>Profil</b>.</li>
+<li>Ouvre le menu latéral, puis <b>Paramètres</b>.</li>
 <li>Descends jusqu'à <b>Supprimer mon compte</b>.</li>
 <li>Confirme. La suppression est immédiate et définitive.</li>
 </ul>
@@ -72,6 +101,7 @@
 <a href="./">Accueil</a>
 <a href="questions-frequentes.html">Questions fréquentes</a>
 <a href="confidentialite.html">Confidentialité</a>
+<a href="mentions-legales.html">Mentions légales</a>
 <a href="mailto:contact@scrini.fr">Contact</a>
 <div class="tmdb"><img src="assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>Ce produit utilise l'API TMDB mais n'est ni approuvé ni certifié par TMDB.</span></div>
 </div>
@@ -79,6 +109,7 @@
 
 <script>
 (function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+(function(){var d=document.querySelector(".lang");if(!d)return;document.addEventListener("click",function(e){if(d.open&&!d.contains(e.target))d.open=false});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&d.open){d.open=false;d.querySelector("summary").focus()}})})();
 </script>
 </body>
 </html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="{{@htmlLang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{suivre-ses-animes-scrini}}</title>
+<meta name="description" content="{{les-animes-ne-sont-ni-des-films-ni-des}}">
+<link rel="icon" href="{{@prefix}}scrini_icon_224.png" type="image/png">
+<link rel="canonical" href="https://scrini.fr/{{@dir}}suivre-ses-animes.html">
+{{#hreflangLinks}}
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://scrini.fr/{{@dir}}suivre-ses-animes.html">
+<meta property="og:title" content="{{suivre-ses-animes-2}}">
+<meta property="og:description" content="{{un-filtre-a-part-cumulable-avec-le-genre}}">
+<meta property="og:image" content="https://scrini.fr/og-scrini.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{scrini-films-series-animes-3}}">
+<meta name="twitter:card" content="summary_large_image">
+{{#ogLocales}}
+<link rel="preload" as="font" type="font/woff2" href="{{@prefix}}assets/fonts/roboto-latin.woff2" crossorigin>
+<link rel="stylesheet" href="{{@prefix}}style.css">
+<script>document.documentElement.className="js";try{var t=localStorage.getItem("scrini-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="./"><img src="{{@prefix}}assets/scrini-logo-64.png" alt="" width="32" height="32"><span class="wordmark"><b>SCRINI</b><span class="sub">{{films-series-animes}}</span></span></a>
+<div class="head-sp"></div>
+<details class="lang"><summary aria-label="{{langue-francais}}" title="{{langue}}"><svg class="ico" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-language"/></svg>{{fr}}</summary>
+<ul>
+{{#langMenu}}
+</ul>
+</details>
+<button class="icon-btn" id="theme" type="button" aria-label="{{changer-de-theme}}"><svg class="ico ico-light" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-light"/></svg><svg class="ico ico-dark" aria-hidden="true"><use href="{{@prefix}}assets/icons.svg#i-dark"/></svg></button>
+<a class="btn btn-head btn-primary" href="https://app.scrini.fr">{{ouvrir-dans-le-navigateur}}</a>
+</div>
+</header>
+
+<main class="doc">
+<div class="wrap">
+<h1>{{suivre-ses-animes}}</h1>
+<p class="chapeau">{{ranges-parmi-les-series-les-animes-se}}</p>
+
+<section>
+<h2>{{un-filtre-a-part-parce-que-ce-sont-des}}</h2>
+<p>{{les-animes-ne-sont-ni-des-films-ni-des-2}}</p>
+</section>
+
+<section>
+<h2>{{des-filtres-qui-se-cumulent}}</h2>
+<p>{{le-filtre-anime-se-combine-avec-les}}</p>
+<p>{{les-decennies-meritent-une-mention-c-est}}</p>
+</section>
+
+<section>
+<h2>{{le-suivi-ne-change-pas}}</h2>
+<p>{{pour-le-reste-un-anime-se-suit-comme-une}}<a href="agenda-sorties.html">{{l-agenda}}</a>{{avec-une-notification-le-matin-de-la}}</p>
+</section>
+
+<section>
+<h2>{{ce-qu-il-faut-savoir-sur-les-donnees}}</h2>
+<p>{{les-fiches-viennent-de-the-movie-database}}</p>
+<p>{{les-plateformes-qui-proposent-chaque}}</p>
+</section>
+
+<section class="action">
+<h2>{{essayer-scrini}}</h2>
+<p>{{gratuite-sans-publicite-ni-revente-de}}</p>
+<div class="cta">
+{{#storeBadges}}
+</div>
+</section>
+
+<section class="suite">
+<h2>{{a-lire-ensuite}}</h2>
+<ul>
+<li><a href="suivre-ses-series.html">{{savoir-ou-on-en-est-dans-ses-series}}</a> <span>{{cocher-les-episodes-et-lire-sa-progression}}</span></li>
+<li><a href="agenda-sorties.html">{{quand-sort-le-prochain-episode}}</a> <span>{{l-agenda-des-diffusions-et-les-alertes}}</span></li>
+<li><a href="questions-frequentes.html">{{questions-frequentes}}</a> <span>{{prix-appareils-compte-donnees-conservees}}</span></li>
+<li><a href="./">{{ce-que-fait-l-application}}</a> <span>{{en-une-page}}</span></li>
+</ul>
+</section>
+</div>
+</main>
+
+<footer class="site-foot">
+<div class="wrap">
+<a href="./">{{accueil}}</a>
+<a href="questions-frequentes.html">{{questions-frequentes}}</a>
+<a href="confidentialite.html">{{confidentialite}}</a>
+<a href="suppression-compte.html">{{supprimer-son-compte}}</a>
+<a href="mentions-legales.html">{{mentions-legales}}</a>
+<a href="mailto:contact@scrini.fr">{{contact}}</a>
+<div class="tmdb"><img src="{{@prefix}}assets/tmdb_logo.svg" alt="TMDB" width="124" height="9"><span>{{ce-produit-utilise-l-api-tmdb-mais-n-est}}</span></div>
+</div>
+</footer>
+
+<script>
+(function(){var h=document.documentElement,b=document.getElementById("theme");b.addEventListener("click",function(){var e=h.getAttribute("data-theme"),light=e==="light"||(!e&&matchMedia("(prefers-color-scheme: light)").matches),n=light?"dark":"light";h.setAttribute("data-theme",n);try{localStorage.setItem("scrini-theme",n)}catch(x){}})})();
+(function(){var d=document.querySelector(".lang");if(!d)return;document.addEventListener("click",function(e){if(d.open&&!d.contains(e.target))d.open=false});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&d.open){d.open=false;d.querySelector("summary").focus()}})})();
+</script>
+</body>
+</html>
