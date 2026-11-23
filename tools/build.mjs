@@ -70,6 +70,10 @@ function render(page, l){
   const vars = {
     prefix: preOf(l), dir: dirOf(l), lang: l,
     htmlLang: loc[l].htmlLang, locale: loc[l].ogLocale,
+    // Les langues du site, pour le JSON-LD de l'accueil. Derivee de MENU :
+    // ajouter une langue l'y fait entrer sans qu'on y pense. L'ordre d'un
+    // tableau schema.org ne porte aucun sens.
+    inLanguage: MENU.map(x => `"${x}"`).join(', '),
   };
   const subst = line => line.replace(/\{\{(@?[\w-]+)\}\}/g, (m, k) => {
     if (k[0] === '@'){
