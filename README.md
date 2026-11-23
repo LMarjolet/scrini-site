@@ -22,6 +22,8 @@ disponible sur un dépôt privé.
 | `templates/` | La structure des sept pages, écrite une seule fois — voir « Générer les pages » |
 | `i18n/*.json` | Les textes d'une langue, plus ce qui la décrit : badges, `og:locale`, nom |
 | `tools/build.mjs` | Écrit les 56 pages et `sitemap.xml` à partir des deux dossiers ci-dessus |
+| `tools/serve.mjs` | Sert le site en local, pour le regarder avant de pousser |
+| `.claude/launch.json` | Lance ce serveur depuis l'onglet Code de Claude |
 | `style.css` | Feuille unique, sombre et clair, jetons repris du système de design de l'application |
 | `assets/icons.svg` | Les icônes, un `<symbol>` chacune, référencées par `<use>` |
 | `assets/fonts/*.woff2` | Roboto auto-hébergé, latin et latin-ext — aucun appel à Google Fonts |
@@ -219,7 +221,11 @@ Les 56 fichiers HTML et `sitemap.xml` **ne s'éditent pas à la main** : ils son
 ```sh
 node tools/build.mjs          # écrit les 56 pages et sitemap.xml
 node tools/build.mjs --check  # n'écrit rien, sort en erreur si un fichier a dérivé
+node tools/serve.mjs          # http://localhost:4173, pour regarder le résultat
 ```
+
+Ouvrir une page en `file://` ne remplace pas ce serveur : les chemins et les
+polices ne s'y comportent pas comme sur GitHub Pages.
 
 Aucune dépendance : Node seul suffit, il n'y a pas de `package.json`. Le HTML
 produit reste commité, pour que GitHub Pages continue de servir des fichiers
